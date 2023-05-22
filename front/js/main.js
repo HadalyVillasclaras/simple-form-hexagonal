@@ -1,6 +1,10 @@
-import { handleSubmit} from './signUp.js';
+import { handleSignUp} from './signUp.js';
+import { handleSignIn} from './signIn.js';
 
-const form = document.querySelector('form');
+const signupForm = document.getElementById('signup-form');
+const signinForm = document.getElementById('signin-form');
 
-form.addEventListener("submit", event => handleSubmit(event));
+// signupForm.addEventListener("submit", event => handleSignUp(event));
+signinForm.addEventListener("submit", event => handleSignIn(event));
+
 

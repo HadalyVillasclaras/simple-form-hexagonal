@@ -57,7 +57,7 @@ class UserRepository implements UserRepositoryInterface
         }
     }
 
-    public function getUserByEmail(Email $email): ?User
+    public function getUserByEmail(Email $email): ?array
     {
         try {
             $stmt = $this->connection->Connect()->prepare("SELECT * FROM User WHERE email = :email");

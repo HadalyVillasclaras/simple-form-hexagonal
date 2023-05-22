@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors',1); error_reporting(E_ALL);
+
 require_once '../src/Application/SignInUser.php';
 require_once '../src/Infrastructure/UserRepository.php';
 
@@ -29,7 +31,6 @@ class SigninController {
         $userData = [];
         $userData['email'] = $_POST['email'] ?? '';
         $userData['password'] = $_POST['password'] ?? '';
-
         foreach ($userData as $data) {
           if (empty($data)) {
             throw new Exception("Fields can not be empty.");
@@ -37,8 +38,8 @@ class SigninController {
         }
 
         $signInUser = new SignInUser($userData, $this->userRepository);
-        $signInUser->execute();
-        echo json_encode(["status" => "success", "message" => "Sign in successfully completed"]);
+        $user = $signInUser->execute();
+        echo json_encode(["status" => "success", "message" => "Sign in successfully completed", "data" => $user], JSON_UNESCAPED_UNICODE);
       } catch (Exception $e) {
         http_response_code(400);
         echo json_encode(["status" => "error", "message" => $e->getMessage()]);

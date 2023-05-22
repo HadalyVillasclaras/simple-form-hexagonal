@@ -6,5 +6,5 @@ interface UserRepositoryInterface
 {
 	public function addUser(User $user): void;
 	public function getUserById(int $id): ?User;
-	public function getUserByEmail(Email $email): ?User;
+	public function getUserByEmail(Email $email): ?array;
 }

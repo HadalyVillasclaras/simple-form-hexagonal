@@ -20,15 +20,22 @@ class SignInUser
 
     public function execute() 
     {
-        $user = $this->userRepositoryInterface->getUserByEmail($this->email);
-      
-        if ($user === null) {
+        $email = new Email($this->email);
+        $signInUser = $this->userRepositoryInterface->getUserByEmail($email);
+
+        if ($signInUser['email'] === null) {
             throw new Exception("Email not found.");
         }
 
-        if (!password_verify($this->password, $user->getPassword())) {
+        if (!password_verify($this->password, $signInUser['password'])) {
             throw new Exception("Incorrect password.");
         }
+
+        $user = [
+            "name" => $signInUser['name'],
+            "surname" => $signInUser['surname'],
+            "email" => $signInUser['email']
+        ];
 
         return $user;
     }
