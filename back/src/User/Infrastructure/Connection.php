@@ -1,7 +1,7 @@
 <?php
 // namespace back\src\Infrastructure;
 
-require_once __DIR__ . "/../../config/dbConfig.php";
+require_once __DIR__ . "/../../../config/dbConfig.php";
 
 class Connection
 {

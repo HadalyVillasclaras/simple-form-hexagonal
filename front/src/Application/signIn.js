@@ -1,6 +1,6 @@
 const formFeedback = document.getElementById('form-feedback');
 const inputFields = document.querySelectorAll('.input-field');
-import { API_BASE_URL } from '../config.js';
+import { API_BASE_URL } from '../../config.js';
 
 export function handleSignIn(event) {
   event.preventDefault();

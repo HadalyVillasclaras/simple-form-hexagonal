@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors',1); error_reporting(E_ALL);
+
 require_once '../src/Application/SignUpUser.php';
 require_once '../src/Infrastructure/UserRepository.php';
 
@@ -14,6 +16,8 @@ class SignUpController
 	public function handleRequest()
 	{
 		try {
+			print_r('fdsfsd'); exit;
+
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$this->handleSignUp();
 			} else {

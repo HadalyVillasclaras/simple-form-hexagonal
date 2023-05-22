@@ -1,8 +1,8 @@
 <?php
 ini_set('display_errors',1); error_reporting(E_ALL);
 
-require_once '../src/Application/SignInUser.php';
-require_once '../src/Infrastructure/UserRepository.php';
+require_once '../src/User/Application/SignInUser.php';
+require_once '../src/User/Infrastructure/UserRepository.php';
 
 class SigninController {
     private $userRepository;

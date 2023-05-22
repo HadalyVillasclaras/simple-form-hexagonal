@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <!-- <section>
+  <section>
     <h2 id="form-title">Sign up</h2>
     <form id="signup-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
   
@@ -39,8 +39,8 @@
       <span id="form-feedback"></span>
       <input type="submit" value="Enviar">
     </form>
-  </section> -->
-  <section>
+  </section>
+  <!-- <section>
   <h2 >Sign in</h2> 
     <form id="signin-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
       <label for="email">Email<span aria-hidden="true">*</span></label>
@@ -57,8 +57,8 @@
       <span id="form-feedback"></span>
       <input type="submit" value="Enviar">
     </form>
-  </section>
-  <script type="module" src="../front/js/main.js"></script>
+  </section> -->
+  <script type="module" src="../front/src/main.js"></script>
 </body>
 
 </html>
