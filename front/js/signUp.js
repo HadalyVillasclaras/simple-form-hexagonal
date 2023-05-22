@@ -48,12 +48,10 @@ function signUp(event) {
     body: formData
   })
   .then(response => {
-    console.log(response);
-    return response.text();
+    return response.json();
   })
   .then(data => {
     console.log(data);
-
     formFeedback.style.color = 'green';
     formFeedback.textContent = data;
   })

@@ -16,7 +16,8 @@ class Connection
 
 			return $this->connection;
 		} catch (PDOException $e) {
-			echo "Connection error: " . $e->getMessage() . " | " . $e->getCode();
+			error_log("Connection error: " . $e->getMessage() . " | " . $e->getCode());
+			throw $e;
 		}
 	}
 }

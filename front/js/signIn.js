@@ -40,8 +40,7 @@ function signIn(event) {
     body: formData
   })
   .then(response => {
-    console.log(response);
-    return response.text();
+    return response.json();
   })
   .then(data => {
     console.log(data);
