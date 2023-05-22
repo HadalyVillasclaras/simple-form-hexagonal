@@ -1,5 +1,6 @@
 const formFeedback = document.getElementById('form-feedback');
 const inputFields = document.querySelectorAll('.input-field');
+import { API_BASE_URL } from '../config.js';
 
 export function handleSubmit(event) {
   event.preventDefault();
@@ -37,21 +38,21 @@ function validateInputFields(inputFields) {
 
 function signUp(event) {
   event.preventDefault();
-  let formErrorMsg = '';
 
   let formData = new FormData(event.target);
-
-  fetch('./src/registerUser.php', {
+  console.log(formData);
+  
+  fetch(API_BASE_URL + 'UserController.php', {
     method: 'POST',
     body: formData
   })
   .then(response => {
-    if (!response.ok) {
-      throw Error(response.status);
-    }
+    console.log(response);
     return response.text();
   })
   .then(data => {
+    console.log(data);
+
     formFeedback.style.color = 'green';
     formFeedback.textContent = data;
   })
