@@ -3,14 +3,17 @@
 require_once 'Connection.php';
 require_once __DIR__ . '/../Domain/UserRepositoryInterface.php';
 
-class UserRepository implements UserRepositoryInterface {
+class UserRepository implements UserRepositoryInterface
+{
     private $connection;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->connection = new Connection();
     }
 
-    public function addUser(User $user): void {
+    public function addUser(User $user): void
+    {
         try {
             $stmt = $this->connection->Connect()->prepare(
                 "INSERT INTO User (name, surname, email, password) 
@@ -30,14 +33,15 @@ class UserRepository implements UserRepositoryInterface {
         }
     }
 
-    public function getUserById(int $id): ?User {
+    public function getUserById(int $id): ?User
+    {
         try {
             $stmt = $this->connection->Connect()->prepare("SELECT * FROM User WHERE id = :id");
             $stmt->bindValue(':id', $id);
             $stmt->execute();
-    
+
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
             if ($user) {
                 return new User(
                     $user['name'],
@@ -46,7 +50,26 @@ class UserRepository implements UserRepositoryInterface {
                     $user['password']
                 );
             }
-    
+
+            return null;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage() . " | " . $e->getCode());
+        }
+    }
+
+    public function getUserByEmail(Email $email): ?User
+    {
+        try {
+            $stmt = $this->connection->Connect()->prepare("SELECT * FROM User WHERE email = :email");
+            $stmt->bindValue(':email', $email->getEmail());
+            $stmt->execute();
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user) {
+                return $user;
+            }
+
             return null;
         } catch (PDOException $e) {
             throw new Exception($e->getMessage() . " | " . $e->getCode());

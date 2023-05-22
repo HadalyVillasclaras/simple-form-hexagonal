@@ -1,13 +1,10 @@
 <?php
-
 require_once __DIR__ . '/../Domain/UserRepositoryInterface.php';
 require_once __DIR__ . '/../Domain/ValueObjects/Email.php';
 require_once __DIR__ . '/../Domain/ValueObjects/Password.php';
 
-class SignUpUser 
+class SignInUser
 {
-    private $name;
-    private $surname;
     private $email;
     private $password;
 
@@ -17,21 +14,22 @@ class SignUpUser
     {
         $this->userRepositoryInterface = $userRepositoryInterface;
 
-        $this->name = $userData['name'];
-        $this->surname = $userData['surname'];
         $this->email = $userData['email'];
         $this->password = $userData['password'];
     }
 
     public function execute() 
     {
-        $user = new User(
-            $this->name,
-            $this->surname,
-            new Email($this->email),
-            new Password($this->password)
-        );
+        $user = $this->userRepositoryInterface->getUserByEmail($this->email);
+      
+        if ($user === null) {
+            throw new Exception("Email not found.");
+        }
 
-        $this->userRepositoryInterface->addUser($user);
+        if (!password_verify($this->password, $user->getPassword())) {
+            throw new Exception("Incorrect password.");
+        }
+
+        return $user;
     }
 }

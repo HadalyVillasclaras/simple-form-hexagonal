@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors',1); error_reporting(E_ALL);
+// ini_set('display_errors',1); error_reporting(E_ALL);
 require_once '../src/Application/SignupUser.php';
 require_once '../src/Infrastructure/UserRepository.php';
 
@@ -48,6 +48,8 @@ class UserController {
             echo json_encode(["status" => "error", "message" => $e->getMessage()]);
         }
     }
+
+    
 }
 
 $controller = new UserController();

@@ -9,18 +9,21 @@ class User {
     private Email $email;
     private Password $password;
 
-    public function __construct(string $name, string $surname, Email $email, Password $password) {
+    public function __construct(string $name, string $surname, Email $email, Password $password) 
+    {
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
         $this->password = $password;
     }
 
-    public function getName(): string {
+    public function getName(): string 
+    {
         return $this->name;
     }
 
-    public function setName(string $name): void {
+    public function setName(string $name): void 
+    {
         $this->name = $name;
     }
 
@@ -28,23 +31,28 @@ class User {
         return $this->surname;
     }
 
-    public function setSurname(string $surname): void {
+    public function setSurname(string $surname): void 
+    {
         $this->surname = $surname;
     }
 
-    public function getEmail(): string {
+    public function getEmail(): string 
+    {
         return $this->email->getEmail();
     }
 
-    public function setEmail(Email $email): void {
+    public function setEmail(Email $email): void 
+    {
         $this->email = $email;
     }
 
-    public function getPassword(): string {
+    public function getPassword(): string 
+    {
         return $this->password->getPassword();
     }
 
-    public function setPassword(Password $password): void {
+    public function setPassword(Password $password): void 
+    {
         $this->password = $password;
     }
 }

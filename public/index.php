@@ -9,37 +9,38 @@
 </head>
 
 <body>
-  <h2 id="form-title">Sign up</h2>
-  <form method="POST" action="register.php" aria-labelledby="form-title" autocomplete="off">
+  <section>
+    <h2 id="form-title">Sign up</h2>
+    <form method="POST" action="" aria-labelledby="form-title" autocomplete="off">
+  
+      <label for="name">Name<span aria-hidden="true">*</span></label>
+      <div>
+        <input type="text" class="input-field" name="name" aria-required="true">
+        <span class="error-message"></span>
+      </div>
+  
+      <label for="surname">Surname<span aria-hidden="true">*</span></label>
+      <div>
+        <input type="text" class="input-field" name="surname" aria-required="true">
+        <span class="error-message"></span>
+      </div>
+  
+      <label for="email">Email<span aria-hidden="true">*</span></label>
+      <div>
+        <input type="email" class="input-field" name="email" autocomplete="email" aria-required="true">
+        <span class="error-message"></span>
+      </div>
+  
+      <label for="password">Password<span aria-hidden="true">*</span></label>
+      <div>
+        <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
+        <span class="error-message"></span>
+      </div>
+      <span id="form-feedback"></span>
+      <input type="submit" value="Enviar">
+    </form>
 
-    <label for="name">Name<span aria-hidden="true">*</span></label>
-    <div>
-      <input type="text" class="input-field" name="name" aria-required="true">
-      <span class="error-message"></span>
-    </div>
-
-    <label for="surname">Surname<span aria-hidden="true">*</span></label>
-    <div>
-      <input type="text" class="input-field" name="surname" aria-required="true">
-      <span class="error-message"></span>
-    </div>
-
-    <label for="email">Email<span aria-hidden="true">*</span></label>
-    <div>
-      <input type="email" class="input-field" name="email" autocomplete="email" aria-required="true">
-      <span class="error-message"></span>
-    </div>
-
-    <label for="password">Password<span aria-hidden="true">*</span></label>
-    <div>
-      <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
-      <span class="error-message"></span>
-    </div>
-    <span id="form-feedback"></span>
-    <input type="submit" value="Enviar">
-  </form>
-  <button id="consulta-btn" style="display: none;">See</button>
-
+  </section>
   <script type="module" src="../front/js/main.js"></script>
 </body>
 

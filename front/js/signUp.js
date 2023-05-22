@@ -43,7 +43,7 @@ function signUp(event) {
   let formData = new FormData(event.target);
   console.log(formData);
   
-  fetch(API_BASE_URL + 'UserController.php', {
+  fetch(API_BASE_URL + 'SignUpController.php', {
     method: 'POST',
     body: formData
   })
