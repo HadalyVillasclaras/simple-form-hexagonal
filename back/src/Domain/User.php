@@ -1,16 +1,17 @@
 <?php
 
+require_once __DIR__ . '/ValueObjects/Email.php';
+require_once __DIR__ . '/ValueObjects/Password.php';
+
 class User {
     private string $name;
-    private string $firstSurname;
-    private string $secondSurname;
-    private string $email;
-    private string $password;
+    private string $surname;
+    private Email $email;
+    private Password $password;
 
-    public function __construct(string $name, string $firstSurname, string $secondSurname, string $email, string $password) {
+    public function __construct(string $name, string $surname, Email $email, Password $password) {
         $this->name = $name;
-        $this->firstSurname = $firstSurname;
-        $this->secondSurname = $secondSurname;
+        $this->surname = $surname;
         $this->email = $email;
         $this->password = $password;
     }
@@ -23,35 +24,27 @@ class User {
         $this->name = $name;
     }
 
-    public function getFirstSurname(): string {
-        return $this->firstSurname;
+    public function getSurname(): string {
+        return $this->surname;
     }
 
-    public function setFirstSurname(string $firstSurname): void {
-        $this->firstSurname = $firstSurname;
-    }
-
-    public function getSecondSurname(): string {
-        return $this->secondSurname;
-    }
-
-    public function setSecondSurname(string $secondSurname): void {
-        $this->secondSurname = $secondSurname;
+    public function setSurname(string $surname): void {
+        $this->surname = $surname;
     }
 
     public function getEmail(): string {
-        return $this->email;
+        return $this->email->getEmail();
     }
 
-    public function setEmail(string $email): void {
+    public function setEmail(Email $email): void {
         $this->email = $email;
     }
 
     public function getPassword(): string {
-        return $this->password;
+        return $this->password->getPassword();
     }
 
-    public function setPassword(string $password): void {
+    public function setPassword(Password $password): void {
         $this->password = $password;
     }
 }

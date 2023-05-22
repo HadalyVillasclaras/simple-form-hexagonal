@@ -11,28 +11,29 @@ export function handleSubmit(event) {
 }
 
 function validateInputFields(inputFields) {
-  let isValid = false;
+  let isValid = true;
 
   for (let i = 0; i < inputFields.length; i++) {
     let input = inputFields[i];
     let inputErrorMsg = input.nextElementSibling;
 
-    if (!input.value.trim()) {
-      inputErrorMsg.textContent = 'Este campo es requerido.';
+    if (input.value.trim() === '') {
+      inputErrorMsg.textContent = 'Required field';
       inputErrorMsg.style.display = 'block';
+      isValid = false;
     } else if (input.name === 'password' && (input.value.length < 4 || input.value.length > 8)) {
-      inputErrorMsg.textContent = 'La contraseña debe tener entre 4 y 8 caracteres.';
+      inputErrorMsg.textContent = 'The password must be 4 to 8 characters long.';
       inputErrorMsg.style.display = 'block';
+      isValid = false;
     } else if (input.name === 'email' && !input.value.match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/)) {
-      inputErrorMsg.textContent = 'Introduzca un correo electrónico válido.';
+      inputErrorMsg.textContent = 'Please enter a valid email address.';
       inputErrorMsg.style.display = 'block';
+      isValid = false;
     } else {
       inputErrorMsg.textContent = '';
       inputErrorMsg.style.display = 'none';
-      isValid = true;
     }
   }
-
   return isValid;
 }
 
@@ -58,7 +59,7 @@ function signUp(event) {
   })
   .catch((error) => {
     if (error.message == '409') {
-      formFeedback.textContent = 'El correo electrónico ya está registrado.';
+      formFeedback.textContent = 'This email address is already registered.';
     } else {
       console.error('Error:', error);
     }
