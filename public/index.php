@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" type="text/css" href="../front/css/style.css">
   <title>final lab</title>
 </head>
 
@@ -47,7 +47,7 @@
   </form>
   <button id="consulta-btn" style="display: none;">Consulta</button>
 
-  <script type="module" src="./js/main.js"></script>
+  <script type="module" src="../front/js/main.js"></script>
 </body>
 
 </html>
