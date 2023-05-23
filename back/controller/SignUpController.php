@@ -1,5 +1,7 @@
 <?php
+
 ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once '../src/User/Application/SignUpUser.php';
@@ -7,6 +9,7 @@ require_once '../src/User/Infrastructure/UserRepository.php';
 
 class SignUpController
 {
+	
 	private $userRepository;
 
 	public function __construct()
@@ -20,7 +23,6 @@ class SignUpController
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$this->handleSignUp();
 			} else {
-				http_response_code(405);
 				throw new Exception("Not Allowed HTTP method");
 			}
 		} catch (Exception $e) {
