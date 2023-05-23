@@ -1,8 +1,9 @@
 <?php
-ini_set('display_errors',1); error_reporting(E_ALL);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-require_once '../src/Application/SignUpUser.php';
-require_once '../src/Infrastructure/UserRepository.php';
+require_once '../src/User/Application/SignUpUser.php';
+require_once '../src/User/Infrastructure/UserRepository.php';
 
 class SignUpController
 {
@@ -16,8 +17,6 @@ class SignUpController
 	public function handleRequest()
 	{
 		try {
-			print_r('fdsfsd'); exit;
-
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$this->handleSignUp();
 			} else {
@@ -34,13 +33,13 @@ class SignUpController
 	{
 		try {
 			$userData = [];
-			$userData['name'] =  $_POST['name'] ?? '';
+			$userData['name'] = $_POST['name'] ?? '';
 			$userData['surname'] =  $_POST['surname'] ?? '';
 			$userData['email'] = $_POST['email'] ?? '';
 			$userData['password'] = $_POST['password'] ?? '';
 
 			foreach ($userData as $data) {
-				if (empty($data)) {
+				if (empty($data) || $data === null) {
 					throw new Exception("Fields can not be empty.");
 				}
 			}

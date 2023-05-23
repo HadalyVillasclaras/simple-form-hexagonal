@@ -7,15 +7,14 @@ export default class SignUpService {
 
   async signUp(event) {
     event.preventDefault();
-
     try {
         const formData = new FormData(event.target);
-        console.log(formData);
         const response = await this.userRepository.addUser(formData);
-        return response;
+        const responseData = await response.json();
+
+        return responseData;
     } catch (error) {
-        console.error('Error in signUp:', error);
-        throw error;
+        console.error('Error:', error);
     }
   }
 }
