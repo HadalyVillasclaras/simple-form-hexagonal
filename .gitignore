@@ -1,3 +1,4 @@
 *.txt
 info.md
 node_modules
+dist
