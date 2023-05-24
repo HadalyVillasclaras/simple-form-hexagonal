@@ -34,11 +34,12 @@ class SignUpController
 	private function handleSignUp()
 	{
 		try {
-			$userData = [];
-			$userData['name'] = $_POST['name'] ?? '';
-			$userData['surname'] =  $_POST['surname'] ?? '';
-			$userData['email'] = $_POST['email'] ?? '';
-			$userData['password'] = $_POST['password'] ?? '';
+			$userData = json_decode(file_get_contents('php://input'), true);
+			$userData['name'] = $userData['name'] ?? '';
+			$userData['surname'] =  $userData['surname'] ?? '';
+			$userData['email'] = $userData['email'] ?? '';
+			$userData['password'] = $userData['password'] ?? '';
+			// print_r($userData);
 
 			foreach ($userData as $data) {
 				if (empty($data) || $data === null) {

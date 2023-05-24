@@ -1,6 +1,6 @@
 import { User } from './User';
 
-export interface UserRepository {
-	addUser: (user: User) => Promise<User | undefined>;
-	// getUserByEmail: (email: Email) => Promise<User[]>;
+export interface UserRepositoryInterface {
+	addUser: (user: User) => Promise<any | undefined>;
+	signIn: (user: User) => Promise<any | undefined>;
 }

@@ -22,8 +22,7 @@ class SignInUser
     {
         $email = new Email($this->email);
         $signInUser = $this->userRepositoryInterface->getUserByEmail($email);
-
-        if ($signInUser['email'] === null) {
+        if (!isset($signInUser['email'])) {
             throw new Exception("Email not found.");
         }
 
@@ -32,7 +31,6 @@ class SignInUser
         }
 
         $user = [
-            "name" => $signInUser['name'],
             "surname" => $signInUser['surname'],
             "email" => $signInUser['email']
         ];

@@ -1,33 +1,31 @@
-import { User } from '../Domain/User';
 import { UserRepositoryInterface } from '../Domain/UserRepositoryInterface';
+import { User } from '../Domain/User';
 import { Email } from '../Domain/ValueObjects/Email';
 import { Password } from '../Domain/ValueObjects/Password';
 
-export default class SignUpService {
+export default class SignInService {
   private userRepository: UserRepositoryInterface;
 
   constructor(userRepository: UserRepositoryInterface) {
     this.userRepository = userRepository;
   }
 
-  async signUp(formData: any): Promise<any> {
+  async signIn(formData: any): Promise<any> {
     try {
       const requestData: any = {};
-      formData.forEach((value: string, key: string) => {
+      formData.forEach((value: string, key: number) => {
         if (value === '') {
-          throw Error(`Field ${key} cannot be null`)
+          throw Error('Front fields cannot be null')
         }
         requestData[key] = value;
       });
 
       const user: User = {
-        name: requestData['name'],
-        surname: requestData['surname'],
         email: new Email(requestData['email']),
         password: new Password(requestData['password']),
       };
 
-      const response = await this.userRepository.addUser(user);
+      const response = await this.userRepository.signIn(user);
       const responseData = await response.json();
       return responseData;
 

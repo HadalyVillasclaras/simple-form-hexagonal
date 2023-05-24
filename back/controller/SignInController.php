@@ -28,15 +28,14 @@ class SigninController {
 
     private function handleSignIp() {
       try {
-        $userData = [];
-        $userData['email'] = $_POST['email'] ?? '';
-        $userData['password'] = $_POST['password'] ?? '';
+        $userData = json_decode(file_get_contents('php://input'), true);
+        $userData['email'] = $userData['email'] ?? '';
+        $userData['password'] = $userData['password'] ?? '';
         foreach ($userData as $data) {
           if (empty($data)) {
             throw new Exception("Fields can not be empty.");
           }
         }
-
         $signInUser = new SignInUser($userData, $this->userRepository);
         $user = $signInUser->execute();
         echo json_encode(["status" => "success", "message" => "Sign in successfully completed", "data" => $user], JSON_UNESCAPED_UNICODE);

@@ -1,20 +1,20 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #f4f4f8;
+  background: #242426;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items:flex-start;
   min-height: 100vh;
   margin: 0;
   box-sizing: border-box;
-  color: #663399;
+  color: #ad91c9;
+  gap: 3rem;
 }
 
 form {
   width: 70%;
   max-width: 400px;
-  background: #fff;
+  background: #3c3a3a;
   padding: 2.5rem;
   border-radius: 10px;
   box-shadow: 0px 14px 32px rgba(0,0,0,0.1);
@@ -43,19 +43,21 @@ form input[type='password'] {
   border-radius: 5px;
   font-size: 16px;
   transition: background 0.3s ease-in-out;
+  background: #565559;
+
 }
 
 form input[type='text']:focus,
 form input[type='email']:focus,
 form input[type='password']:focus {
   outline: none;
-  background: #e9e9f3;
+  background: #8c8291;
 }
 
 form input[type='submit'] {
   width: 100%;
   border: none;
-  background: #663399;
+  background: #391b57;
   color: #fff;
   padding: 1rem;
   border-radius: 5px;
