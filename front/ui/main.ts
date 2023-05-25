@@ -1,8 +1,5 @@
-import UserRepository from './Infrastructure/UserRepository';
-import SignUpService from './Application/SignUpService';
-import SignInService from './Application/SignInService';
-// import {renderSignInResponse} from '../ui/signIn';
-
+import { AppAdapter } from '../src/AppAdapter';
+const appAdapter = new AppAdapter();
 
 const signupForm = document.getElementById('signup-form') as HTMLFormElement;
 const signinForm = document.getElementById('signin-form') as HTMLFormElement;
@@ -11,13 +8,29 @@ signupForm.addEventListener('submit', event => handleSignUp(event));
 signinForm.addEventListener("submit", event => handleSignIn(event));
 
 async function handleSignUp(event: Event) {
-  let signUpResponse = await signUp(event);
-  renderFeedback(signUpResponse, signupForm);
+  event.preventDefault();
+  try {
+    const formData = new FormData(event.target as HTMLFormElement);
+    const signUpResponse = await appAdapter.handleSignUp(formData);
+    console.log(signUpResponse);
+
+    renderFeedback(signUpResponse, signupForm);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 async function handleSignIn(event: Event) {
-  let signInResponse = await signIn(event);
-  renderFeedback(signInResponse, signinForm);
+  event.preventDefault();
+  try {
+    const formData = new FormData(event.target as HTMLFormElement);
+    const signInResponse = await appAdapter.handleSignIn(formData);
+    console.log(signInResponse);
+
+    renderFeedback(signInResponse, signinForm);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 function renderFeedback(signInResponse: InputResponse | GlobalResponse, formElement: HTMLFormElement) {
@@ -67,32 +80,6 @@ function renderFeedback(signInResponse: InputResponse | GlobalResponse, formElem
 }
 
 
-async function signUp(event: Event) {
-  event.preventDefault();
-  try {
-    const formData = new FormData(event.target as HTMLFormElement);
-    const userRepository = new UserRepository();
-    const signUpService = new SignUpService(userRepository);
-    const response = await signUpService.signUp(formData);
-    console.log(response);
-    return response;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-export async function signIn(event: Event) {
-  event.preventDefault();
-  try {
-    const formData = new FormData(event.target as HTMLFormElement);
-    const userRepository = new UserRepository();
-    const signInService = new SignInService(userRepository);
-    const response = await signInService.signIn(formData);
-    return response;
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 interface InputResponse {
   status: string,

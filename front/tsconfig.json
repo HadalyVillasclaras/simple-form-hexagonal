@@ -8,6 +8,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["./src/**/*", "src/main.ts"], 
+  "include": ["./src/**/*", "ui/main.ts"], 
   "exclude": ["node_modules"]
 }
