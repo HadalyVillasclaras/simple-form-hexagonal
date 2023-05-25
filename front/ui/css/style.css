@@ -73,12 +73,12 @@ form input[type='submit']:hover {
 
 
 .error-message {
-  display: none;
+  /* display: none; */
+  display: block;
   background: #D43B69;
   color: #ffffff;
   padding: 5px;
-  margin-top: 2px;
-  border-radius: 5px;
+  margin-top: 9px;
   font-size: 0.8rem;
 }
 

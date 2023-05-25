@@ -1,5 +1,4 @@
 <?php
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -39,7 +38,6 @@ class SignUpController
 			$userData['surname'] =  $userData['surname'] ?? '';
 			$userData['email'] = $userData['email'] ?? '';
 			$userData['password'] = $userData['password'] ?? '';
-			// print_r($userData);
 
 			foreach ($userData as $data) {
 				if (empty($data) || $data === null) {

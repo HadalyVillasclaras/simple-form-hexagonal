@@ -2,6 +2,7 @@ import { UserRepositoryInterface } from '../Domain/UserRepositoryInterface';
 import { User } from '../Domain/User';
 import { Email } from '../Domain/ValueObjects/Email';
 import { Password } from '../Domain/ValueObjects/Password';
+import { SignInError } from '../Domain/Exceptions/SignInException';
 
 export default class SignInService {
   private userRepository: UserRepositoryInterface;
@@ -11,26 +12,41 @@ export default class SignInService {
   }
 
   async signIn(formData: any): Promise<any> {
-    try {
+    const errors: {field: string, message: string}[] = [];
+
       const requestData: any = {};
-      formData.forEach((value: string, key: number) => {
+      formData.forEach((value: string, key: any) => {
         if (value === '') {
-          throw Error('Front fields cannot be null')
+          errors.push({ field: key, message: 'This field cannot be empty.' });
         }
         requestData[key] = value;
       });
 
-      const user: User = {
-        email: new Email(requestData['email']),
-        password: new Password(requestData['password']),
+      let email: Email;
+    
+      try {
+        email = new Email(requestData['email']);
+      } catch (error) {
+        errors.push({ field: 'email', message: error.message });
+      }
+    
+      if (errors.length > 0) {
+        return { status: 'error', errors };
+      }
+      
+      const loginUser = {
+        email: requestData['email'],
+        password: requestData['password'],
       };
 
-      const response = await this.userRepository.signIn(user);
-      const responseData = await response.json();
-      return responseData;
+      try {
+        const response = await this.userRepository.signIn(loginUser);
+        const responseData = await response.json();
+        return responseData;
+      } catch (error) {
+        throw { status: 'error', message: error.message };
+      }
 
-    } catch (error) {
-      throw { status: 'error', message: error.message };
-    }
+ 
   }
 }

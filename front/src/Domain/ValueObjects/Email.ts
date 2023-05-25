@@ -4,7 +4,6 @@ export class Email {
 	constructor(email: string) {
 		this.validateEmail(email);
 		this.email = email;
-		console.log(email);
 	}
 
 	private validateEmail(email: string): void {

@@ -22,12 +22,12 @@ class SignInUser
     {
         $email = new Email($this->email);
         $signInUser = $this->userRepositoryInterface->getUserByEmail($email);
-        if (!isset($signInUser['email'])) {
-            throw new Exception("Email not found.");
-        }
 
-        if (!password_verify($this->password, $signInUser['password'])) {
-            throw new Exception("Incorrect password.");
+        if (
+            !isset($signInUser['email']) || 
+            !password_verify($this->password, $signInUser['password'])
+        ) {
+            throw new Exception("Invalid credentials.");
         }
 
         $user = [

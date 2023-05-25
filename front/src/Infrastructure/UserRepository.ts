@@ -21,7 +21,7 @@ export default class UserRepository {
     }
   }
 
-  async signIn(user: User): Promise<Response> {
+  async signIn(user: any): Promise<Response> {
     try {
       const response = await fetch(API_BASE_URL + 'SignInController.php', {
         method: 'POST',

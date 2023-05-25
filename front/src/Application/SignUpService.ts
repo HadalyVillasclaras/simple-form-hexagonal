@@ -11,28 +11,49 @@ export default class SignUpService {
   }
 
   async signUp(formData: any): Promise<any> {
-    try {
+      const errors: { field: string, message: string }[] = [];
       const requestData: any = {};
       formData.forEach((value: string, key: string) => {
         if (value === '') {
-          throw Error(`Field ${key} cannot be null`)
+          errors.push({ field: key, message: 'This field cannot be empty.' });
         }
         requestData[key] = value;
       });
 
-      const user: User = {
-        name: requestData['name'],
-        surname: requestData['surname'],
-        email: new Email(requestData['email']),
-        password: new Password(requestData['password']),
-      };
+      let email: Email;
+      let password: Password;
+        
+      try {
+        email = new Email(requestData['email']);
+      } catch (error) {
+        errors.push({ field: 'email', message: error.message });
+      }
 
-      const response = await this.userRepository.addUser(user);
-      const responseData = await response.json();
-      return responseData;
+      try {
+        password = new Password(requestData['password'])
+      } catch (error) {
+        errors.push({ field: 'password', message: error.message });
+      }
 
-    } catch (error) {
-      throw { status: 'error', message: error.message };
-    }
+      if (errors.length > 0) {
+        return { status: 'error', errors };
+      }
+      try {
+        const user: User = {
+          name: requestData['name'],
+          surname: requestData['surname'],
+          email: new Email(requestData['email']),
+          password: new Password(requestData['password']),
+        };
+  
+        const response = await this.userRepository.addUser(user);
+        const responseData = await response.json();
+        return responseData;
+      } catch (error) {
+        throw { status: 'error', message: error.message };
+      }
+      
+
+
   }
 }
