@@ -1,5 +1,5 @@
 # Simple sign in / sign up form
-I've crafted a very simple web application on an Apache wich follow a mirror folder structure following hexagonal architecure and DDD principles in both front-end and back-end.
+I've crafted a very simple web application on an Apache server wich follow a mirror folder structure following hexagonal architecure and DDD principles in both front-end and back-end.
 
 Front services are fetching data via input stream providers in back controller files. This is not an API, the controller requests content via php://input. The back-end is made with pure PHP(no Composer install), since I didn't want to use libraries that would make its use more complex. That's why it doesn't have routing or other functionalities like auth providers, etc.
 
