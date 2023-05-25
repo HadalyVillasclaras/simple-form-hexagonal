@@ -1,6 +1,6 @@
-import UserRepository from './Infrastructure/UserRepository';
-import SignUpService from './Application/SignUpService';
-import SignInService from './Application/SignInService';
+import UserRepository from './src/Infrastructure/UserRepository';
+import SignUpService from './src/Application/SignUpService';
+import SignInService from './src/Application/SignInService';
 const signupForm = document.getElementById('signup-form') as HTMLFormElement;
 const signinForm = document.getElementById('signin-form') as HTMLFormElement;
 
