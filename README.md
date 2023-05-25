@@ -3,7 +3,7 @@ I've crafted a very simple web application on an Apache server wich follow a mir
 
 Front services are fetching data via input stream providers in back controller files with php://input (no routing). The back-end is made with pure PHP(no Composer install), since I didn't want to use libraries that would make its use more complex. That's why it doesn't have routing or other functionalities like auth providers, etc.
 
-Front-end source code is independent of the user interface. main.ts is working as an adapter wich connects ui events with app services. 
+Front-end source code is independent of the user interface. main.ts is working as an ui adapter wich connects browser events with app services. 
 
 The purpose of this project was to create a reusable application structure following good practices of software architecture, code and accessibility. And that would let me work on design and UX without worrying about business logic.
 
@@ -37,6 +37,7 @@ back/
 ```
 front/
   |--src/
+    	|-- AppAdapters.ts
       |-- User/
           |-- Domain/
               |--User.ts
@@ -50,6 +51,7 @@ front/
           |-- Infrastructure/
               |--UserRepository.ts
   |--ui/
+    |-- main.ts
     |-- components/
     |-- styles/
 ```
