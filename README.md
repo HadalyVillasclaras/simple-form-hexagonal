@@ -37,7 +37,7 @@ back/
 ```
 front/
   |--src/
-    	|-- AppAdapters.ts
+      |-- AppAdapters.ts
       |-- User/
           |-- Domain/
               |--User.ts
