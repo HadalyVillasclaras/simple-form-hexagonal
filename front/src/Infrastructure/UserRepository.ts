@@ -17,7 +17,7 @@ export default class UserRepository {
 
     } catch (error) {
       console.error(error);
-      return Promise.reject(error);
+      throw { status: 'error', message: error.message };
     }
   }
 
@@ -34,8 +34,7 @@ export default class UserRepository {
       return response;
 
     } catch (error) {
-      console.error(error);
-      return Promise.reject(error);
+      throw { status: 'error', message: error.message };
     }
   }
 
@@ -48,8 +47,7 @@ export default class UserRepository {
 
       return response;
     } catch (error) {
-      console.error(error);
-      return Promise.reject(error);
+      throw { status: 'error', message: error.message };
     }
   }
 }

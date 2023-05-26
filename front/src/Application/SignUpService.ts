@@ -11,6 +11,7 @@ export default class SignUpService {
   }
 
   async signUp(formData: any): Promise<any> {
+
       const errors: { field: string, message: string }[] = [];
       const requestData: any = {};
       formData.forEach((value: string, key: string) => {
@@ -47,8 +48,7 @@ export default class SignUpService {
         };
   
         const response = await this.userRepository.addUser(user);
-        const responseData = await response.json();
-        return responseData;
+        return response;
       } catch (error) {
         throw { status: 'error', message: error.message };
       }
