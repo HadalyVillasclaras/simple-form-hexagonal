@@ -1,33 +1,33 @@
 import { AppAdapter } from '../src/AppAdapter';
-import { renderSignInFeedback } from './components/signIn';
-import { renderSignUpFeedback } from './components/signUp';
-
+import { FormFeedback } from './components/FormFeedback';
 
 const appAdapter = new AppAdapter();
 
 const signupForm = document.getElementById('signup-form') as HTMLFormElement;
 const signinForm = document.getElementById('signin-form') as HTMLFormElement;
 
-signupForm.addEventListener('submit', event => handleSignUp(event));
-signinForm.addEventListener("submit", event => handleSignIn(event));
+signupForm.addEventListener('submit', event => handleSignUpResponse(event));
+signinForm.addEventListener("submit", event => handleSignInResponse(event));
 
-async function handleSignUp(event: Event) {
+async function handleSignUpResponse(event: Event) {
   event.preventDefault();
   try {
     const formData = new FormData(event.target as HTMLFormElement);
     const signUpResponse = await appAdapter.handleSignUp(formData);
-    renderSignUpFeedback(signupForm, signUpResponse);
+    const formFeedback = new FormFeedback(signupForm, signUpResponse)
+    formFeedback.render();
   } catch (error) {
     throw { status: 'error', message: error.message };
   }
 }
 
-async function handleSignIn(event: Event) {
+async function handleSignInResponse(event: Event) {
   event.preventDefault();
   try {
     const formData = new FormData(event.target as HTMLFormElement);
     const signInResponse = await appAdapter.handleSignIn(formData);
-    renderSignInFeedback(signinForm, signInResponse);
+    const formFeedback = new FormFeedback(signinForm, signInResponse)
+    formFeedback.render();
   } catch (error) {
     throw { status: 'error', message: error.message };
   }

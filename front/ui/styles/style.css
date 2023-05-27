@@ -72,7 +72,7 @@ form input[type='submit']:hover {
 }
 
 
-.error-message {
+.input-error {
   /* display: none; */
   display: block;
   background: #D43B69;
@@ -82,7 +82,7 @@ form input[type='submit']:hover {
   font-size: 0.8rem;
 }
 
-.error-message::before {
+.input-error::before {
   content: '⚠';
   margin-right: 5px;
 }
