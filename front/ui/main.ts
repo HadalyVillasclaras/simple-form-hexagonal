@@ -1,5 +1,6 @@
-import { AppAdapter } from '../src/AppAdapter';
-import { FormFeedback } from './components/FormFeedback';
+import { AppAdapter, InputResponse, AppResponse } from '../src/AppAdapter';
+import { signIn } from './components/signIn';
+import { signUp } from './components/signUp';
 
 const appAdapter = new AppAdapter();
 
@@ -13,9 +14,8 @@ async function handleSignUpResponse(event: Event) {
   event.preventDefault();
   try {
     const formData = new FormData(event.target as HTMLFormElement);
-    const signUpResponse = await appAdapter.handleSignUp(formData);
-    const formFeedback = new FormFeedback(signupForm, signUpResponse)
-    formFeedback.render();
+    const signUpResponse: InputResponse | AppResponse = await appAdapter.handleSignUp(formData);
+    signIn(signupForm, signUpResponse);
   } catch (error) {
     throw { status: 'error', message: error.message };
   }
@@ -25,9 +25,9 @@ async function handleSignInResponse(event: Event) {
   event.preventDefault();
   try {
     const formData = new FormData(event.target as HTMLFormElement);
-    const signInResponse = await appAdapter.handleSignIn(formData);
-    const formFeedback = new FormFeedback(signinForm, signInResponse)
-    formFeedback.render();
+    const signInResponse: InputResponse | AppResponse = await appAdapter.handleSignIn(formData);
+    signUp(signinForm, signInResponse);
+
   } catch (error) {
     throw { status: 'error', message: error.message };
   }
