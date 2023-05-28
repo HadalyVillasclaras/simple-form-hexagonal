@@ -1,89 +1,167 @@
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: #242426;
-  display: flex;
-  justify-content: center;
-  align-items:flex-start;
-  min-height: 100vh;
+@font-face {
+  font-family: Laurel-Regular;
+  src: url(../assets/fonts/Laurel-Regular.otf);
+}
+
+@font-face {
+  font-family: Laurel-Medium;
+  src: url(../assets/fonts/Laurel-Medium.otf);
+}
+
+:root {
+  --bg-light: #635f0e;
+
+  --font-light: #e3e9b6;
+  --font-dark: #242309;
+
+  --hover-dark: var(--font-dark);
+  --hover-light: var(--font-light);
+
+  --selection-dark: #635f0e;
+  --selection-light: #282c09;
+
+}
+
+::-moz-selection {
+  color: var(--selection-dark);
+  background: var(--selection-light);
+}
+
+::selection {
+  color: var(--selection-dark);
+  background: var(--selection-light);
+}
+
+* {
+  font-family: 'Laurel-Regular', 'Montserrat', serif;
+  color: var(--font-light);
   margin: 0;
-  box-sizing: border-box;
-  color: #ad91c9;
-  gap: 3rem;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-light);
+}
+
+section {
+  max-width: 550px;
+  padding-left:10vw;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  font-weight: 100;
 }
 
 form {
-  width: 70%;
-  max-width: 400px;
-  background: #3c3a3a;
-  padding: 2.5rem;
-  border-radius: 10px;
-  box-shadow: 0px 14px 32px rgba(0,0,0,0.1);
   transition: all 0.3s ease-out;
+  margin-top: 4rem;
 }
 
-form label {
-  display: block;
+fieldset {
+  margin-bottom: 2rem;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+fieldset p {
+  height: 3rem;
+  min-width: 45%;
+  position: relative;
+}
+
+fieldset label {
+  position: absolute;
+  top: -0.3rem;
+  transition-property: top, font-size, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.fieldset-label-focus {
+  top: -1.1rem;
   font-size: 0.8rem;
-  font-weight: 500;
-  margin-bottom: 5px;
+  opacity: 0.5;
 }
 
-form div{
-  margin-bottom: 1rem;
+input {
+  font-size: 1.1rem;
 }
 
-form input[type='text'], 
-form input[type='email'], 
-form input[type='password'] {
+input[type='text'], 
+input[type='email'], 
+input[type='password'] {
   width: 100%;
   border: none;
-  background: #f0f0f7;
-  box-sizing: border-box;
-  padding: 15px;
-  border-radius: 5px;
-  font-size: 16px;
+  background: transparent;
+  border-bottom: 2px solid var(--font-light);
+  z-index: 2;
+  position: relative;
+  padding-bottom: 0.3rem;
   transition: background 0.3s ease-in-out;
-  background: #565559;
-
 }
 
-form input[type='text']:focus,
-form input[type='email']:focus,
-form input[type='password']:focus {
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='password']:focus {
   outline: none;
-  background: #8c8291;
 }
 
-form input[type='submit'] {
-  width: 100%;
-  border: none;
-  background: #391b57;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background 0.3s ease-in-out;
+input[type='password'] {
+  background-image: url('path-to-your-eye-icon.svg');  
+  background-position: right 10px center;  
+  background-repeat: no-repeat;
+  padding-right: 30px; 
 }
 
-form input[type='submit']:hover {
-  background: #7d4de8;
+input[type='submit'] {
+  width: 40%;
+  padding: 0.5rem;
+  border: 1px solid var(--font-light);
+  background: transparent;
+  transition-property: border, background, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
 }
 
+input[type='submit']:hover {
+  border: 1px solid var(--font-dark);
+  background: var(--hover-light);
+  color: var(--font-dark);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--font-light);
+  -webkit-box-shadow: 0 0 0px 40rem var(--bg-light) inset;
+}
+
+form > p{
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Feedbacks */
 
 .input-error {
-  /* display: none; */
   display: block;
-  background: #D43B69;
-  color: #ffffff;
-  padding: 5px;
-  margin-top: 9px;
   font-size: 0.8rem;
+  margin-top: 0.3rem;
+  color: var(--font-dark);
 }
 
 .input-error::before {
   content: '⚠';
+  font-size: 1rem;
   margin-right: 5px;
 }
 

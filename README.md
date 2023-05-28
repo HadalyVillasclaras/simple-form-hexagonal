@@ -56,3 +56,7 @@ front/
     |-- styles/
 ```
 
+## Accesibility & semantic standars
+Forms are being constructed following MDN Web Docs best practices on [how structure a form]. 
+
+[how structure a form]: https://developer.mozilla.org/en-US/docs/Learn/Forms/How_to_structure_a_web_form

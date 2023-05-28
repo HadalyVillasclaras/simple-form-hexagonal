@@ -5,3 +5,4 @@ export function signUp(signUpForm: HTMLFormElement, signUpResponse: InputRespons
   const formFeedback = new FormFeedback(signUpForm, signUpResponse)
   formFeedback.render();
 }
+

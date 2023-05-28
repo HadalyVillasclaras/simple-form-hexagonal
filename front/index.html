@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,34 +10,37 @@
 </head>
 
 <body>
-  <section >
-    <h2 class="form-title">Sign up</h2>
+  <section>
+    <h2 class="form-title">We are glad you join us!</h2>
+    <p>Already a member? <a href="#">Sign in</a></p>
     <form id="signup-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
-  
-      <label for="name">Name<span aria-hidden="true">*</span></label>
-      <div>
-        <input type="text" class="input-field" name="name" aria-required="true">
-      </div>
-  
-      <label for="surname">Surname<span aria-hidden="true">*</span>
-      <div>
-        <input type="text" class="input-field" name="surname" aria-required="true">
-      </div>
-    </label>
-      <label for="email">Email<span aria-hidden="true">*</span></label>
-      <div>
-        <input type="text" class="input-field" name="email" autocomplete="email" aria-required="true">
-      </div>
-  
-      <label for="password">Password<span aria-hidden="true">*</span></label>
-      <div>
-        <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
-      </div>
+      <fieldset>
+        <p>
+          <label for="name">Name<span aria-hidden="true">*</span></label>
+          <input type="text" name="name" aria-required="true">
+        </p>
+        <p>
+          <label for="surname">Surname<span aria-hidden="true">*</span></label>
+          <input type="text" name="surname" aria-required="true">
+        </p>
+        <p>
+          <label for="email">Email<span aria-hidden="true">*</span></label>
+          <input type="text" name="email" autocomplete="email" aria-required="true">
+        </p>
+        <p>
+          <label for="password">Password<span aria-hidden="true">*</span></label>
+          <input type="password" name="password" autocomplete="new-password" aria-required="true">
+        </p>
+      </fieldset>
+      <p>
+        <input name="terms-policy" type="checkbox">
+        <label for="terms-policy">I agree with the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+      </p>
       <span id="form-feedback"></span>
-      <input type="submit" value="Enviar">
+      <input type="submit" value="Sign up">
     </form>
   </section>
-  <section>
+  <!-- <section style="display: none;">
   <h2 >Sign in</h2> 
     <form id="signin-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
       <label for="email">Email<span aria-hidden="true">*</span></label>
@@ -47,10 +51,10 @@
       <div>
         <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
       </div>
-      <span id="form-feedback1"></span>
+      <span id="form-feedback"></span>
       <input type="submit" value="Enviar">
     </form>
-  </section>
+  </section> -->
   <script type="module" src="./ui/main.ts"></script>
 </body>
 
