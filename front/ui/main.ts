@@ -32,16 +32,15 @@ async function handleSignInResponse(event: Event) {
     throw { status: 'error', message: error.message };
   }
 }
-
-
+labelGoesTop()
 // labels go top
-labelGoesTop();
 function labelGoesTop() {
   const fieldsetPs = document.querySelectorAll('fieldset p');
 
   fieldsetPs.forEach(p => {
     const label = p.querySelector('label');
     const input = p.querySelector('input');
+    console.log(input.value);
 
     input?.addEventListener('focus', function () {
       label.classList.add('fieldset-label-focus');
@@ -81,3 +80,21 @@ function showPassword(event: any) {
 
 const passwordInput = document.querySelector('input[name="password"]')  as HTMLInputElement;
 passwordInput?.addEventListener('input', showPassword);
+
+
+// Switch form visibility
+const signInLink = document.querySelector('#signin-sect a') as HTMLElement;
+signInLink.addEventListener('click', (e) => switchForm(e, 'signup-sect', 'signin-sect'));
+
+const signUpLink = document.querySelector('#signup-sect a') as HTMLElement;
+signUpLink.addEventListener('click', (e) => switchForm(e, 'signin-sect', 'signup-sect'));
+
+function switchForm(event: MouseEvent, sectionToShowId: string, sectionToHideId: string) {
+  event.preventDefault();
+
+  const sectionToShow = document.getElementById(sectionToShowId) as HTMLElement;
+  const sectionToHide = document.getElementById(sectionToHideId) as HTMLElement;
+
+  sectionToShow.style.display = 'flex';
+  sectionToHide.style.display = 'none';
+}

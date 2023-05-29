@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <section>
+  <section id="signup-sect">
     <h2 class="form-title">We are glad you join us!</h2>
     <p>Already a member? <a href="#">Sign in</a></p>
     <form id="signup-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
@@ -46,25 +46,28 @@
           I agree with the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
         </label>
       </p>
-      <span id="form-feedback"></span>
-      <button >Sign up</button>
+      <p id="form-feedback"></p>
+      <button type="submit" >Sign up</button>
     </form>
   </section>
-  <!-- <section style="display: none;">
-  <h2 >Sign in</h2> 
+  <section id="signin-sect" style="display: none;">
+    <h2 >Welcome back!</h2> 
+    <p>Not a member? <a href="#">Sign up</a></p>
     <form id="signin-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
-      <label for="email">Email<span aria-hidden="true">*</span></label>
-      <div>
-        <input type="text" class="input-field" name="email" autocomplete="email" aria-required="true">
-      </div>
-      <label for="password">Password<span aria-hidden="true">*</span></label>
-      <div>
-        <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
-      </div>
-      <span id="form-feedback"></span>
-      <input type="submit" value="Enviar">
+      <fieldset>
+        <p>
+          <label class="fieldset-label-focus" for="email">Email<span aria-hidden="true">*</span></label>
+          <input type="text" class="input-field" name="email" autocomplete="email" aria-required="true">
+        </p>
+        <p>
+          <label class="fieldset-label-focus" for="password">Password<span aria-hidden="true">*</span></label>
+          <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
+        </p>
+      </fieldset>
+      <p id="form-feedback"></p>
+      <button type="submit" >Sign in</button>
     </form>
-  </section> -->
+  </section>
   <script type="module" src="./ui/main.ts"></script>
 </body>
 

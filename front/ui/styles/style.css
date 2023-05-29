@@ -56,6 +56,7 @@ section {
   justify-content: center;
 }
 
+
 h2 {
   font-size: 2.5rem;
   margin-bottom: 0.8rem;
@@ -219,6 +220,8 @@ input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 40rem var(--bg-light) inset;
 }
 
+
+
 form > p{
   font-size: 0.8rem;
   margin-bottom: 1.5rem;
@@ -248,5 +251,5 @@ form > p{
 }
 
 #form-feedback {
-  color: #D43B69;
+  color: var(--font-dark);
 }
