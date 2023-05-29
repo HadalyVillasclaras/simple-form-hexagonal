@@ -9,6 +9,10 @@
 }
 
 :root {
+  --green200: #e3e9b6;
+  --green400: #9d983c;
+  --green500: #635f0e;
+
   --bg-light: #635f0e;
 
   --font-light: #e3e9b6;
@@ -100,6 +104,8 @@ input[type='text'],
 input[type='email'], 
 input[type='password'] {
   width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
   border: none;
   background: transparent;
   border-bottom: 2px solid var(--font-light);
@@ -115,15 +121,83 @@ input[type='password']:focus {
   outline: none;
 }
 
+
 input[type='password'] {
-  background-image: url('path-to-your-eye-icon.svg');  
-  background-position: right 10px center;  
-  background-repeat: no-repeat;
-  padding-right: 30px; 
+  padding-right: 30px;
 }
 
-input[type='submit'] {
+svg path{
+  fill: var(--font-light);
+  width: 20px;
+  height: 20px;
+}
+
+.eye-icon {
+  background-color: var(--bg-light);
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  z-index: 3;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.eye-icon.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Terms & policy */
+
+#terms-policy {
+  position: relative;
+  padding-left: 1.5rem;
+}
+input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  z-index: 2;
+  top: 2px;
+  left: 2px;
+}
+
+#terms-policy span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  border: 1px solid var(--font-light);
+}
+
+#terms-policy:hover input ~ span {
+  background-color: var(--green400);
+}
+
+#terms-policy span:after {
+  content: "X";
+  color: var(--font-light);
+  position: absolute;
+  display: none;
+  top: -8px;
+  font-size: 1.5rem;
+}
+
+#terms-policy input:checked ~ span:after {
+  display: block;
+}
+
+
+
+/* Submit button */
+
+button {
   width: 40%;
+  font-size: 1.1rem;
   padding: 0.5rem;
   border: 1px solid var(--font-light);
   background: transparent;
@@ -132,7 +206,7 @@ input[type='submit'] {
   transition-timing-function: ease-in-out;
 }
 
-input[type='submit']:hover {
+button:hover {
   border: 1px solid var(--font-dark);
   background: var(--hover-light);
   color: var(--font-dark);
@@ -153,10 +227,18 @@ form > p{
 /* Feedbacks */
 
 .input-error {
+  opacity: 0;
   display: block;
   font-size: 0.8rem;
   margin-top: 0.3rem;
   color: var(--font-dark);
+  animation: fadein 0.5s forwards;
+
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .input-error::before {

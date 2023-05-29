@@ -57,14 +57,27 @@ function labelGoesTop() {
 };
 
 // Show password
-function showPassword() {
-  const passInput = document.getElementsByName('password');
-  console.log(passInput);
+function showPassword(event: any) {
+  let eyeIcon = document.querySelector('.eye-icon') as HTMLElement;
 
-  passInput[0].addEventListener('focus', function () {
+  if (event.target.value.length > 0) {
+    eyeIcon?.classList.add('visible');
+  } else {
+    eyeIcon?.classList.remove('visible');
+  }
 
-  });
-
+    if (passwordInput) {
+      eyeIcon?.addEventListener('mousedown', function () {
+        passwordInput.type = 'text';
+      });
+      eyeIcon?.addEventListener('mouseup', function () {
+        passwordInput.type = 'password';
+      });
+      eyeIcon?.addEventListener('mouseout', function () {
+        passwordInput.type = 'password';
+      });
+    }
 };
 
-showPassword();
+const passwordInput = document.querySelector('input[name="password"]')  as HTMLInputElement;
+passwordInput?.addEventListener('input', showPassword);
