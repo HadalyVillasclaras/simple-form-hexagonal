@@ -9,21 +9,29 @@
 }
 
 :root {
+  --green100: #e3e9b6;
   --green200: #e3e9b6;
-  --green400: #9d983c;
+  --green400: #908a37;
   --green500: #635f0e;
+  --green700: #444108;
+  --green800: #242309;
 
-  --bg-light: #635f0e;
+  --bg-color: var(--green500);
 
-  --font-light: #e3e9b6;
-  --font-dark: #242309;
+  --font-light: var(--green100);
+  --font-dark: var(--green800);
 
   --hover-dark: var(--font-dark);
   --hover-light: var(--font-light);
 
-  --selection-dark: #635f0e;
-  --selection-light: #282c09;
+  --selection-dark: var(--green700);
+  --selection-light: var(--green200);
+}
 
+[data-theme="dark"] {
+  --bg-color: var(--green800);
+  --font-light: var(--green200);
+  --font-dark: var(--green500);
 }
 
 ::-moz-selection {
@@ -44,7 +52,8 @@
 }
 
 body {
-  background: var(--bg-light);
+  background: var(--bg-color);
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 section {
@@ -58,9 +67,22 @@ section {
 
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   margin-bottom: 0.8rem;
   font-weight: 100;
+}
+
+a {
+  padding: 0 0.1rem;
+  position: relative;
+  bottom: 0rem;
+  background-color: transparent;
+
+  transition: color 0.6s ease-in-out, bottom 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+a:hover {
+  color: var(--green500);
+  background-color: var(--green200);
 }
 
 form {
@@ -69,7 +91,7 @@ form {
 }
 
 fieldset {
-  margin-bottom: 2rem;
+  margin: 4rem 0 1rem 0;
   border: none;
   display: flex;
   flex-wrap: wrap;
@@ -83,10 +105,12 @@ fieldset p {
   position: relative;
 }
 
+
 fieldset label {
   position: absolute;
+  color: var(--font-light);
   top: -0.3rem;
-  transition-property: top, font-size, opacity;
+  transition-property: top, font-size, color;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
 }
@@ -94,8 +118,12 @@ fieldset label {
 .fieldset-label-focus {
   top: -1.1rem;
   font-size: 0.8rem;
-  opacity: 0.5;
 }
+
+.fieldset-label-focus, .fieldset-label-focus span {
+  color: var(--green400);
+}
+
 
 input {
   font-size: 1.1rem;
@@ -109,22 +137,34 @@ input[type='password'] {
   box-sizing: border-box;
   border: none;
   background: transparent;
-  border-bottom: 2px solid var(--font-light);
+  border-bottom: 2px solid var(--green400);
   z-index: 2;
   position: relative;
   padding-bottom: 0.3rem;
-  transition: background 0.3s ease-in-out;
+  transition: border-bottom 0.3s ease-in-out, background 0.8s ease-in-out;
 }
 
 input[type='text']:focus,
 input[type='email']:focus,
 input[type='password']:focus {
   outline: none;
+  border-bottom: 2px solid var(--font-light);
 }
-
 
 input[type='password'] {
   padding-right: 30px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--font-light);
+  -webkit-box-shadow: 0 0 0px 40rem var(--bg-color) inset;
+}
+
+input:-webkit-autofill::selection {
+  -webkit-text-fill-color: var(--font-dark);
+  -webkit-box-shadow: 0 0 0px 40rem var(--selection-light) inset;
 }
 
 svg path{
@@ -134,7 +174,7 @@ svg path{
 }
 
 .eye-icon {
-  background-color: var(--bg-light);
+  background-color: var(--bg-color);
   cursor: pointer;
   position: absolute;
   top: 0;
@@ -153,6 +193,10 @@ svg path{
 }
 
 /* Terms & policy */
+fieldset + p {
+  margin-bottom: 4rem;
+  font-size: 0.7rem;
+}
 
 #terms-policy {
   position: relative;
@@ -170,8 +214,8 @@ input[type='checkbox'] {
   position: absolute;
   top: 0;
   left: 0;
-  height: 15px;
-  width: 15px;
+  height: 12px;
+  width: 12px;
   border: 1px solid var(--font-light);
 }
 
@@ -196,47 +240,41 @@ input[type='checkbox'] {
 
 /* Submit button */
 
-button {
+button[type='submit'] {
   width: 40%;
   font-size: 1.1rem;
   padding: 0.5rem;
   border: 1px solid var(--font-light);
   background: transparent;
   transition-property: border, background, color;
-  transition-duration: 0.3s;
+  transition-duration: 0.6s;
   transition-timing-function: ease-in-out;
 }
 
-button:hover {
+button[type='submit']:hover {
   border: 1px solid var(--font-dark);
   background: var(--hover-light);
   color: var(--font-dark);
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--font-light);
-  -webkit-box-shadow: 0 0 0px 40rem var(--bg-light) inset;
-}
 
 
 
-form > p{
-  font-size: 0.8rem;
-  margin-bottom: 1.5rem;
-}
+
 
 /* Feedbacks */
-
 .input-error {
-  opacity: 0;
+  opacity: 1;
+  position: relative;
+  text-align: right;
   display: block;
   font-size: 0.8rem;
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
   color: var(--font-dark);
+  /* background-color: var(--green400); */
+  padding: 0 0.1rem;
   animation: fadein 0.5s forwards;
-
+  transition: opacity 0.5s ease-out;
 }
 
 @keyframes fadein {
@@ -245,11 +283,20 @@ form > p{
 }
 
 .input-error::before {
-  content: '⚠';
+  content: '';
   font-size: 1rem;
   margin-right: 5px;
 }
 
 #form-feedback {
   color: var(--font-dark);
+}
+
+
+/* Theme mode */
+#theme-mode {
+  color: var(--font-dark);
+  border: none;
+  background-color: var(--green200);
+  padding: 0.2rem 2rem;
 }

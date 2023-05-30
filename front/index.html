@@ -10,10 +10,11 @@
 </head>
 
 <body>
+  <header><button id="theme-mode" aria-label="Theme mode toggle">dark</button></header>
   <section id="signup-sect">
-    <h2 class="form-title">We are glad you join us!</h2>
-    <p>Already a member? <a href="#">Sign in</a></p>
     <form id="signup-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
+      <h2 class="form-title">We are glad you join us!</h2>
+      <p>Already a member? <a href="#">Sign in</a></p>
       <fieldset>
         <p>
           <label for="name">Name<span aria-label="required">*</span></label>
@@ -50,10 +51,10 @@
       <button type="submit" >Sign up</button>
     </form>
   </section>
-  <section id="signin-sect" style="display: none;">
-    <h2 >Welcome back!</h2> 
-    <p>Not a member? <a href="#">Sign up</a></p>
+  <section id="signin-sect" style="display: flex;">
     <form id="signin-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
+      <h2 >Welcome back!</h2> 
+      <p>Not a member? <a href="#">Sign up</a></p>
       <fieldset>
         <p>
           <label class="fieldset-label-focus" for="email">Email<span aria-hidden="true">*</span></label>

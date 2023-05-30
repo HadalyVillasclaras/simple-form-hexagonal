@@ -40,6 +40,14 @@ export class FormFeedback {
         errorMessage.textContent = error.message;
         errorMessage.className = 'input-error';
         inputField?.parentElement?.appendChild(errorMessage);
+
+        // delete on input
+        inputField.addEventListener('input', () => {
+          if (errorMessage.parentNode) {
+            errorMessage.style.opacity = '0';
+            errorMessage.parentNode.removeChild(errorMessage);
+          }
+        });
       }
     });
   }
