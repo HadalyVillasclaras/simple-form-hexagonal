@@ -57,14 +57,25 @@ body {
 }
 
 section {
-  max-width: 550px;
-  padding-left:10vw;
-  display: flex;
+  max-width: 600px;
+  padding: 0 8vw;
   height: 100vh;
   flex-direction: column;
   justify-content: center;
+  transition: opacity 0.6s ease-in-out;
 }
 
+#signin-sect {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+#signup-sect {
+  display: flex;
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
+}
 
 h2 {
   font-size: 2.6rem;
@@ -93,18 +104,16 @@ form {
 fieldset {
   margin: 4rem 0 1rem 0;
   border: none;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   justify-content: space-between;
   gap: 2rem;
 }
 
 fieldset p {
   height: 3rem;
-  min-width: 45%;
   position: relative;
 }
-
 
 fieldset label {
   position: absolute;
@@ -124,7 +133,6 @@ fieldset label {
   color: var(--green400);
 }
 
-
 input {
   font-size: 1.1rem;
 }
@@ -138,10 +146,9 @@ input[type='password'] {
   border: none;
   background: transparent;
   border-bottom: 2px solid var(--green400);
-  z-index: 2;
   position: relative;
   padding-bottom: 0.3rem;
-  transition: border-bottom 0.3s ease-in-out, background 0.8s ease-in-out;
+  transition: border-bottom 0.3s ease-in-out;
 }
 
 input[type='text']:focus,
@@ -151,8 +158,8 @@ input[type='password']:focus {
   border-bottom: 2px solid var(--font-light);
 }
 
-input[type='password'] {
-  padding-right: 30px;
+input[name='password'] {
+  padding-right: 1.8rem;
 }
 
 input:-webkit-autofill,
@@ -167,24 +174,32 @@ input:-webkit-autofill::selection {
   -webkit-box-shadow: 0 0 0px 40rem var(--selection-light) inset;
 }
 
+input::-webkit-credentials-auto-fill-button {
+  width: 0; 
+  margin: 0;
+}
+
+input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
+  width: 0; 
+  margin: 0;
+}
+
 svg path{
   fill: var(--font-light);
-  width: 20px;
-  height: 20px;
+  stroke: var(--font-light);
 }
 
 .eye-icon {
-  background-color: var(--bg-color);
   cursor: pointer;
   position: absolute;
   top: 0;
   right: 0;
-  width: 20px;
-  height: 20px;
+  width: 1.1rem;
+  height: 1.1rem;
   z-index: 3;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0.5s linear, opacity 0.5s linear;
 }
 
 .eye-icon.visible {
@@ -201,45 +216,57 @@ fieldset + p {
 #terms-policy {
   position: relative;
   padding-left: 1.5rem;
+  box-sizing: border-box;
 }
+
 input[type='checkbox'] {
   position: absolute;
   opacity: 0;
   z-index: 2;
-  top: 2px;
-  left: 2px;
+  top: 1px;
+  left: 1px;
 }
 
 #terms-policy span {
   position: absolute;
   top: 0;
   left: 0;
-  height: 12px;
-  width: 12px;
+  height: 0.8rem;
+  width: 0.8rem;
   border: 1px solid var(--font-light);
+  transition: background-color 0.8s ease;
 }
 
-#terms-policy:hover input ~ span {
+#terms-policy:hover span {
   background-color: var(--green400);
 }
 
-#terms-policy span:after {
-  content: "X";
-  color: var(--font-light);
-  position: absolute;
-  display: none;
-  top: -8px;
-  font-size: 1.5rem;
-}
-
-#terms-policy input:checked ~ span:after {
+#terms-policy input:checked ~ span {
   display: block;
+  /* background-color: var(--green200); */
+}
+
+#terms-policy input + span::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--green100);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
 
+#terms-policy input:checked + span::after {
+  opacity: 1;
+  visibility: visible;
+}
 
 /* Submit button */
-
 button[type='submit'] {
   width: 40%;
   font-size: 1.1rem;
@@ -256,11 +283,6 @@ button[type='submit']:hover {
   background: var(--hover-light);
   color: var(--font-dark);
 }
-
-
-
-
-
 
 /* Feedbacks */
 .input-error {
@@ -288,7 +310,7 @@ button[type='submit']:hover {
   margin-right: 5px;
 }
 
-#form-feedback {
+.form-feedback {
   color: var(--font-dark);
 }
 
@@ -304,9 +326,12 @@ button[type='submit']:hover {
   padding: 0.2rem 2rem;
 }
 
+
+/* Magenit circle */
 #circle-wrapper {
   bottom: 4rem;
   float: right;
+  cursor: pointer;
 }
 
 #circle {

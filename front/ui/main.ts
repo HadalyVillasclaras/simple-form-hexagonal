@@ -5,10 +5,10 @@ import { signUp } from './components/signUp';
 const appAdapter = new AppAdapter();
 
 const signupForm = document.getElementById('signup-form') as HTMLFormElement;
-// const signinForm = document.getElementById('signin-form') as HTMLFormElement;
+const signinForm = document.getElementById('signin-form') as HTMLFormElement;
 
 signupForm.addEventListener('submit', event => handleSignUpResponse(event));
-// signinForm.addEventListener("submit", event => handleSignInResponse(event));
+signinForm.addEventListener("submit", event => handleSignInResponse(event));
 
 async function handleSignUpResponse(event: Event) {
   event.preventDefault();
@@ -55,31 +55,42 @@ function labelGoesTop() {
   })
 };
 
-// Show password
+// Show password - eye icon
+import { eyeIconSVG, closeIconSVG, eyeNoneSvg } from './components/EyeIconPass/eye-icons';
 function showPassword(event: any) {
-  let eyeIcon = document.querySelector('.eye-icon') as HTMLElement;
+  
+  let eyeIcons =  Array.from(document.querySelectorAll('.eye-icon'));
 
-  if (event.target.value.length > 0) {
-    eyeIcon?.classList.add('visible');
-  } else {
-    eyeIcon?.classList.remove('visible');
-  }
+  eyeIcons.map((eyeIcon: any) => {
 
-    if (passwordInput) {
-      eyeIcon?.addEventListener('mousedown', function () {
-        passwordInput.type = 'text';
-      });
-      eyeIcon?.addEventListener('mouseup', function () {
-        passwordInput.type = 'password';
-      });
-      eyeIcon?.addEventListener('mouseout', function () {
-        passwordInput.type = 'password';
-      });
+    if (event.target.value.length > 0) {
+      eyeIcon?.classList.add('visible');
+      eyeIcon.innerHTML = eyeIconSVG;
+    } else {
+      eyeIcon.innerHTML = "";
     }
+    
+      if (passwordInput) {
+        eyeIcon?.addEventListener('mousedown', function () {
+          passwordInput.type = 'text';
+          eyeIcon.innerHTML = eyeNoneSvg;
+        });
+        eyeIcon?.addEventListener('mouseup', function () {
+          passwordInput.type = 'password';
+          eyeIcon.innerHTML = eyeIconSVG;
+        });
+        eyeIcon?.addEventListener('mouseout', function () {
+          passwordInput.type = 'password';
+          eyeIcon.innerHTML = eyeIconSVG;
+        });
+      }
+
+  })
 };
 
-const passwordInput = document.querySelector('input[name="password"]')  as HTMLInputElement;
+const passwordInput = document.querySelector('input[name="password"]');
 passwordInput?.addEventListener('input', showPassword);
+
 
 
 // Switch form visibility
@@ -95,11 +106,17 @@ function switchForm(event: MouseEvent, sectionToShowId: string, sectionToHideId:
   const sectionToShow = document.getElementById(sectionToShowId) as HTMLElement;
   const sectionToHide = document.getElementById(sectionToHideId) as HTMLElement;
 
-  sectionToShow.style.display = 'flex';
-  sectionToHide.style.display = 'none';
+  sectionToHide.style.opacity = '0';
+
+  setTimeout(() => {
+    sectionToHide.style.display = 'none';
+    sectionToShow.style.display = 'flex';
+
+    requestAnimationFrame(() => {
+      sectionToShow.style.opacity = '1';
+    });
+  }, 500);  
 }
-
-
 
 // Theme mode
 document.addEventListener('DOMContentLoaded', function () {

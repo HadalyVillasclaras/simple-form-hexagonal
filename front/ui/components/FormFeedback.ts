@@ -8,7 +8,7 @@ export class FormFeedback {
   constructor(formElement: HTMLFormElement, formResponse: InputResponse | AppResponse) {
     this.formElement = formElement;
     this.formResponse = formResponse;
-    this.formFeedback = document.getElementById('form-feedback');
+    this.formFeedback = this.formElement.querySelector('.form-feedback');
   }
 
   render() {
