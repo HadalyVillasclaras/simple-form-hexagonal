@@ -10,7 +10,14 @@
 </head>
 
 <body>
-  <button id="theme-mode" aria-label="Theme mode toggle">dark</button>
+  <span id="theme-mode" aria-label="Theme mode toggle">  
+    <svg  viewBox="0 0 17 199" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line id="pullchain"  x1="8" y1="4.37114e-08" x2="7.99999" y2="183" stroke-width="1"/>
+      
+      <path id="switch" d="M16 190C16 194.473 12.5891 198 8.5 198C4.41095 198 1 194.473 1 190C1 185.527 4.41095 182 8.5 182C12.5891 182 16 185.527 16 190Z"  stroke-width="1"/>
+    </svg>
+  </span>
+
   <section id="forms-sect"> </section>
   
   <template id="signup-template"> 
@@ -40,7 +47,7 @@
         <label for="terms-policy" id="terms-policy">
           <input name="terms-policy" type="checkbox">
           <span class="checkbox"></span>
-          I agree with the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          I agree with the <a href="#">Terms</a> of no one should keep my private data
         </label>
       </p>
       <p class="form-feedback"></p>
@@ -73,6 +80,23 @@
       <span id="circle-text">more info</span>
     </div>
   </div>
+
+  <svg viewBox="0 0 400 400">
+    <defs>
+      <path id="MyPath"
+            d="M 200, 200
+               m -100, 0
+               a 100,100 0 1,1 200,0
+               a 100,100 0 1,1 -200,0" 
+      />
+    </defs>
+  
+    <text font-size="30" fill="rgb(248,203,173)" >
+      <textPath xlink:href="#MyPath">
+        click here click here click here 
+      </textPath>
+    </text>
+  </svg>
   <script type="module" src="./ui/main.ts"></script>
 </body>
 

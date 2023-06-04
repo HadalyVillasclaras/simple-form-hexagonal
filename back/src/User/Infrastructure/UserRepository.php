@@ -26,7 +26,7 @@ class UserRepository implements UserRepositoryInterface
             $stmt->execute();
         } catch (PDOException $e) {
             if ($e->errorInfo[1] == 1062) {
-                throw new Exception("Email already exists. | " . $e->getCode());
+                throw new Exception("This email already exists");
             } else {
                 throw new Exception($e->getMessage());
             }

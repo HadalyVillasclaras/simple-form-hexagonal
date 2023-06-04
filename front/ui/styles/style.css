@@ -26,6 +26,8 @@
 
   --selection-dark: var(--green700);
   --selection-light: var(--green200);
+
+  --transparent: rgba(255, 255, 255, 0);
 }
 
 [data-theme="dark"] {
@@ -155,6 +157,8 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--font-light);
   -webkit-box-shadow: 0 0 0px 40rem var(--bg-color) inset;
+  transition: -webkit-box-shadow 0.5s ease-in-out, color 0.5s ease-in-out;
+
 }
 
 input:-webkit-autofill::selection {
@@ -172,7 +176,7 @@ input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
   margin: 0;
 }
 
-svg path{
+.eye-icon svg path{
   fill: var(--font-light);
   stroke: var(--font-light);
 }
@@ -196,15 +200,11 @@ svg path{
 }
 
 /* Terms & policy */
-fieldset + p {
-  margin-bottom: 4rem;
-  font-size: 0.7rem;
-}
-
 #terms-policy {
   position: relative;
   padding-left: 1.5rem;
   box-sizing: border-box;
+  font-size: 0.7rem;
 }
 
 input[type='checkbox'] {
@@ -299,19 +299,30 @@ button[type='submit']:hover {
 }
 
 .form-feedback {
+  margin: 2rem 0;
+  padding: 1rem;
   color: var(--font-dark);
+  border: 1px solid var(--green800);
 }
 
 
 /* Theme mode */
 #theme-mode {
   position: absolute;
-  top: 2rem;
+  top: 0;
   right: 3rem;
-  color: var(--font-dark);
   border: none;
-  background-color: var(--green200);
-  padding: 0.2rem 2rem;
+  background-color: transparent;
+}
+
+#switch {
+  z-index: 5;
+  margin: 2rem;
+}
+#theme-mode svg {
+  height: 9rem;
+  stroke: var(--green200);
+  fill: #242309;
 }
 
 
