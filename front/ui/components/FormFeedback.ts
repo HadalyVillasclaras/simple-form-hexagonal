@@ -3,21 +3,35 @@ import { InputResponse, AppResponse } from '../../src/AppAdapter';
 export class FormFeedback {
   formElement: HTMLFormElement;
   formResponse: InputResponse | AppResponse;
-  formFeedback: HTMLElement | null;
 
-  constructor(formElement: HTMLFormElement, formResponse: InputResponse | AppResponse) {
+  constructor(formElementId: string, formResponse: InputResponse | AppResponse) {
+    const formElement = document.getElementById(formElementId) as HTMLFormElement;
+
+    if (!formElement) {
+      throw new Error(`Form with id ${formElementId} does not exist.`);
+    }
+
     this.formElement = formElement;
     this.formResponse = formResponse;
-    this.formFeedback = this.formElement.querySelector('.form-feedback');
+
+    console.log(formElement, formResponse);
   }
 
   render() {
+    const formFeedback = this.formElement.querySelector('.form-feedback');
+    
     if ('errors' in this.formResponse) {
       this.renderInputFeedback();
+    } else {
+      this.renderAppFeedback(formFeedback);
     }
-    else {
-      this.renderAppFeedback();
-    }
+  }
+
+  private renderAppFeedback(formFeedback: any) {
+    this.removeFeedBackMessage(formFeedback)
+    const formResponse = this.formResponse as AppResponse;
+
+      formFeedback.textContent = formResponse.message;
   }
 
   private renderInputFeedback() {
@@ -52,35 +66,14 @@ export class FormFeedback {
     });
   }
 
-  private renderAppFeedback() {
-    this.removeOldErrorMessages();
-
-    if (!this.formFeedback) {
-      throw new Error(`Element does not exist.`);
-    }
-    const formResponse = this.formResponse as AppResponse;
-
-    this.formFeedback.textContent = formResponse.message;
-    this.formFeedback.className = '';
-    this.formFeedback.classList.add(
-      this.formResponse.status === 'success'
-        ? 'feedback-success'
-        : 'feedback-error');
-  }
-
-
   private removeOldErrorMessages() {
     const oldErrorMsgs = document.getElementsByClassName('input-error');
     while (oldErrorMsgs.length > 0) {
       oldErrorMsgs[0]?.parentNode?.removeChild(oldErrorMsgs[0]);
     }
-
-    if (this.formFeedback) {
-      this.formFeedback.textContent = '';
-      this.formFeedback.className = '';
-    }
   }
 
-
-
+  private removeFeedBackMessage(formFeedback: any) {
+    formFeedback.content = '';
+  }
 }

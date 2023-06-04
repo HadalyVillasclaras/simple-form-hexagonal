@@ -32,6 +32,7 @@ export class AppAdapter {
       } 
       return serviceResponse;
     } catch (error) {
+      if (error instanceof Error)
       throw { status: 'error', message: error.message };
     }
   }
@@ -46,6 +47,7 @@ export class AppAdapter {
       } 
       return serviceResponse;
     } catch (error) {
+      if (error instanceof Error) 
       throw { status: 'error', message: error.message };
     }
   }

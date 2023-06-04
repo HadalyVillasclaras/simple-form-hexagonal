@@ -16,7 +16,6 @@ export default class UserRepository {
       return response;
 
     } catch (error) {
-      console.error(error);
       throw { status: 'error', message: error.message };
     }
   }
