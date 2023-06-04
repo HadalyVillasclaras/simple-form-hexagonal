@@ -11,66 +11,67 @@
 
 <body>
   <button id="theme-mode" aria-label="Theme mode toggle">dark</button>
-  <template id="signup-template"> </template>
-    <section id="signup-sect">
-      <form id="signup-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
-        <h2 class="form-title">We are glad you join us!</h2>
-        <p>Already a member? <a href="#">Sign in</a></p>
-        <fieldset>
-          <p>
-            <label for="name">Name<span aria-label="required">*</span></label>
-            <input type="text" name="name" aria-required="true">
-          </p>
-          <p>
-            <label for="surname">Surname<span aria-label="required">*</span></label>
-            <input type="text" name="surname" aria-required="true">
-          </p>
-          <p>
-            <label for="email">Email<span aria-label="required">*</span></label>
-            <input type="text" name="email" autocomplete="email" aria-required="true">
-          </p>
-          <p>
-            <label for="password">Password<span aria-label="required">*</span></label>
-              <input type="password" name="password" autocomplete="new-password" aria-required="true">
-              <span class="eye-icon"></span>
-          </p>
-        </fieldset>
+  <section id="forms-sect"> </section>
+  
+  <template id="signup-template"> 
+    <form id="signup-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
+      <h2 class="form-title">We are glad you join us!</h2>
+      <p>Already a member? <a id="signin-link" href="#">Sign in</a></p>
+      <fieldset>
         <p>
-          <label for="terms-policy" id="terms-policy">
-            <input name="terms-policy" type="checkbox">
-            <span class="checkbox"></span>
-            I agree with the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-          </label>
+          <label for="name">Name<span aria-label="required">*</span></label>
+          <input type="text" name="name" aria-required="true">
         </p>
-        <p class="form-feedback"></p>
-        <button type="submit" >Sign up</button>
-      </form>
-    </section>
-  <template id="signin-template"></template>
-  <section id="signin-sect">
-      <form id="signin-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
-        <h2 >Welcome back!</h2> 
-        <p>Not a member? <a href="#">Sign up</a></p>
-        <fieldset>
-          <p>
-            <label class="fieldset-label-focus" for="email">Email<span aria-hidden="true">*</span></label>
-            <input type="text" class="input-field" name="email" autocomplete="email" aria-required="true">
-          </p>
-          <p>
-            <label class="fieldset-label-focus" for="password">Password<span aria-hidden="true">*</span></label>
-            <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
+        <p>
+          <label for="surname">Surname<span aria-label="required">*</span></label>
+          <input type="text" name="surname" aria-required="true">
+        </p>
+        <p>
+          <label for="email">Email<span aria-label="required">*</span></label>
+          <input type="text" name="email" autocomplete="email" aria-required="true">
+        </p>
+        <p>
+          <label for="password">Password<span aria-label="required">*</span></label>
+            <input type="password" name="password" autocomplete="new-password" aria-required="true">
             <span class="eye-icon"></span>
-          </p>
-        </fieldset>
-        <p class="form-feedback"></p>
-        <button type="submit" >Sign in</button>
-      </form>
-    </section>
+        </p>
+      </fieldset>
+      <p>
+        <label for="terms-policy" id="terms-policy">
+          <input name="terms-policy" type="checkbox">
+          <span class="checkbox"></span>
+          I agree with the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+        </label>
+      </p>
+      <p class="form-feedback"></p>
+      <button type="submit" >Sign up</button>
+    </form>
+  </template>
+
+  <template id="signin-template">
+    <form id="signin-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
+      <h2 >Welcome back!</h2> 
+      <p>Not a member? <a id="signup-link" href="#">Sign up</a></p>
+      <fieldset>
+        <p>
+          <label class="fieldset-label-focus" for="email">Email<span aria-hidden="true">*</span></label>
+          <input type="text" class="input-field" name="email" autocomplete="email" aria-required="true">
+        </p>
+        <p>
+          <label class="fieldset-label-focus" for="password">Password<span aria-hidden="true">*</span></label>
+          <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
+          <span class="eye-icon"></span>
+        </p>
+      </fieldset>
+      <p class="form-feedback"></p>
+      <button type="submit" >Sign in</button>
+    </form>
+  </template>
+
   <div id="circle-wrapper">
     <div id="circle">
       <span id="circle-text">more info</span>
     </div>
-
   </div>
   <script type="module" src="./ui/main.ts"></script>
 </body>
