@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="./ui/styles/style.css">
+  
   <title>Sign up / sign in</title>
 </head>
 
@@ -72,11 +73,29 @@
     </form>
   </template>
 
-  <div id="circle-wrapper">
+  <!-- <div id="circle-wrapper">
     <div id="circle">
       <span id="circle-text">more info</span>
     </div>
-  </div>
+  </div> -->
+
+  <div id="circle-wrapper">
+    <div id="circle">
+        <span id="circle-text">info</span>
+        <svg id="svg-circle" viewBox="0 0 100 100">
+          <style>
+            text {font-family: 'Arial', sans-serif;}
+        </style>
+            <path id="circle-path" d="M50,10 a40,40 0 1,1 0,80 a40,40 0 1,1 0,-80" fill="none"/>
+            <text>
+              <textPath href="#circle-path" > just a little bit of info for you...</textPath>
+           
+            </text>
+        </svg>
+    </div>
+</div>
+
+
 
   <svg viewBox="0 0 400 400">
     <defs>

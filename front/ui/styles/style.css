@@ -56,6 +56,7 @@
 body {
   background: var(--bg-color);
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  overflow: hidden;
 }
 
 #forms-sect {
@@ -248,7 +249,6 @@ input[type='checkbox'] {
   transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-
 #terms-policy input:checked + span::after {
   opacity: 1;
   visibility: visible;
@@ -311,8 +311,8 @@ button[type='submit']:hover {
   box-sizing: border-box;
   padding: 0 2rem;
   position: absolute;
-  top: 0;
-  right: 20vw;
+  top: -2rem;
+  right: 30vw;
   border: none;
   height: 13rem;
   background-color: transparent;
@@ -336,8 +336,8 @@ button[type='submit']:hover {
 }
 
 #switch-circle {
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 0.6rem;
+  height: 0.6rem;
   border: 1px solid var(--green100);
   border-radius: 50px;
   cursor: grab;
@@ -365,16 +365,42 @@ button[type='submit']:hover {
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: 100px;
-  height: 100px;
-  right: 5rem;
-  bottom: 4rem;
+  width: 110px;
+  height: 110px;
+  right: 3rem;
+  bottom: 3rem;
   backdrop-filter: blur(5px);
-  border: 6px dashed var(--green200);
+  /* border: 6px dashed var(--green200); */
   transition: transform 0.8s ease-out;
 }
 
-#circle span {
+#circle-text {
   font-size: 0.8rem;
   position: absolute;
+  z-index: 1;
+}
+
+#svg-circle {
+  fill: var(--green200);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 110px;
+  transform-origin: 50% 50%;
+}
+
+.rotateCircleText {
+  animation: spin 30s linear infinite;
+}
+
+#svg-circle textPath {
+  font-size: 0.7rem;
+  font-family: 'Courier New', Courier, monospace;
+} 
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }

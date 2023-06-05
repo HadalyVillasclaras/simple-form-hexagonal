@@ -1,13 +1,13 @@
 export function themeMode() {
-	const toggleButton = document.getElementById('switch');
-	const wrapperElement = document.getElementById('theme-mode');
+	const switchButton: HTMLElement | null = document.getElementById('switch');
+	const switchWrapper: HTMLElement | null = document.getElementById('theme-mode');
 	let startY = 0;
 	let originalY = 0;
 	let dragging = false;
 
-	toggleButton?.addEventListener('mousedown', (e) => {
+	switchButton?.addEventListener('mousedown', (e) => {
 		startY = e.clientY;
-		originalY = toggleButton.offsetTop;
+		originalY = switchButton.offsetTop;
 		dragging = true;
 
 		e.preventDefault();
@@ -16,22 +16,22 @@ export function themeMode() {
 	document.addEventListener('mousemove', (e) => {
 		if (dragging) {
 			const dy = e.clientY - startY;
-			console.log(wrapperElement.offsetHeight);
-			const maxBottomPosition = wrapperElement.offsetHeight - toggleButton.offsetHeight;
+			// Bottom limit based on switchWrapprer height
+			const maxBottomPosition = switchWrapper.offsetHeight - switchButton.offsetHeight;
 
 			let newTopPosition = originalY + dy;
 			newTopPosition = Math.min(newTopPosition, maxBottomPosition);
 
-			toggleButton.style.top = `${newTopPosition}px`;
+			switchButton.style.top = `${newTopPosition}px`;
 		}
 	});
 
 	document.addEventListener('mouseup', (e) => {
 		if (dragging) {
 			dragging = false;
-			toggleButton.style.top = `${originalY}px`;
+			switchButton.style.top = `${originalY}px`;
 
-			toggleButton.classList.add('rebound');
+			switchButton.classList.add('rebound');
 			const currentTheme = document.documentElement.getAttribute('data-theme');
 			switchTheme(currentTheme);
 		}
