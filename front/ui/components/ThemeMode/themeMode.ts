@@ -1,45 +1,47 @@
 export function themeMode() {
-    const toggleButton = document.getElementById('theme-mode');
-  const circlePath = document.getElementById('switch');
-  const pullchain: any = document.getElementById('pullchain');
+	const toggleButton = document.getElementById('switch');
+	const wrapperElement = document.getElementById('theme-mode');
+	let startY = 0;
+	let originalY = 0;
+	let dragging = false;
 
-  if (!toggleButton) {
-      throw new Error(`Theme mode button does not exist.`);
-  }
+	toggleButton?.addEventListener('mousedown', (e) => {
+		startY = e.clientY;
+		originalY = toggleButton.offsetTop;
+		dragging = true;
 
-//   toggleButton.addEventListener('click', () => {
-//       const currentTheme = document.documentElement.getAttribute('data-theme');
-//       switchTheme(currentTheme);
-//   });
+		e.preventDefault();
+	});
 
-let initialY = 0;
+	document.addEventListener('mousemove', (e) => {
+		if (dragging) {
+			const dy = e.clientY - startY;
+			console.log(wrapperElement.offsetHeight);
+			const maxBottomPosition = wrapperElement.offsetHeight - toggleButton.offsetHeight;
 
-circlePath?.addEventListener('dragstart', (event) => {
-  initialY = event.clientY;
-});
+			let newTopPosition = originalY + dy;
+			newTopPosition = Math.min(newTopPosition, maxBottomPosition);
 
-circlePath?.addEventListener('drag', (event) => {
-  const deltaY = event.clientY - initialY;
-  const newLineY2 = parseInt(pullchain?.getAttribute('y2')) + deltaY;
+			toggleButton.style.top = `${newTopPosition}px`;
+		}
+	});
 
-  pullchain?.setAttribute('y2', newLineY2);
-});
+	document.addEventListener('mouseup', (e) => {
+		if (dragging) {
+			dragging = false;
+			toggleButton.style.top = `${originalY}px`;
 
-circlePath?.addEventListener('dragend', () => {
-  initialY = 0;
-});
+			toggleButton.classList.add('rebound');
+			const currentTheme = document.documentElement.getAttribute('data-theme');
+			switchTheme(currentTheme);
+		}
+	});
 
-toggleButton.addEventListener('click', () => {
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-  switchTheme(currentTheme);
-});
-
-
-  function switchTheme(currentTheme: string | null) {
-      if (currentTheme === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'light');
-      } else {
-          document.documentElement.setAttribute('data-theme', 'dark');
-      }
-  }
+	function switchTheme(currentTheme: string | null) {
+		if (currentTheme === 'dark') {
+			document.documentElement.setAttribute('data-theme', 'light');
+		} else {
+			document.documentElement.setAttribute('data-theme', 'dark');
+		}
+	}
 }

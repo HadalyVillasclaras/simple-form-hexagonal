@@ -308,21 +308,46 @@ button[type='submit']:hover {
 
 /* Theme mode */
 #theme-mode {
+  box-sizing: border-box;
+  padding: 0 2rem;
   position: absolute;
   top: 0;
-  right: 3rem;
+  right: 20vw;
   border: none;
+  height: 13rem;
   background-color: transparent;
 }
 
 #switch {
-  z-index: 5;
-  margin: 2rem;
+  height: 15rem;
+  width: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: -6rem;
+  position: absolute;
+  transition: top 500ms ease-out;
 }
-#theme-mode svg {
-  height: 9rem;
-  stroke: var(--green200);
-  fill: #242309;
+
+#switch-line {
+  width: 1px;
+  height: 15rem;
+  background: var(--green100);
+}
+
+#switch-circle {
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 1px solid var(--green100);
+  border-radius: 50px;
+  cursor: grab;
+}
+#switch-circle:active {
+  cursor: grabbing;
+}
+
+#switch.rebound {
+  animation: bounce 500ms ease-out;
 }
 
 

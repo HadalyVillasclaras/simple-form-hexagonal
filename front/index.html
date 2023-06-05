@@ -10,16 +10,13 @@
 </head>
 
 <body>
-  <span id="theme-mode" aria-label="Theme mode toggle">  
-    <svg  viewBox="0 0 17 199" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line id="pullchain"  x1="8" y1="4.37114e-08" x2="7.99999" y2="183" stroke-width="1"/>
-      
-      <path id="switch" d="M16 190C16 194.473 12.5891 198 8.5 198C4.41095 198 1 194.473 1 190C1 185.527 4.41095 182 8.5 182C12.5891 182 16 185.527 16 190Z"  stroke-width="1"/>
-    </svg>
+  <span id="theme-mode" aria-label="Theme mode draggable toggle">  
+    <div id="switch" draggable="true">
+      <span id="switch-line"></span>
+      <span id="switch-circle"></span>
+    </div>
   </span>
-
-  <section id="forms-sect"> </section>
-  
+  <section id="forms-sect"></section>
   <template id="signup-template"> 
     <form id="signup-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
       <h2 class="form-title">We are glad you join us!</h2>
