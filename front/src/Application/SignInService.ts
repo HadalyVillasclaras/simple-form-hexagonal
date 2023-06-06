@@ -15,7 +15,7 @@ export default class SignInService {
 
     formData.forEach((value: string, key: any) => {
       if (value === '') {
-        inputErrors.push({ field: key, message: 'This field cannot be empty.' });
+        inputErrors.push({ field: key, message: 'This field cannot be empty' });
       }
       requestData[key] = value;
     });

@@ -16,7 +16,7 @@ export default class SignUpService {
       const requestData: any = {};
       formData.forEach((value: string, key: string) => {
         if (value === '') {
-          inputErrors.push({ field: key, message: 'This field cannot be empty.' });
+          inputErrors.push({ field: key, message: 'This field cannot be empty' });
         }
         requestData[key] = value;
       });

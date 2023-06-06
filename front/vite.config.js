@@ -5,7 +5,7 @@ export default {
   server: {
     proxy: {
       '/simple-signup-form': {
-        target: 'http://localhost',
+        target: 'http://localhost:8080',
         changeOrigin: true,
       },
     },

@@ -12,7 +12,7 @@
   --green100: #e3e9b6;
   --green200: #e3e9b6;
   --green400: #908a37;
-  --green500: #635f0e;
+  --green500: #7B7500;
   --green700: #444108;
   --green800: #242309;
 
@@ -57,11 +57,11 @@ body {
   background: var(--bg-color);
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   overflow: hidden;
+  padding: 0 8vw;
 }
 
 #forms-sect {
   max-width: 600px;
-  padding: 0 8vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -140,6 +140,7 @@ input[type='password'] {
   position: relative;
   padding-bottom: 0.3rem;
   transition: border-bottom 0.3s ease-in-out;
+  height: 1.2rem;
 }
 
 input[type='text']:focus,
@@ -199,6 +200,10 @@ input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
 .eye-icon.visible {
   visibility: visible;
   opacity: 1;
+}
+
+.eye-icon svg {
+  height: 0.8rem;
 }
 
 /* Terms & policy */
@@ -278,7 +283,7 @@ button[type='submit']:hover {
   position: relative;
   text-align: right;
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   margin-top: 0.2rem;
   color: var(--font-dark);
   padding: 0 0.1rem;
@@ -353,9 +358,23 @@ button[type='submit']:hover {
 
 /* Magenit circle */
 #circle-wrapper {
-  bottom: 4rem;
-  float: right;
-  cursor: pointer;
+  position: fixed;
+  bottom: 4vw;
+  right: 4vw;
+
+}
+
+#info-card {
+  width: 350px;
+  height: 200px;
+  position: absolute;
+  display: none;
+  background-color: var(--green200);
+  color: var(--green700);
+  border-radius: 1rem;
+  padding: 2rem;
+  font-size: 1.4rem;
+  box-sizing: border-box;
 }
 
 #circle {
@@ -367,10 +386,9 @@ button[type='submit']:hover {
   position: absolute;
   width: 110px;
   height: 110px;
-  right: 3rem;
-  bottom: 3rem;
+  right: 0;
+  bottom: 0;
   backdrop-filter: blur(5px);
-  /* border: 6px dashed var(--green200); */
   transition: transform 0.8s ease-out;
 }
 
@@ -378,6 +396,13 @@ button[type='submit']:hover {
   font-size: 0.8rem;
   position: absolute;
   z-index: 1;
+  cursor: pointer;
+  transition: font-size 0.8s ease-out, text-decoration 0.8s ease-out;
+}
+
+#circle-text:hover {
+  font-size: 1rem;
+  text-decoration: underline;
 }
 
 #svg-circle {
@@ -406,13 +431,14 @@ button[type='submit']:hover {
 }
 
 
+
 /* Effects  */
 .fade-in {
   animation: fadeIn ease-in 1s;
 }
 
 .fade-out {
-  animation: fadeOut ease 1s;
+  animation: fadeOut ease-out 0.8s;
 }
 
 @keyframes fadeIn {

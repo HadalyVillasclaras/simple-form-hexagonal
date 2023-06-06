@@ -13,16 +13,16 @@ export class Password {
     const length = password.length >= 6 && password.length <= 8;
 
     if (!length) {
-      throw new Error("Password must be between 6 and 8 characters.");
+      throw new Error("Password must be between 6 and 8 characters");
     }
     if (!hasNumber.test(password)) {
-      throw new Error("Password must contain at least one number.");
+      throw new Error("Password must contain at least one number");
     }
     if (!hasCap.test(password)) {
-      throw new Error("Password must contain at least one capital letter.");
+      throw new Error("Password must contain at least one capital letter");
     }
     if (!hasSymbol.test(password)) {
-      throw new Error("Password must contain at least one symbol.");
+      throw new Error("Password must contain at least one symbol");
     }
 
   }
