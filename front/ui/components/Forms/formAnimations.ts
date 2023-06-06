@@ -17,6 +17,7 @@ function labelGoesTop() {
     const input = p.querySelector('input');
 
     input?.addEventListener('focus', function () {
+      console.log('focus?');
       label?.classList.add('fieldset-label-focus');
     });
 

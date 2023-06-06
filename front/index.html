@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="./ui/styles/style.css">
-  
   <title>Sign up / sign in</title>
 </head>
-
 <body>
   <span id="theme-mode" aria-label="Theme mode draggable toggle">  
     <div id="switch" draggable="true">
@@ -42,8 +39,8 @@
         </p>
       </fieldset>
       <p>
-        <label for="terms-policy" id="terms-policy">
-          <input name="terms-policy" type="checkbox">
+        <label for="terms-policy" id="terms-policy-label">
+          <input name="terms-policy" name="terms-policy" type="checkbox">
           <span class="checkbox"></span>
           I agree with the <a href="#">Terms</a> of no one should keep my private data
         </label>
@@ -52,18 +49,17 @@
       <button type="submit" >Sign up</button>
     </form>
   </template>
-
   <template id="signin-template">
     <form id="signin-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
       <h2 >Welcome back!</h2> 
       <p>Not a member? <a id="signup-link" href="#">Sign up</a></p>
       <fieldset>
         <p>
-          <label class="fieldset-label-focus" for="email">Email<span aria-hidden="true">*</span></label>
+          <label for="email">Email<span aria-hidden="true">*</span></label>
           <input type="text" class="input-field" name="email" autocomplete="email" aria-required="true">
         </p>
         <p>
-          <label class="fieldset-label-focus" for="password">Password<span aria-hidden="true">*</span></label>
+          <label for="password">Password<span aria-hidden="true">*</span></label>
           <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
           <span class="eye-icon"></span>
         </p>

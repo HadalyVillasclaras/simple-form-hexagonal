@@ -1,11 +1,11 @@
 @font-face {
   font-family: Laurel-Regular;
-  src: url(../assets/fonts/Laurel-Regular.otf);
+  src: url(./../assets/fonts/Laurel-Regular.otf);
 }
 
 @font-face {
   font-family: Laurel-Medium;
-  src: url(../assets/fonts/Laurel-Medium.otf);
+  src: url(./../assets/fonts/Laurel-Medium.otf);
 }
 
 :root {
@@ -153,18 +153,19 @@ input[name='password'] {
   padding-right: 1.8rem;
 }
 
+/* Auto complete issues */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--font-light);
+  font-family: Times;
   -webkit-box-shadow: 0 0 0px 40rem var(--bg-color) inset;
-  transition: -webkit-box-shadow 0.5s ease-in-out, color 0.5s ease-in-out;
-
+  transition: -webkit-box-shadow 0.5s ease-in-out, color 0.5s ease-in-out,  background-color 600000s 0s;
 }
 
 input:-webkit-autofill::selection {
   -webkit-text-fill-color: var(--font-dark);
-  -webkit-box-shadow: 0 0 0px 40rem var(--selection-light) inset;
+  -webkit-box-shadow: 0 0 0px 40rem var(--bg-color) inset;
 }
 
 input::-webkit-credentials-auto-fill-button {
@@ -201,7 +202,7 @@ input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
 }
 
 /* Terms & policy */
-#terms-policy {
+#terms-policy-label {
   position: relative;
   padding-left: 1.5rem;
   box-sizing: border-box;
@@ -216,7 +217,7 @@ input[type='checkbox'] {
   left: 1px;
 }
 
-#terms-policy span {
+#terms-policy-label span {
   position: absolute;
   top: 0;
   left: 0;
@@ -226,16 +227,15 @@ input[type='checkbox'] {
   transition: background-color 0.8s ease;
 }
 
-#terms-policy:hover span {
+#terms-policy-label:focus-within span {
+  outline: solid 1px var(--hover-light);
+}
+
+#terms-policy-label:hover span {
   background-color: var(--green400);
 }
 
-#terms-policy input:checked ~ span {
-  display: block;
-  /* background-color: var(--green200); */
-}
-
-#terms-policy input + span::after {
+#terms-policy-label input + span::after {
   content: "";
   position: absolute;
   width: 8px;
@@ -249,7 +249,7 @@ input[type='checkbox'] {
   transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-#terms-policy input:checked + span::after {
+#terms-policy-label input:checked + span::after {
   opacity: 1;
   visibility: visible;
 }
@@ -344,10 +344,6 @@ button[type='submit']:hover {
 }
 #switch-circle:active {
   cursor: grabbing;
-}
-
-#switch.rebound {
-  animation: bounce 500ms ease-out;
 }
 
 
