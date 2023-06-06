@@ -14,24 +14,31 @@
       <span id="switch-circle"></span>
     </div>
   </span>
+  <div id="arrow-area">
+    <svg  viewBox="0 0 38 91" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15.6806 1C12.3163 16.643 8.96635 55.8177 22.4805 87.3721"  stroke-width="2" stroke-linecap="round"/>
+      <line x1="23.0273" y1="89.4547" x2="25.3668" y2="80.3912"  stroke-width="2" stroke-linecap="round"/>
+      <line x1="22.9523" y1="89.3454" x2="15.9436" y2="84.0731"  stroke-width="2" stroke-linecap="round"/>
+      </svg>
+  </div>
   <span id="arrow"></span>
   <section id="forms-sect"></section>
   <template id="signup-template"> 
-    <form id="signup-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
+    <form id="signup-form" method="POST" action="" aria-labelledby="form-title" >
       <h2 class="form-title">We are glad you join us!</h2>
       <p>Already a member? <a id="signin-link" href="#">Sign in</a></p>
       <fieldset>
         <p>
           <label for="name">Name<span aria-label="required">*</span></label>
-          <input type="text" name="name" aria-required="true">
+          <input type="text" name="name" aria-required="true" >
         </p>
         <p>
           <label for="surname">Surname<span aria-label="required">*</span></label>
-          <input type="text" name="surname" aria-required="true">
+          <input type="text" name="surname" aria-required="true" >
         </p>
         <p>
           <label for="email">Email<span aria-label="required">*</span></label>
-          <input type="text" name="email" autocomplete="email" aria-required="true">
+          <input type="text" name="email" aria-required="true" >
         </p>
         <p>
           <label for="password">Password<span aria-label="required">*</span></label>
@@ -51,13 +58,13 @@
     </form>
   </template>
   <template id="signin-template">
-    <form id="signin-form" method="POST" action="" aria-labelledby="form-title" autocomplete="off">
+    <form id="signin-form" method="POST" action="" aria-labelledby="form-title">
       <h2 >Welcome back!</h2> 
       <p>Not a member? <a id="signup-link" href="#">Sign up</a></p>
       <fieldset>
         <p>
           <label for="email">Email<span aria-hidden="true">*</span></label>
-          <input type="text" class="input-field" name="email" autocomplete="email" aria-required="true">
+          <input type="text" class="input-field" name="email"  aria-required="true">
         </p>
         <p>
           <label for="password">Password<span aria-hidden="true">*</span></label>
@@ -87,7 +94,7 @@
         </svg>
     </div>
     <p id="info-card">
-      Hey! Hope you enjoy this handcrafted project. No libraries, just pure love for crafting code.
+      Hey!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque vehicula dui. 
     </p>
   </div>
   <script type="module" src="./ui/main.ts"></script>

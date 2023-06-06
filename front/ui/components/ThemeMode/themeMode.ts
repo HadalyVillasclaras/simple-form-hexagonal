@@ -51,13 +51,13 @@ export function themeMode() {
 			mouseDown = false;
 		});
 
-		switchWrapper.addEventListener('mouseenter', () => hoverEffect(switchButton, true));
-    switchWrapper.addEventListener('mouseleave', () => hoverEffect(switchButton, false));
+		// switchWrapper.addEventListener('mouseenter', () => hoverEffect(switchButton, true));
+    // switchWrapper.addEventListener('mouseleave', () => hoverEffect(switchButton, false));
     switchButton.addEventListener('mouseenter', () => hoverEffect(switchButton, false));
 
 	}
 }
-function hoverEffect(switchButton, add: boolean) {
+function hoverEffect(switchButton: HTMLElement, add: boolean) {
   if (add) {
     switchButton.classList.add('switch-effect');
   } else {
@@ -73,7 +73,7 @@ function switchTheme(currentTheme: string | null) {
 	}
 }
 
-function bounce(switchButton) {
+function bounce(switchButton: HTMLElement) {
 	const startAnimation = function () {
 		switchButton.classList.add('bounce');
 		switchButton.addEventListener('animationend', function () {
@@ -81,6 +81,6 @@ function bounce(switchButton) {
 		});
 	}
 
-	startAnimation();
-	setInterval(startAnimation, 1 * 80 * 1000);
+	setTimeout(startAnimation, 1000);
+	setInterval(startAnimation, 2 * 60 * 1000);
 }

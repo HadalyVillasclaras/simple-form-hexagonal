@@ -11,13 +11,13 @@ export function formAnimations() {
 
 function labelGoesTop() {
   const fieldsetPs = document.querySelectorAll('fieldset p');
-
   fieldsetPs.forEach(p => {
     const label = p.querySelector('label');
     const input = p.querySelector('input');
+    console.log(input);
 
     input?.addEventListener('focus', function () {
-      console.log('focus?');
+      console.log('entra');
       label?.classList.add('fieldset-label-focus');
     });
 

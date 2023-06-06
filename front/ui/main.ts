@@ -8,7 +8,7 @@ import {formAnimations} from './components/Forms/formAnimations';
 import {themeMode} from './components/ThemeMode/themeMode';
 import {magneticCircle} from './components/MagneticCircle/magneticCircle';
 
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', function () {
   setDefaultTemplate()
   themeMode();
   magneticCircle();
@@ -25,8 +25,11 @@ let currentTemplate;
 function setDefaultTemplate() {
   currentTemplate = signupTemplate?.content.cloneNode(true);
   formSection?.appendChild(currentTemplate); // Default template
+
   setLinks();
   handleSignUpSubmit();
+  setTimeout(formAnimations, 0);
+
 }
 
 function setLinks() {
@@ -50,10 +53,7 @@ function switchTemplates(event: MouseEvent, templateToShow: any) {
     formSection?.classList.remove('fade-in');
   }
 
-  // Force a reflow to reset the animation
   void formSection?.offsetWidth;
-
-  // Add the fade-in class to start the animation
   formSection?.classList.add('fade-in');
 
   // Update links, elements and events

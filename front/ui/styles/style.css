@@ -12,7 +12,7 @@
   --green100: #e3e9b6;
   --green200: #e3e9b6;
   --green400: #908a37;
-  --green500: #7B7500;
+  --green500: #605c1c;
   --green700: #444108;
   --green800: #242309;
 
@@ -116,7 +116,7 @@ fieldset label {
 }
 
 .fieldset-label-focus {
-  top: -1.1rem;
+  top: -1.2rem;
   font-size: 0.8rem;
 }
 
@@ -133,14 +133,13 @@ input[type='email'],
 input[type='password'] {
   width: 100%;
   display: inline-block;
-  box-sizing: border-box;
   border: none;
   background: transparent;
   border-bottom: 2px solid var(--green400);
   position: relative;
-  padding-bottom: 0.3rem;
   transition: border-bottom 0.3s ease-in-out;
-  height: 1.2rem;
+  height: 2rem;
+  box-sizing: border-box;
 }
 
 input[type='text']:focus,
@@ -318,17 +317,18 @@ button[type='submit']:hover {
 /* Theme mode */
 #theme-mode {
   box-sizing: border-box;
-  padding: 0 2rem;
+  padding: 0 6rem;
   position: absolute;
   top: -2rem;
-  right: 30vw;
+  right: 25vw;
   border: none;
-  height: 13rem;
+  height: 15rem;
   background-color: transparent;
+  z-index: 999;
 }
 
 #switch {
-  height: 15rem;
+  height: 18rem;
   width: 2rem;
   display: flex;
   flex-direction: column;
@@ -336,6 +336,8 @@ button[type='submit']:hover {
   top: -6rem;
   position: absolute;
   transition: top 500ms ease-out;
+  right: 5rem;
+
 }
 
 #switch-line {
@@ -355,6 +357,20 @@ button[type='submit']:hover {
   cursor: grabbing;
 }
 
+#arrow-area {
+  width: 45vw;
+  right: 0;
+  height: 30vh;
+  position: absolute;
+}
+
+#arrow-area svg{
+  position: absolute;
+  left: 4rem;
+  top: 4rem;
+  height: 5rem;
+  stroke: #242309;
+}
 
 /* Magenit circle */
 #circle-wrapper {
@@ -455,7 +471,7 @@ button[type='submit']:hover {
 
 .bounce {
   animation-name: bounce;
-  animation-duration: 1s;
+  animation-duration: 2s;
   animation-timing-function: ease-in;
 }
 
@@ -464,10 +480,10 @@ button[type='submit']:hover {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(40px);
+    transform: translateY(50px);
   }
-  75% {
-    transform: translateY(-20px);
+  65% {
+    transform: translateY(-30px);
   }
   100% {
     transform: translateY(0);
