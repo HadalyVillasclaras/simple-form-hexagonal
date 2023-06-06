@@ -79,9 +79,6 @@
     <div id="circle">
         <span id="circle-text">info</span>
         <svg id="svg-circle" viewBox="0 0 100 100">
-          <style>
-            text {font-family: 'Arial', sans-serif;}
-        </style>
             <path id="circle-path" d="M50,10 a40,40 0 1,1 0,80 a40,40 0 1,1 0,-80" fill="none"/>
             <text>
               <textPath href="#circle-path" > just a little bit of info for you...</textPath>
@@ -89,27 +86,7 @@
             </text>
         </svg>
     </div>
-</div>
-
-
-
-  <svg viewBox="0 0 400 400">
-    <defs>
-      <path id="MyPath"
-            d="M 200, 200
-               m -100, 0
-               a 100,100 0 1,1 200,0
-               a 100,100 0 1,1 -200,0" 
-      />
-    </defs>
-  
-    <text font-size="30" fill="rgb(248,203,173)" >
-      <textPath xlink:href="#MyPath">
-        click here click here click here 
-      </textPath>
-    </text>
-  </svg>
+  </div>
   <script type="module" src="./ui/main.ts"></script>
 </body>
-
 </html>

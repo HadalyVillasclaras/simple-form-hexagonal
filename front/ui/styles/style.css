@@ -281,7 +281,6 @@ button[type='submit']:hover {
   font-size: 0.8rem;
   margin-top: 0.2rem;
   color: var(--font-dark);
-  /* background-color: var(--green400); */
   padding: 0 0.1rem;
   animation: fadein 0.5s forwards;
   transition: opacity 0.5s ease-out;
@@ -300,11 +299,16 @@ button[type='submit']:hover {
 
 .form-feedback {
   margin: 2rem 0;
-  padding: 1rem;
   color: var(--font-dark);
-  border: 1px solid var(--green800);
 }
 
+.form-feedback.error {
+  color: rgb(110, 59, 17);
+}
+
+.form-feedback.success {
+  color: var(--font-dark);
+}
 
 /* Theme mode */
 #theme-mode {
@@ -399,4 +403,59 @@ button[type='submit']:hover {
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+/* Effects  */
+.fade-in {
+  animation: fadeIn ease-in 1s;
+}
+
+.fade-out {
+  animation: fadeOut ease 1s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@keyframes fadeOut {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+
+
+.bounce {
+  animation-name: bounce;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(40px);
+  }
+  75% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.switch-effect {
+  animation: moveUpDown 2s infinite;
+  transition: all 2s ease-out; 
+}
+
+
+@keyframes moveUpDown {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
+  100% { transform: translateY(0); }
 }

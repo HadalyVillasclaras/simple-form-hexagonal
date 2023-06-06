@@ -4,7 +4,7 @@ import UserRepository from "./Infrastructure/UserRepository";
 
 export interface InputResponse {
   status: string,
-  errors: Array<{ field: 'string', message: string }>,
+  inputErrors: Array<{ field: 'string', message: string }>,
 }
 
 export interface AppResponse {

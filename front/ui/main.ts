@@ -36,7 +36,6 @@ function setLinks() {
   signUpLink?.addEventListener('click', (e) => switchTemplates(e, signupTemplate));
 }
 
-
 function switchTemplates(event: MouseEvent, templateToShow: any) {
   event.preventDefault();
 
@@ -46,6 +45,16 @@ function switchTemplates(event: MouseEvent, templateToShow: any) {
 
   currentTemplate = templateToShow?.content.cloneNode(true);
   formSection?.appendChild(currentTemplate);
+
+  if(formSection?.classList.contains('fade-in')) {
+    formSection?.classList.remove('fade-in');
+  }
+
+  // Force a reflow to reset the animation
+  void formSection?.offsetWidth;
+
+  // Add the fade-in class to start the animation
+  formSection?.classList.add('fade-in');
 
   // Update links, elements and events
   setLinks();
@@ -95,6 +104,7 @@ function handleSignUpSubmit() {
       formFeedback.render();
     } catch (error) {
       if (error instanceof Error) {
+        console.log(error);
         const formFeedback = new FormFeedback('signup-form', { status: 'error', message: error.message });
         formFeedback.render();
       }

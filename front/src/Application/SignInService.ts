@@ -10,12 +10,12 @@ export default class SignInService {
   }
 
   async signIn(formData: any): Promise<any> {
-    const errors: { field: string, message: string }[] = [];
+    const inputErrors: { field: string, message: string }[] = [];
     const requestData: any = {};
 
     formData.forEach((value: string, key: any) => {
       if (value === '') {
-        errors.push({ field: key, message: 'This field cannot be empty.' });
+        inputErrors.push({ field: key, message: 'This field cannot be empty.' });
       }
       requestData[key] = value;
     });
@@ -25,11 +25,11 @@ export default class SignInService {
     try {
       email = new Email(requestData['email']);
     } catch (error) {
-      errors.push({ field: 'email', message: error.message });
+      inputErrors.push({ field: 'email', message: error.message });
     }
 
-    if (errors.length > 0) {
-      return { status: 'error', errors };
+    if (inputErrors.length > 0) {
+      return { status: 'error', inputErrors: inputErrors };
     }
 
     try {

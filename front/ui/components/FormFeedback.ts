@@ -18,20 +18,28 @@ export class FormFeedback {
   }
 
   render() {
-    const formFeedback = this.formElement.querySelector('.form-feedback');
-    
-    if ('errors' in this.formResponse) {
+    if ('inputErrors' in this.formResponse) {
       this.renderInputFeedback();
     } else {
-      this.renderAppFeedback(formFeedback);
+      this.renderAppFeedback();
     }
   }
 
-  private renderAppFeedback(formFeedback: any) {
-    this.removeFeedBackMessage(formFeedback)
-    const formResponse = this.formResponse as AppResponse;
+  private renderAppFeedback() {
+    const formFeedback = this.formElement.querySelector('.form-feedback');
+
+    if(formFeedback) {
+      this.removeFeedBackMessage(formFeedback);
+      const formResponse = this.formResponse as AppResponse;
+      formFeedback.classList.remove('error', 'success');
+      if(formResponse.status === 'error') {
+        formFeedback.classList.add('error');
+      } else if(formResponse.status === 'success') {
+        formFeedback.classList.add('success');
+      }
 
       formFeedback.textContent = formResponse.message;
+    }
   }
 
   private renderInputFeedback() {
@@ -40,7 +48,7 @@ export class FormFeedback {
 
     const inputResponse = this.formResponse as InputResponse;
 
-    inputResponse.errors.forEach(error => {
+    inputResponse.inputErrors.forEach(error => {
       if (!errorFields.includes(error.field)) {
         errorFields.push(error.field);
 

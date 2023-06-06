@@ -12,11 +12,11 @@ export default class SignUpService {
 
   async signUp(formData: any): Promise<any> {
 
-      const errors: { field: string, message: string }[] = [];
+      const inputErrors: { field: string, message: string }[] = [];
       const requestData: any = {};
       formData.forEach((value: string, key: string) => {
         if (value === '') {
-          errors.push({ field: key, message: 'This field cannot be empty.' });
+          inputErrors.push({ field: key, message: 'This field cannot be empty.' });
         }
         requestData[key] = value;
       });
@@ -27,17 +27,17 @@ export default class SignUpService {
       try {
         email = new Email(requestData['email']);
       } catch (error) {
-        errors.push({ field: 'email', message: error.message });
+        inputErrors.push({ field: 'email', message: error.message });
       }
 
       try {
         password = new Password(requestData['password'])
       } catch (error) {
-        errors.push({ field: 'password', message: error.message });
+        inputErrors.push({ field: 'password', message: error.message });
       }
 
-      if (errors.length > 0) {
-        return { status: 'error', errors };
+      if (inputErrors.length > 0) {
+        return { status: 'error', inputErrors: inputErrors };
       }
       try {
         const user: User = {
@@ -50,10 +50,8 @@ export default class SignUpService {
         const response = await this.userRepository.addUser(user);
         return response;
       } catch (error) {
+        console.error(error);
         throw { status: 'error', message: error.message };
       }
-      
-
-
   }
 }
