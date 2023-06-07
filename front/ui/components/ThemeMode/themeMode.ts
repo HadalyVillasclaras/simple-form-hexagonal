@@ -15,7 +15,7 @@ export function themeMode() {
 	if (switchButton && switchButton && switchWrapper) {
 
 		window.onload = function () {
-			// bounce(switchButton)
+			bounce(switchButton)
 			switchControl();
 			moveArrow();
 		}
@@ -69,23 +69,17 @@ function switchControl() {
 
 function moveArrow() {
 	arrowArea?.addEventListener('mouseenter', () => {
-		console.log(clickedSwitch);
 		if(!clickedSwitch && arrow) {
-			
-			arrow.style.opacity = 1; 
+			arrow.style.opacity = '1'; 
 			arrow.classList.add('switch-effect');
-
+			switchButton?.classList.add('simpleDownUp');
 			setTimeout(() => {
-			arrow.style.opacity = 0; 
+			arrow.style.opacity = '0'; 
 			arrow.classList.remove('switch-effect');
+			switchButton?.classList.remove('simpleDownUp');
 				
 			}, 4000);
 		}
-	});
-	
-	arrowArea?.addEventListener('mouseout', () => {
-		 
-		
 	});
 }
 

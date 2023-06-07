@@ -14,10 +14,8 @@ function labelGoesTop() {
   fieldsetPs.forEach(p => {
     const label = p.querySelector('label');
     const input = p.querySelector('input');
-    console.log(input);
 
     input?.addEventListener('focus', function () {
-      console.log('entra');
       label?.classList.add('fieldset-label-focus');
     });
 

@@ -38,7 +38,7 @@ class SigninController {
         }
         $signInUser = new SignInUser($userData, $this->userRepository);
         $user = $signInUser->execute();
-        echo json_encode(["status" => "success", "message" => "Sign in successfully completed", "data" => $user], JSON_UNESCAPED_UNICODE);
+        echo json_encode(["status" => "success", "message" => "Sign in successfully completed!", "data" => $user], JSON_UNESCAPED_UNICODE);
       } catch (Exception $e) {
         http_response_code(400);
         echo json_encode(["status" => "error", "message" => $e->getMessage()]);

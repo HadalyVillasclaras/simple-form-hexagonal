@@ -13,8 +13,6 @@ export class FormFeedback {
 
     this.formElement = formElement;
     this.formResponse = formResponse;
-
-    console.log(formElement, formResponse);
   }
 
   render() {
