@@ -186,7 +186,7 @@ input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
 .eye-icon {
   cursor: pointer;
   position: absolute;
-  top: 0;
+  top: 5px;
   right: 0;
   width: 1.1rem;
   height: 1.1rem;
@@ -362,14 +362,17 @@ button[type='submit']:hover {
   right: 0;
   height: 30vh;
   position: absolute;
+  border: 1px solid red;
 }
-
-#arrow-area svg{
+#arrow{
   position: absolute;
+  z-index: 3;
   left: 4rem;
   top: 4rem;
   height: 5rem;
-  stroke: #242309;
+  stroke: var(--font-light);
+  opacity: 0;
+  transition: visibility 1s linear, opacity 0.5s linear;
 }
 
 /* Magenit circle */
@@ -450,7 +453,7 @@ button[type='submit']:hover {
 
 /* Effects  */
 .fade-in {
-  animation: fadeIn ease-in 1s;
+  animation: fadeIn ease-in 2s;
 }
 
 .fade-out {
@@ -491,8 +494,10 @@ button[type='submit']:hover {
 }
 
 .switch-effect {
-  animation: moveUpDown 2s infinite;
-  transition: all 2s ease-out; 
+  animation-name: moveUpDown;
+  animation-duration: 1.5s;
+  animation-iteration-count: 2;
+  animation-delay: 0.8s;
 }
 
 
