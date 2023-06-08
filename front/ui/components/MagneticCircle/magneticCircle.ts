@@ -30,13 +30,13 @@ export function magneticCircle() {
     infoCard.style.right = `${-moveXCard}px`;
     infoCard.style.bottom = `${rect.height - moveYCard}px`;
 
-    svgCircle.classList.add('rotateCircleText');
+    svgCircle.classList.add('infiniteRotate');
   });
 
   circle.addEventListener('mouseleave', () => {
     circle.style.transform = `translate3d(0, 0, 0)`;
     circleInfo.style.transform = `translate3d(0, 0, 0)`;
-    svgCircle.classList.remove('rotateCircleText');
+    svgCircle.classList.remove('infiniteRotate');
     svgCircle.classList.remove('onDisplay');
     infoCard.style.opacity = '0';
 

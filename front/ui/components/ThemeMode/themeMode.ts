@@ -3,21 +3,25 @@ const switchCircle: HTMLElement | null = document.getElementById('switch-circle'
 const switchWrapper: HTMLElement | null = document.getElementById('theme-mode');
 const arrowArea: HTMLElement | null = document.getElementById('arrow-area');
 const arrow: HTMLElement | null = document.getElementById('arrow');
+const svgCircle = document.getElementById('svg-circle') as HTMLElement;
+
+
 let clickedSwitch = false;
 const switchClickedEvent = new Event('switchClicked');
+let initialAnimationActive = false;
 
 document.addEventListener('switchClicked', () => {
     clickedSwitch = true;
-    moveArrow();
+    enterArrowArea();
 });
 
 export function themeMode() {
 	if (switchButton && switchButton && switchWrapper) {
 
 		window.onload = function () {
-			bounce(switchButton)
+			switchInitialBounce(switchButton)
 			switchControl();
-			moveArrow();
+			enterArrowArea();
 		}
 	}
 }
@@ -58,6 +62,10 @@ function switchControl() {
 			switchButton.style.top = `${originalY}px`;
 			const currentTheme = document.documentElement.getAttribute('data-theme');
 			switchTheme(currentTheme);
+			svgCircle.classList.add('rotate-once');
+			svgCircle.addEventListener('animationend', function () {
+				svgCircle.classList.remove('rotate-once');
+			});
 		} else if (dragging && mouseDown) {
 			switchButton.style.top = `${originalY}px`;
 		}
@@ -67,30 +75,36 @@ function switchControl() {
 	});
 }
 
-function moveArrow() {
+function enterArrowArea() {
 	arrowArea?.addEventListener('mouseenter', () => {
-		if(!clickedSwitch && arrow) {
+		console.log(initialAnimationActive);
+		if(!clickedSwitch && arrow && !initialAnimationActive) {
 			arrow.style.opacity = '1'; 
-			arrow.classList.add('switch-effect');
-			switchButton?.classList.add('simpleDownUp');
+			arrow.classList.add('down-up');
+			switchButton?.classList.add('simple-down-up');
 			setTimeout(() => {
 			arrow.style.opacity = '0'; 
-			arrow.classList.remove('switch-effect');
-			switchButton?.classList.remove('simpleDownUp');
+			arrow.classList.remove('down-up');
+			switchButton?.classList.remove('simple-down-up');
 				
 			}, 4000);
 		}
 	});
 }
 
-function hoverEffect(switchButton: HTMLElement, add: boolean) {
-	if (add) {
-		switchButton.classList.add('switch-effect');
-	} else {
-		setTimeout(() => {
-			switchButton.classList.remove('switch-effect');
-		}, 3000);
+
+function switchInitialBounce(switchButton: HTMLElement) {
+	const startAnimation = function () {
+		initialAnimationActive = true;
+		switchButton.classList.add('bounce');
+		switchButton.addEventListener('animationend', function () {
+			switchButton.classList.remove('bounce');
+			initialAnimationActive = false;
+		});
 	}
+
+	setTimeout(startAnimation, 1500);
+	setInterval(startAnimation, 2 * 60 * 1000);
 }
 
 function switchTheme(currentTheme: string | null) {
@@ -99,17 +113,4 @@ function switchTheme(currentTheme: string | null) {
 	} else {
 		document.documentElement.setAttribute('data-theme', 'dark');
 	}
-}
-
-function bounce(switchButton: HTMLElement) {
-	const startAnimation = function () {
-		switchButton.classList.add('bounce');
-		switchButton.addEventListener('animationend', function () {
-			switchButton.classList.remove('bounce');
-		});
-	}
-
-	
-	setTimeout(startAnimation, 1000);
-	setInterval(startAnimation, 2 * 60 * 1000);
 }

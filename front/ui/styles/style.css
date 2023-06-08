@@ -290,7 +290,7 @@ button[type='submit']:hover {
   margin-top: 0.2rem;
   color: var(--font-dark);
   padding: 0 0.1rem;
-  animation: fade-in 0.5s forwards;
+  animation: fadeIn 0.5s forwards;
   transition: opacity 0.5s ease-out;
 }
 
@@ -462,14 +462,25 @@ button[type='submit']:hover {
   transition:all 1s ease;
 }
 
-.rotateCircleText {
-  animation: spin 30s linear infinite;
-}
+
 
 #svg-circle textPath {
   font-size: 0.7rem;
   font-family: 'Courier New', Courier, monospace;
 } 
+
+/* Animations  */
+.infiniteRotate {
+  animation: spin 30s linear infinite;
+}
+
+.rotate-once {
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  /* animation-timing-function: cubic-bezier(0.68, -0.1, 0.265, 1.55); */
+  animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+}
 
 @keyframes spin {
   100% {
@@ -477,8 +488,6 @@ button[type='submit']:hover {
   }
 }
 
-
-/* Effects  */
 .fade-in {
   animation: fadeIn ease-in 2s;
 }
@@ -497,12 +506,10 @@ button[type='submit']:hover {
   100% {opacity:0;}
 }
 
-
-
 .bounce {
   animation-name: bounce;
   animation-duration: 2s;
-  animation-timing-function: ease-in;
+  animation-timing-function: ease;
 }
 
 @keyframes bounce {
@@ -512,7 +519,10 @@ button[type='submit']:hover {
   50% {
     transform: translateY(40px);
   }
-  65% {
+  60% {
+    transform: translateY(0x);
+  }
+  75% {
     transform: translateY(-20px);
   }
   100% {
@@ -520,27 +530,22 @@ button[type='submit']:hover {
   }
 }
 
-.switch-effect {
-  animation-name: moveUpDown;
+.down-up {
+  animation-name: moveDownUp;
   animation-duration: 1.5s;
   animation-iteration-count: 2;
   animation-timing-function: ease-out;
   animation-delay: 0.3s;
 }
 
-@keyframes moveUpDown {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(20px); }
-  100% { transform: translateY(0); }
-}
-
-.simpleDownUp {
+.simple-down-up {
   animation-name: moveDownUp;
   animation-duration: 1s;
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
-  animation-delay: 1s;
+  animation-delay: 1.2s;
 }
+
 
 @keyframes moveDownUp {
   0% { transform: translateY(0); }
