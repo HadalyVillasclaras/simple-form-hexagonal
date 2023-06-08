@@ -48,7 +48,7 @@ export function magneticCircle() {
   });
 
   circleInfo.addEventListener('click', () => {
-    infoCard.style.opacity = '0.6';
+    infoCard.style.opacity = '0.8';
     infoCard.style.display = 'block';
 
     svgCircle.classList.add('onDisplay');
