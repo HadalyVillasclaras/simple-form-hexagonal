@@ -1,4 +1,8 @@
 # Simple sign in / sign up form
+![An image of signup form](./front/ui/assets/imgs/signup.png)
+
+![An image of signin form](./front/ui/assets/imgs/signin.png)
+
 I've crafted a very simple web application on an Apache server wich follow a mirror folder structure applying hexagonal architecure and DDD principles in both front-end and back-end.
 
 Front services are fetching data via input stream providers in back controller files with php://input (no routing). The back-end is made with pure PHP(no Composer install), since I didn't want to use libraries that would make its use more complex. That's why it doesn't have routing or other functionalities like auth providers, etc.
@@ -56,7 +60,3 @@ front/
     |-- styles/
 ```
 
-## Accesibility & semantic standars
-Forms are being constructed following MDN Web Docs best practices on [how structure a form]. 
-
-[how structure a form]: https://developer.mozilla.org/en-US/docs/Learn/Forms/How_to_structure_a_web_form
