@@ -20,7 +20,6 @@ export default class SignInService {
       }
       requestData[key] = value;
     });
-
     let email: Email;
 
     try {
@@ -38,9 +37,11 @@ export default class SignInService {
         email: requestData['email'],
         password: requestData['password'],
       };
+
       const response = await this.userRepository.signIn(loginUser);
       return response;
     } catch (error) {
+      console.error(error);
       throw { status: 'error', message: error.message };
     }
   }

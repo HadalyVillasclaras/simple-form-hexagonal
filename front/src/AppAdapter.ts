@@ -1,5 +1,6 @@
 import SignInService from "./Application/SignInService";
 import SignUpService from "./Application/SignUpService";
+import UserRepositoryJson from "./Infrastructure/JsonMockUserRepository";
 import UserRepository from "./Infrastructure/MysqlUserRepository";
 
 export interface InputResponse {
@@ -19,6 +20,7 @@ export class AppAdapter {
 
   constructor() {
     const userRepository = new UserRepository();
+    const jsonUserRepository = new UserRepositoryJson();
     this.signUpService = new SignUpService(userRepository);
     this.signInService = new SignInService(userRepository);
   }
@@ -37,8 +39,8 @@ export class AppAdapter {
     }
   }
 
-
   async handleSignIn(formData: FormData): Promise<any> {
+
     try {
       const serviceResponse = await this.signInService.signIn(formData);
       if (serviceResponse instanceof Response) {

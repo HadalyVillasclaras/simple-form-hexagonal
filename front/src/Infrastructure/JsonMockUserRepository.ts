@@ -1,23 +1,31 @@
-import * as data from './jsonDB.json'; // assuming the JSON file is named 'user.json' and located in the same directory
+import * as data from './jsonDB.json'; 
 
 export default class UserRepositoryJson {
 
   async signIn(user: any): Promise<Response> {
-    return new Promise((resolve, reject) => {
-      const storedUser = data[0];
-  
+    try {
+      const storedUser = data.default[0];
+    
       if (user.email === storedUser.mail && user.password === storedUser.pass) {
-        resolve({
+        
+        return {
           status: 'success',
           message: 'Logged in successfully'
-        });
+        };
       } else {
-        reject({
+        return {
           status: 'error',
           message: 'Invalid credentials'
-        });
+        };
       }
-    });
+    } catch (error) {
+      throw {
+        status: 'error',
+        message: error.message
+      };
+    }
   }
 
 }
+
+
