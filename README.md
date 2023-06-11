@@ -41,22 +41,22 @@ back/
 ```
 front/
   |--src/
-		|-- AppAdapters.ts
-		|-- User/
-			|-- Domain/
-				|--User.ts
-				|--UserRepositoryInterface.ts
-				|--ValueObjects/
-				|--Exceptions/
-			|-- Application/
-				|--SignInService.ts
-				|--SignUpService.ts
-			|-- Infrastructure/
-				|--MysqlUserRepository.ts
+	|-- AppAdapters.ts
+	|-- User/
+		|-- Domain/
+			|--User.ts
+			|--UserRepositoryInterface.ts
+			|--ValueObjects/
+			|--Exceptions/
+		|-- Application/
+			|--SignInService.ts
+			|--SignUpService.ts
+		|-- Infrastructure/
+			|--MysqlUserRepository.ts
   |--ui/
     |-- assets/
-			|--fonts/
-			|--imgs/
+	|--fonts/
+	|--imgs/
     |-- components/
     |-- styles/
     |-- main.ts
