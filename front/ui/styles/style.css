@@ -1,27 +1,56 @@
+
 @font-face {
-  font-family: Laurel-Regular;
-  src: url(./../assets/fonts/Laurel-Regular.otf);
+  font-family: Alpina-Regular;
+  src: url(./../assets/fonts/GT-Alpina-Condensed-Regular-Trial.woff2);
 }
 
 @font-face {
-  font-family: Laurel-Medium;
-  src: url(./../assets/fonts/Laurel-Medium.otf);
+  font-family: Alpina-Regular-Italic;
+  src: url(./../assets/fonts/GT-Alpina-Condensed-Regular-Italic-Trial.woff2);
+}
+
+@font-face {
+  font-family: Alpina-Condensed-Medium;
+  src: url(./../assets/fonts/GT-Alpina-Condensed-Medium-Trial.woff2);
+}
+
+@font-face {
+  font-family: Alpina-Fine-Condensed-Bold;
+  src: url(./../assets/fonts/GT-Alpina-Fine-Condensed-Bold-Trial.woff2);
+}
+
+@font-face {
+  font-family: Alpina-Condensed-Bold;
+  src: url(./../assets/fonts/GT-Alpina-Condensed-Bold-Trial.woff2);
+}
+
+@font-face {
+  font-family: Alpina-Tw-Regular;
+  src: url(./../assets/fonts/GT-Alpina-Typewriter-Regular-Trial.woff2);
+}
+
+@font-face {
+  font-family: Alpina-Tw-Regular-Italic;
+  src: url(./../assets/fonts/GT-Alpina-Typewriter-Regular-Italic-Trial.woff2);
 }
 
 :root {
   --green100: #e3e4c5;
   --green200: #F0FABA;
-  --green300: #cfdc85;
+  --green300: #D5E096;
+  --green350: #d8e783;
   --green400: #d6ea66;
   --green450: #BFAE54;
-  --green500: #918336;
+  --green500: #8F833F;
   --green600: #60572A;
   --green700: #3d3718;
-
+  --green800: #282511;
   --bg-color: var(--green500);
 
   --font-light: var(--green200);
   --font-dark: var(--green700);
+
+  --font-lightDarkMode: #E5DFBB;
 
   --hover-dark: var(--font-dark);
 
@@ -32,15 +61,28 @@
 
   --h2-color: var(--font-dark);
 
+  --button-color: var(--font-dark);
   --button-bg: var(--green300);
+  --button-color-dm: var(--green300);
+  --button-bg-dm: var(--font-dark);
+
+  --a-ff: 'Alpina-Tw-Regular-Italic';
+  --global-ff: 'Alpina-Tw-Regular';
+  --h2-ff: 'Alpina-Fine-Condensed-Bold';
+  --button-ff:'Alpina-Fine-Condensed-Bold';
+  --input-ff:'Alpina-Fine-Condensed-Bold';
+  --circle-ff: 'Alpina-Tw-Regular';
 }
 
 [data-theme="dark"] {
-  --bg-color: var(--green700);
-  --font-light: var(--green300);
+  --bg-color: var(--green800);
+  --font-light: var(--font-lightDarkMode);
   --font-dark: var(--green600);
   --h2-color: var(--green500);
-  --button-bg: var(--green500);
+  --button-color: var(--green300);
+  --button-bg: var(--green600);
+  --button-bg-dm: var(--green300);
+  --button-color-dm: var(--green600);
 }
 
 ::-moz-selection {
@@ -54,10 +96,11 @@
 }
 
 * {
-  font-family: 'Laurel-Regular', 'Montserrat', serif;
+  font-family: var(--global-ff);
   color: var(--font-light);
   margin: 0;
   padding: 0;
+  font-size: 1.1rem;
 }
 
 body {
@@ -65,6 +108,15 @@ body {
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   overflow: hidden;
   padding: 0 8vw;
+}
+
+@media (max-width: 800px) {
+  body {
+      padding: 4vh 8vw;
+      overflow-x: hidden;
+      overflow-y: scroll;
+
+  }
 }
 
 #forms-sect {
@@ -75,16 +127,22 @@ body {
   justify-content: center;
 }
 
+@media (max-width: 800px) {
+  #forms-sect {
+    height: unset;
+  }
+}
+
 h2 {
-  font-size: 2.6rem;
+  font-size: 3.7rem;
   margin-bottom: 0.8rem;
   font-weight: 100;
   color: var(--h2-color);
+  font-family: var(--h2-ff);
 }
 
-h2 + p, p > a {
+h2 + p{
   color: var(--green300);
-
 }
 
 a {
@@ -92,12 +150,14 @@ a {
   position: relative;
   bottom: 0rem;
   background-color: transparent;
+  color: var(--green350);
+  font-family: var(--a-ff);
   transition: color 0.6s ease-in-out, bottom 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
 
 a:hover {
   color: var(--green500);
-  background-color: var(--green200);
+  background-color: var(--green300);
 }
 
 code {
@@ -106,7 +166,6 @@ code {
 
 form {
   transition: all 0.3s ease-out;
-  margin-top: 4rem;
 }
 
 fieldset {
@@ -126,7 +185,8 @@ fieldset p {
 fieldset label {
   position: absolute;
   color: var(--font-light);
-  top: -0.3rem;
+  top: 0.4rem;
+  font-size: 1rem;
   transition-property: top, font-size, color;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
@@ -134,7 +194,7 @@ fieldset label {
 
 .fieldset-label-focus {
   top: -1.2rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .fieldset-label-focus, .fieldset-label-focus span {
@@ -157,6 +217,7 @@ input[type='password'] {
   transition: border-bottom 0.3s ease-in-out;
   height: 2rem;
   box-sizing: border-box;
+  font-family: var(--input-ff);
 }
 
 input[type='text']:focus,
@@ -225,9 +286,9 @@ input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
 /* Terms & policy */
 #terms-policy-label {
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 1.2rem;
   box-sizing: border-box;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 input[type='checkbox'] {
@@ -238,8 +299,19 @@ input[type='checkbox'] {
   left: 1px;
 }
 
-#terms-policy-label, #terms-policy-label a {
-  color: var(--green200);
+#terms-policy-label{
+  color: var(--font-light);
+  font-size: 0.8rem;
+}
+
+#terms-policy-label a {
+  color: var(--green350);
+  font-size: 0.8rem;
+}
+
+#terms-policy-label a:hover {
+  color: var(--green500);
+  background-color: var(--green300);
 }
 
 #terms-policy-label span {
@@ -248,15 +320,13 @@ input[type='checkbox'] {
   left: 0;
   height: 12px;
   width: 12px;
-  border: 1px solid var(--green400);
+  border: 2px solid var(--green450);
   transition: all 0.8s ease;
 }
 
 #terms-policy-label:focus-within span {
   outline: solid 1px var(--hover-light);
 }
-
-
 
 #terms-policy-label input + span::after {
   content: "";
@@ -283,20 +353,19 @@ button[type='submit'] {
   margin-top: 1.5rem;
   font-size: 1.1rem;
   padding: 0.5rem;
-  color: var(--green700);
+  color: var(--button-color);
+  text-transform: uppercase;
+  font-family: var(--button-ff);
   border: 1px solid var(--green700);
   background-color: var(--button-bg); 
-
-
   transition-property: border, background, color;
-  transition-duration: 0.6s;
-  transition-timing-function: ease-in-out;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
 }
 
 button[type='submit']:hover {
-  border: 1px solid var(--green400);
-  background: var(--green200);
-  color: var(--green600);
+  background: var(--button-bg-dm);
+  color: var(--button-color-dm);
 }
 
 /* Feedbacks */
@@ -348,6 +417,13 @@ button[type='submit']:hover {
   z-index: 5;
 }
 
+@media (max-width: 980px) {
+  #theme-mode {
+    right: 5vw;
+  }
+}
+
+
 #switch {
   height: 18rem;
   width: 2rem;
@@ -363,13 +439,13 @@ button[type='submit']:hover {
 #switch-line {
   width: 2px;
   height: 15rem;
-  background: var(--green400);
+  background: var(--green350);
 }
 
 #switch-circle {
   width: 0.6rem;
   height: 0.6rem;
-  border: 3px solid var(--green400);
+  border: 3px solid var(--green350);
   border-radius: 50px;
   cursor: grab;
 }
@@ -398,28 +474,34 @@ button[type='submit']:hover {
 
 /* Magenit circle */
 #circle-wrapper {
-  position: fixed;
+  position: absolute;
   bottom: 4vw;
   right: 4vw;
+}
+
+@media (max-width: 800px) {
+  #circle-wrapper {
+    bottom: 0vw;
+  }
 }
 
 #info-card {
   width: 350px;
   height: 200px;
   position: absolute;
-  display: block;
+  display: none;
   background-color: var(--green200);
   color: var(--green600);
   border-radius: 1rem;
   padding: 2rem;
-  opacity: 1;
+  opacity: 0;
   font-size: 1.1rem;
   box-shadow: -6px -5px 15px var(--green600);
   box-sizing: border-box;
   z-index: 1;
   bottom: 0px;
   right: 0px;
-  /* transition: all 2s ease; */
+  transition: opacity 2s ease;
 
 }
 
@@ -440,14 +522,15 @@ button[type='submit']:hover {
 
 #circle-info {
   font-size: 0.8rem;
+  font-family: var(--a-ff);
   position: absolute;
   transition: all 1s ease ;
   z-index: 4;
+  color: var(--green350);
 }
 
 .circle-info-out {
   cursor: pointer;
-
 }
 
 .circle-info-out:hover {
@@ -467,7 +550,7 @@ button[type='submit']:hover {
 }
 
 .onDisplay {
-  fill:  var(--green700) !important;
+  fill:  var(--green600) !important;
   font-weight: 600;
   z-index: 3;
 }
@@ -487,7 +570,7 @@ button[type='submit']:hover {
 
 #svg-circle textPath {
   font-size: 0.7rem;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--circle-ff);
 } 
 
 /* Animations  */

@@ -17,8 +17,8 @@ class Password
 
 	private function validatePassword(string $password): void
 	{
-		if (strlen($password) < 6 || strlen($password) > 10) {
-			throw new Exception("The password must be 6 to 10 characters long.");
+		if (strlen($password) < 6 || strlen($password) > 20) {
+			throw new Exception("The password must be 6 to 20 characters long.");
 		}
 
 		if (!preg_match('/\d/', $password)) {

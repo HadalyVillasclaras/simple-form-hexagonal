@@ -104,7 +104,6 @@ function handleSignUpSubmit() {
       formFeedback.render();
     } catch (error) {
       if (error instanceof Error) {
-        console.log(error);
         const formFeedback = new FormFeedback('signup-form', { status: 'error', message: error.message });
         formFeedback.render();
       }

@@ -2,4 +2,4 @@
 info.md
 node_modules
 dist
-*.otf
+front/ui/assets/fonts/

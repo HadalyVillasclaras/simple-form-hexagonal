@@ -15,7 +15,8 @@ class SigninController {
     {
       try {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-          $this->handleSignIp();
+          var_dump('ff');
+          $this->handleSignIn();
         } else {
           http_response_code(405);
           throw new Exception("Not Allowed HTTP method");
@@ -26,7 +27,7 @@ class SigninController {
       }
     }
 
-    private function handleSignIp() {
+    private function handleSignIn() {
       try {
         $userData = json_decode(file_get_contents('php://input'), true);
         $userData['email'] = $userData['email'] ?? '';

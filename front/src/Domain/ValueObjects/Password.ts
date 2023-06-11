@@ -10,10 +10,10 @@ export class Password {
     const hasNumber = /\d/;
     const hasCap = /[A-Z]/;
     const hasSymbol = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/;
-    const length = password.length >= 6 && password.length <= 8;
+    const length = password.length >= 6 && password.length <= 20;
 
     if (!length) {
-      throw new Error("Password must be between 6 and 8 characters");
+      throw new Error("Password must be between 6 and 20 characters");
     }
     if (!hasNumber.test(password)) {
       throw new Error("Password must contain at least one number");
@@ -24,7 +24,6 @@ export class Password {
     if (!hasSymbol.test(password)) {
       throw new Error("Password must contain at least one symbol");
     }
-
   }
 
   getPassword(): string {

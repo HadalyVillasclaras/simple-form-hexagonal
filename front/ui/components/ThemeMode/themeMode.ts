@@ -77,7 +77,6 @@ function switchControl() {
 
 function enterArrowArea() {
 	arrowArea?.addEventListener('mouseenter', () => {
-		console.log(initialAnimationActive);
 		if(!clickedSwitch && arrow && !initialAnimationActive) {
 			arrow.style.opacity = '1'; 
 			arrow.classList.add('down-up');
