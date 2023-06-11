@@ -1,7 +1,7 @@
 import { API_BASE_URL } from '../../config';
 import { User } from '../Domain/User';
 
-export default class UserRepository {
+export default class MysqlUserRepository {
 
   async addUser(user: User): Promise<Response> {
     try {

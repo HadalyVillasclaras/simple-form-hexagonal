@@ -1,6 +1,6 @@
 import SignInService from "./Application/SignInService";
 import SignUpService from "./Application/SignUpService";
-import UserRepository from "./Infrastructure/UserRepository";
+import UserRepository from "./Infrastructure/MysqlUserRepository";
 
 export interface InputResponse {
   status: string,
