@@ -33,6 +33,17 @@ function switchControl() {
 	let dragging = false;
 	let dy = 0;
 
+	if (window.innerWidth < 800) {
+		switchCircle?.addEventListener('touchend', (e) => {
+				const currentTheme = document.documentElement.getAttribute('data-theme');
+				switchTheme(currentTheme);
+				svgCircle.classList.add('rotate-once');
+				svgCircle.addEventListener('animationend', function () {
+						svgCircle.classList.remove('rotate-once');
+				});
+		});
+} 
+
 	switchCircle?.addEventListener('mousedown', (e) => {
 		startY = e.clientY;
 		originalY = switchButton.offsetTop;

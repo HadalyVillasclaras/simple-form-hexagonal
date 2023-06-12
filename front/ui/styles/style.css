@@ -127,12 +127,6 @@ body {
   justify-content: center;
 }
 
-@media (max-width: 800px) {
-  #forms-sect {
-    height: unset;
-  }
-}
-
 h2 {
   font-size: 3.7rem;
   margin-bottom: 0.8rem;
@@ -162,6 +156,12 @@ a:hover {
 
 code {
   color: var(--font-dark);
+}
+
+.no-wrap {
+  white-space: nowrap;
+  color: var(--font-dark);
+
 }
 
 form {
@@ -389,22 +389,25 @@ button[type='submit']:hover {
 }
 
 .form-feedback {
-  height: 1rem;
+  visibility: hidden;
   opacity: 0;
   margin: 0;
-  transition: all 0.5s ease-out;
-  margin-top: 1rem;
-
+  height: 0;
+  transition:  margin 0.2s ease-in, height 0.2s ease-in, opacity 0.5s ease-out, visibility 0.5s ease-out;
 }
 
 .form-feedback.error {
   opacity: 1;
   color: rgb(110, 59, 17);
+  height: 1rem;
+  margin: 1rem 0;
 }
 
 .form-feedback.success {
   opacity: 1;
-  color: var(--green700);
+  color: var(--green400);
+  height: 1rem;
+  margin: 1rem 0;
 }
 
 /* Theme mode */
@@ -483,17 +486,19 @@ button[type='submit']:hover {
   position: absolute;
   bottom: 4vw;
   right: 4vw;
+  width: 100%;
 }
 
 @media (max-width: 800px) {
   #circle-wrapper {
-    bottom: unset;
+    bottom: 4vh;
+    right: 0;
   }
 }
 
 #info-card {
-  width: 350px;
-  height: 200px;
+  max-width: 350px;
+  height: auto;
   position: absolute;
   display: none;
   background-color: var(--green200);
@@ -502,13 +507,28 @@ button[type='submit']:hover {
   padding: 2rem;
   opacity: 0;
   font-size: 1.1rem;
-  box-shadow: -6px -5px 15px var(--green600);
+  box-shadow: 0px 0px 15px var(--green600);
   box-sizing: border-box;
-  z-index: 1;
+  z-index: 9;
   bottom: 0px;
   right: 0px;
   transition: opacity 2s ease;
+  line-height: 1.5rem;
+  font-family: 'Alpina-Fine-Condensed-Bold';
+}
 
+.cardMobileDisplay, .cardMobileDisplay > * {
+  font-size: 1.7rem!important;
+  line-height: 1.8rem!important;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 90vw;
+}
+
+i {
+  color: var(--green600);
+  font-family: 'Alpina-Regular-Italic';
+  font-size: 1.2rem;
 }
 
 #circle {
@@ -575,7 +595,7 @@ button[type='submit']:hover {
 #svg-circle textPath {
   font-size: 0.7rem;
   font-family: var(--circle-ff);
-  letter-spacing: 2px;
+  letter-spacing: 0px;
 } 
 
 /* Animations  */

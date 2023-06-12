@@ -53,16 +53,34 @@ export function magneticCircle() {
     }, 800);
   });
 
-  circleInfo.addEventListener('click', () => {
-    if (!checkWindowSize()) return;
-    infoCard.style.opacity = '0.6';
+  circleInfo.addEventListener('click', (event) => {
+    event.stopPropagation(); 
+    infoCard.style.opacity = '0.9';
     infoCard.style.display = 'block';
+    
+    if(window.innerWidth < 800){
+      infoCard.classList.add('cardMobileDisplay');
+      infoCard.style.right = '0';
+      infoCard.style.bottom = '0';
+    }
 
     svgCircle.classList.add('onDisplay');
     circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
   });
 
-  circleInfo.addEventListener('mouseleave', () => {
+  document.addEventListener('click', (event) => {
+    if (checkWindowSize() || infoCard.contains(event.target as Node)) return;
+    infoCard.style.opacity = '0';
+    infoCard.style.right = '0';
+    infoCard.style.bottom = '0';
+    svgCircle.classList.remove('onDisplay');
+    circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
+  
+    setTimeout(() => {
+      infoCard.style.display = 'none';
+    infoCard.classList.remove('cardMobileDisplay');
+
+    }, 200);
   });
 }
 

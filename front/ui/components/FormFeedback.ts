@@ -3,9 +3,10 @@ import { InputResponse, AppResponse } from '../../src/AppAdapter';
 export class FormFeedback {
   formElement: HTMLFormElement;
   formResponse: InputResponse | AppResponse;
-
+  formFeedback: any;
   constructor(formElementId: string, formResponse: InputResponse | AppResponse) {
     const formElement = document.getElementById(formElementId) as HTMLFormElement;
+    this.formFeedback = formElement.querySelector('.form-feedback');
 
     if (!formElement) {
       throw new Error(`Form with id ${formElementId} does not exist.`);
@@ -24,24 +25,25 @@ export class FormFeedback {
   }
 
   private renderAppFeedback() {
-    const formFeedback = this.formElement.querySelector('.form-feedback');
-
-    if(formFeedback) {
-      this.removeFeedBackMessage(formFeedback);
+    this.formFeedback.style.opacity = 1;
+  this.formFeedback.style.visibility = 'visible';
+    if(this.formFeedback) {
+      this.removeFeedBackMessage();
       const formResponse = this.formResponse as AppResponse;
-      formFeedback.classList.remove('error', 'success');
+      this.formFeedback.classList.remove('error', 'success');
       if(formResponse.status === 'error') {
-        formFeedback.classList.add('error');
+        this.formFeedback.classList.add('error');
       } else if(formResponse.status === 'success') {
-        formFeedback.classList.add('success');
+        this.formFeedback.classList.add('success');
       }
 
-      formFeedback.textContent = formResponse.message;
+      this.formFeedback.textContent = formResponse.message;
     }
   }
 
   private renderInputFeedback() {
     this.removeOldErrorMessages();
+    this.removeFeedBackMessage() 
     const errorFields: any = [];
 
     const inputResponse = this.formResponse as InputResponse;
@@ -79,7 +81,8 @@ export class FormFeedback {
     }
   }
 
-  private removeFeedBackMessage(formFeedback: any) {
-    formFeedback.content = '';
+  private removeFeedBackMessage() {
+    this.formFeedback.textContent = '';
+    this.formFeedback.innerHTML = '';
   }
 }

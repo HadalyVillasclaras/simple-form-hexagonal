@@ -10,7 +10,7 @@ export default class JsonMockUserRepository {
         
         return {
           status: 'success',
-          message: 'Logged in successfully'
+          message: '✫ Logged in successfully ✫'
         };
       } else {
         return {
