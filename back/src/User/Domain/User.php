@@ -38,7 +38,7 @@ class User {
 
     public function getEmail(): string 
     {
-        return $this->email->getEmail();
+        return $this->email->value();
     }
 
     public function setEmail(Email $email): void 
@@ -48,7 +48,7 @@ class User {
 
     public function getPassword(): string 
     {
-        return $this->password->getPassword();
+        return $this->password->value();
     }
 
     public function setPassword(Password $password): void 

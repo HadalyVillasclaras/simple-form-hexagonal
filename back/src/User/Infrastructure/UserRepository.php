@@ -61,7 +61,7 @@ class UserRepository implements UserRepositoryInterface
     {
         try {
             $stmt = $this->connection->Connect()->prepare("SELECT * FROM User WHERE email = :email");
-            $stmt->bindValue(':email', $email->getEmail());
+            $stmt->bindValue(':email', $email->value());
             $stmt->execute();
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);

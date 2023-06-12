@@ -10,7 +10,7 @@ class Password
 		$this->password = $this->hashPassword($password);
 	}
 
-	public function getPassword(): string
+	public function value(): string
 	{
 		return $this->password;
 	}

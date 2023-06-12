@@ -78,6 +78,8 @@ function handleSignInSubmit() {
     try {
       const formData = new FormData(event.target as HTMLFormElement);
       const signInResponse: InputResponse | AppResponse = await appAdapter.handleSignIn(formData);
+      console.log(signInResponse);
+      
       const formFeedback = new FormFeedback('signin-form', signInResponse);
       formFeedback.render();
     } catch (error) {
@@ -98,7 +100,6 @@ function handleSignUpSubmit() {
     try {
       const formData = new FormData(event.target as HTMLFormElement);
       const signUpResponse: InputResponse | AppResponse = await appAdapter.handleSignUp(formData);
-
       const formFeedback = new FormFeedback('signup-form', signUpResponse);
       formFeedback.render();
     } catch (error) {

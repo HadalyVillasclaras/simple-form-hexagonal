@@ -33,7 +33,7 @@ export default class MysqlUserRepository {
       return response;
 
     } catch (error) {
-      throw { status: 'error', message: error.message };
+      throw { status: 'error', message: (error as Error).message };
     }
   }
 

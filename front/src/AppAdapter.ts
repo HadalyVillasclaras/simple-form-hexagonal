@@ -1,7 +1,7 @@
 import SignInService from "./Application/SignInService";
 import SignUpService from "./Application/SignUpService";
-import UserRepositoryJson from "./Infrastructure/JsonMockUserRepository";
-import UserRepository from "./Infrastructure/MysqlUserRepository";
+import JsonMockUserRepository from "./Infrastructure/JsonMockUserRepository";
+import MysqlUserRepository from "./Infrastructure/MysqlUserRepository";
 
 export interface InputResponse {
   status: string,
@@ -19,10 +19,10 @@ export class AppAdapter {
   private signInService: SignInService;
 
   constructor() {
-    const userRepository = new UserRepository();
-    const jsonUserRepository = new UserRepositoryJson();
+    const userRepository = new MysqlUserRepository();
+    const jsonUserRepository = new JsonMockUserRepository();
     this.signUpService = new SignUpService(userRepository);
-    this.signInService = new SignInService(userRepository);
+    this.signInService = new SignInService(jsonUserRepository);
   }
 
   async handleSignUp(formData: FormData): Promise<any> {
@@ -40,7 +40,6 @@ export class AppAdapter {
   }
 
   async handleSignIn(formData: FormData): Promise<any> {
-
     try {
       const serviceResponse = await this.signInService.signIn(formData);
       if (serviceResponse instanceof Response) {

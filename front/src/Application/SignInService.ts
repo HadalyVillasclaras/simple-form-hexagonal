@@ -9,7 +9,6 @@ export default class SignInService {
     this.userRepository = userRepository;
   }
 
-
   async signIn(formData: any): Promise<any> {
     const inputErrors: { field: string, message: string }[] = [];
     const requestData: any = {};
@@ -20,6 +19,7 @@ export default class SignInService {
       }
       requestData[key] = value;
     });
+    
     let email: Email;
 
     try {
@@ -46,6 +46,5 @@ export default class SignInService {
     }
   }
 }
-
 
 

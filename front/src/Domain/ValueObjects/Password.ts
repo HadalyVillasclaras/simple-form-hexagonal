@@ -3,7 +3,15 @@ export class Password {
 
   constructor(password: string) {
     this.validatePassword(password);
+    this.isDefined(password);
     this.password = password;
+  }
+
+  private isDefined(password: string | null | undefined) {
+    if (password === '' || password === null || password === undefined) {
+      console.log('object');
+      throw new Error("This field cannot be empty");
+    }
   }
 
   private validatePassword(password: string) {
@@ -26,7 +34,7 @@ export class Password {
     }
   }
 
-  getPassword(): string {
+  value(): string {
     return this.password;
   }
 

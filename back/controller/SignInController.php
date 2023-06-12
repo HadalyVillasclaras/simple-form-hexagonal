@@ -15,7 +15,6 @@ class SigninController {
     {
       try {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-          var_dump('ff');
           $this->handleSignIn();
         } else {
           http_response_code(405);

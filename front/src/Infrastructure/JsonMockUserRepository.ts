@@ -1,10 +1,10 @@
 import * as data from './jsonDB.json'; 
 
-export default class UserRepositoryJson {
+export default class JsonMockUserRepository {
 
   async signIn(user: any): Promise<Response> {
     try {
-      const storedUser = data.default[0];
+      const storedUser = data?.default[0];
     
       if (user.email === storedUser.mail && user.password === storedUser.pass) {
         
@@ -19,10 +19,7 @@ export default class UserRepositoryJson {
         };
       }
     } catch (error) {
-      throw {
-        status: 'error',
-        message: error.message
-      };
+      throw { status: 'error', message: error.message};
     }
   }
 

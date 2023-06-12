@@ -461,6 +461,12 @@ button[type='submit']:hover {
   z-index: 1;
 }
 
+@media (max-width: 600px) {
+  #arrow-area {
+    display: none;
+  }
+}
+
 #arrow{
   position: absolute;
   z-index: 3;
@@ -472,7 +478,7 @@ button[type='submit']:hover {
   transition: visibility 1s linear, opacity 0.3s linear;
 }
 
-/* Magenit circle */
+/* Magnetic circle */
 #circle-wrapper {
   position: absolute;
   bottom: 4vw;
@@ -481,7 +487,7 @@ button[type='submit']:hover {
 
 @media (max-width: 800px) {
   #circle-wrapper {
-    bottom: 0vw;
+    bottom: unset;
   }
 }
 
@@ -555,7 +561,6 @@ button[type='submit']:hover {
   z-index: 3;
 }
 
-
 #svg-circle {
   fill: var(--green200);
   position: absolute;
@@ -567,10 +572,10 @@ button[type='submit']:hover {
   transition:all 1s ease;
 }
 
-
 #svg-circle textPath {
   font-size: 0.7rem;
   font-family: var(--circle-ff);
+  letter-spacing: 2px;
 } 
 
 /* Animations  */
