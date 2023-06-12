@@ -22,7 +22,7 @@ export class AppAdapter {
     const userRepository = new MysqlUserRepository();
     const jsonUserRepository = new JsonMockUserRepository();
     this.signUpService = new SignUpService(userRepository);
-    this.signInService = new SignInService(jsonUserRepository);
+    this.signInService = new SignInService(userRepository);
   }
 
   async handleSignUp(formData: FormData): Promise<any> {

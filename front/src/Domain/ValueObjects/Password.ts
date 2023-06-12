@@ -9,7 +9,6 @@ export class Password {
 
   private isDefined(password: string | null | undefined) {
     if (password === '' || password === null || password === undefined) {
-      console.log('object');
       throw new Error("This field cannot be empty");
     }
   }
