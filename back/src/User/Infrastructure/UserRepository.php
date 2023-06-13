@@ -1,5 +1,4 @@
 <?php
-
 require_once 'Connection.php';
 require_once __DIR__ . '/../Domain/UserRepositoryInterface.php';
 
@@ -23,12 +22,15 @@ class UserRepository implements UserRepositoryInterface
             $stmt->bindValue(':surname', $user->getSurname());
             $stmt->bindValue(':email', $user->getEmail());
             $stmt->bindValue(':password', $user->getPassword());
+
             $stmt->execute();
+
         } catch (PDOException $e) {
-            if ($e->errorInfo[1] == 1062) {
-                throw new Exception("This email already exists!");
+            if ($e->errorInfo[1] === 1062 && strpos($e->getMessage(), 'Duplicate entry') !== false) {
+                throw new Exception("This email already exists");
             } else {
                 throw new Exception($e->getMessage());
+                // throw $e->getMessage();
             }
         }
     }
@@ -50,10 +52,10 @@ class UserRepository implements UserRepositoryInterface
                     $user['password']
                 );
             }
-
             return null;
         } catch (PDOException $e) {
             throw new Exception($e->getMessage() . " | " . $e->getCode());
+            // throw $e->getMessage();
         }
     }
 
@@ -73,6 +75,7 @@ class UserRepository implements UserRepositoryInterface
             return null;
         } catch (PDOException $e) {
             throw new Exception($e->getMessage() . " | " . $e->getCode());
+            // throw $e->getMessage();
         }
     }
 }

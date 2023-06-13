@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/ValueObjects/Email.php';
 require_once __DIR__ . '/ValueObjects/Password.php';
 

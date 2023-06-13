@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/../Domain/UserRepositoryInterface.php';
 require_once __DIR__ . '/../Domain/ValueObjects/Email.php';
 require_once __DIR__ . '/../Domain/ValueObjects/Password.php';

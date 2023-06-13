@@ -1,4 +1,6 @@
 <?php
+require_once '../src/User/Domain/Exceptions/EmptyFieldException.php';
+require_once '../Exceptions/EmptyFieldException.php';
 
 class Email
 {
@@ -18,7 +20,7 @@ class Email
 
 	// private function isDefined(string | null $email) {
 	// 	if ($email === '' || $email === null ) {
-	// 		throw new Exception(("Email must be defined"));
+	// 		throw new EmptyFieldException();
 	// 	}
 	// }
 

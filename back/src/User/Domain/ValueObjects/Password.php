@@ -1,4 +1,5 @@
 <?php
+require_once '../Exceptions/EmptyFieldException.php';
 
 class Password
 {
@@ -7,6 +8,7 @@ class Password
 	public function __construct(string $password)
 	{
 		$this->validatePassword($password);
+		// $this->isDefined($password);
 		$this->password = $this->hashPassword($password);
 	}
 
@@ -33,6 +35,12 @@ class Password
 			throw new Exception("The password must contain at least one symbol.");
 		}
 	}
+
+	// private function isDefined(string | null $password) {
+	// 	if ($password === '' || $password === null ) {
+	// 		throw new EmptyFieldException();
+	// 	}
+	// }
 
 	private function hashPassword(string $password): string
 	{

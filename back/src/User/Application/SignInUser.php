@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../Domain/UserRepositoryInterface.php';
 require_once __DIR__ . '/../Domain/ValueObjects/Email.php';
 require_once __DIR__ . '/../Domain/ValueObjects/Password.php';
+require_once __DIR__ . '/../Domain/Exceptions/InvalidCredentialsException.php';
 
 class SignInUser
 {
@@ -27,7 +28,7 @@ class SignInUser
             !isset($signInUser['email']) || 
             !password_verify($this->password, $signInUser['password'])
         ) {
-            throw new Exception("Invalid credentials.");
+            throw new InvalidCredentialsException();
         }
 
         $user = [

@@ -1,6 +1,4 @@
 <?php
-// namespace back\src\Infrastructure;
-
 require_once __DIR__ . "/../../../config/dbConfig.php";
 
 class Connection
@@ -18,6 +16,7 @@ class Connection
 		} catch (PDOException $e) {
 			error_log("Connection error: " . $e->getMessage() . " | " . $e->getCode());
 			throw $e;
+      // throw $e->getMessage();
 		}
 	}
 }
