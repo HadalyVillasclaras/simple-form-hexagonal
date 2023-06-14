@@ -29,7 +29,6 @@ function setDefaultTemplate() {
   setLinks();
   handleSignUpSubmit();
   setTimeout(formAnimations, 0);
-
 }
 
 function setLinks() {
