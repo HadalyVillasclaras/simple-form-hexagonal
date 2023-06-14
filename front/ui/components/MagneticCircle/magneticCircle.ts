@@ -53,8 +53,8 @@ function stopCircle() {
   svgCircle.classList.remove('infiniteRotate');
   svgCircle.classList.remove('svg-circle-inactive');
   infoCard.style.opacity = '0';
-
   circleInfo.classList.replace('circle-info-enter', 'circle-info-out');
+  infoCard.classList.remove('cardMobileDisplay');
 
   setTimeout(() => {
     infoCard.style.display = 'none';
@@ -81,6 +81,7 @@ function closeInfoCardOnMobile(event: MouseEvent) {
   infoCard.style.bottom = '0';
   svgCircle.classList.remove('svg-circle-inactive');
   circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
+  infoCard.classList.remove('cardMobileDisplay');
 
   setTimeout(() => {
     infoCard.style.display = 'none';

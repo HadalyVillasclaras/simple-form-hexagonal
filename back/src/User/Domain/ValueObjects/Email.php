@@ -1,6 +1,5 @@
 <?php
 require_once '../src/User/Domain/Exceptions/EmptyFieldException.php';
-require_once '../Exceptions/EmptyFieldException.php';
 
 class Email
 {
@@ -9,7 +8,7 @@ class Email
 	public function __construct(string $email)
 	{
 		$this->validateEmail($email);
-		// $this->isDefined($email);
+		$this->isDefined($email);
 		$this->email = $email;
 	}
 
@@ -18,11 +17,11 @@ class Email
 		return $this->email;
 	}
 
-	// private function isDefined(string | null $email) {
-	// 	if ($email === '' || $email === null ) {
-	// 		throw new EmptyFieldException();
-	// 	}
-	// }
+	private function isDefined(string | null $email) {
+		if ($email === '' || $email === null ) {
+			throw new EmptyFieldException();
+		}
+	}
 
 	private function validateEmail(string $email): void
 	{

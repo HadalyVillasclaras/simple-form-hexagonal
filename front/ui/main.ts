@@ -76,8 +76,6 @@ function handleSignInSubmit() {
     try {
       const formData = new FormData(event.target as HTMLFormElement);
       const signInResponse: InputResponse | AppResponse = await appAdapter.handleSignIn(formData);
-      console.log(signInResponse);
-      
       const formFeedback = new FormFeedback('signin-form', signInResponse);
       formFeedback.render();
     } catch (error) {

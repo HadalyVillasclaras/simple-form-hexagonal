@@ -22,7 +22,7 @@ export class AppAdapter {
     const userRepository = new MysqlUserRepository();
     const jsonUserRepository = new JsonMockUserRepository();
     this.signUpService = new SignUpService(userRepository);
-    this.signInService = new SignInService(userRepository);
+    this.signInService = new SignInService(jsonUserRepository); //Change prop to 'userRepository' to be served by built-in back-end
   }
 
   async handleSignUp(formData: FormData): Promise<any> {
