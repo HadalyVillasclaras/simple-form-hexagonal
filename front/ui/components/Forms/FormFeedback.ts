@@ -1,9 +1,10 @@
-import { InputResponse, AppResponse } from '../../src/AppAdapter';
+import { InputResponse, AppResponse } from '../../../src/AppAdapter';
 
 export class FormFeedback {
   formElement: HTMLFormElement;
   formResponse: InputResponse | AppResponse;
   formFeedback: any;
+
   constructor(formElementId: string, formResponse: InputResponse | AppResponse) {
     const formElement = document.getElementById(formElementId) as HTMLFormElement;
     this.formFeedback = formElement.querySelector('.form-feedback');
@@ -26,7 +27,8 @@ export class FormFeedback {
 
   private renderAppFeedback() {
     this.formFeedback.style.opacity = 1;
-  this.formFeedback.style.visibility = 'visible';
+    this.formFeedback.style.visibility = 'visible';
+
     if(this.formFeedback) {
       this.removeFeedBackMessage();
       const formResponse = this.formResponse as AppResponse;
@@ -36,7 +38,6 @@ export class FormFeedback {
       } else if(formResponse.status === 'success') {
         this.formFeedback.classList.add('success');
       }
-
       this.formFeedback.textContent = formResponse.message;
     }
   }
@@ -57,19 +58,14 @@ export class FormFeedback {
         if (!inputField) {
           throw new Error(`Input field ${error.field} does not exist.`);
         }
-
-        const errorMessage = document.createElement('span');
-        errorMessage.textContent = error.message;
-        errorMessage.className = 'input-error';
-        inputField?.parentElement?.appendChild(errorMessage);
+        
+        const inputErrorMessage = document.createElement('span');
+        inputErrorMessage.textContent = error.message;
+        inputErrorMessage.className = 'input-error';
+        inputField?.parentElement?.appendChild(inputErrorMessage);
 
         // delete on input
-        inputField.addEventListener('input', () => {
-          if (errorMessage.parentNode) {
-            errorMessage.style.opacity = '0';
-            errorMessage.parentNode.removeChild(errorMessage);
-          }
-        });
+        inputField.addEventListener('input', () => this.removeMessageIfWriting(inputErrorMessage));
       }
     });
   }
@@ -84,5 +80,12 @@ export class FormFeedback {
   private removeFeedBackMessage() {
     this.formFeedback.textContent = '';
     this.formFeedback.innerHTML = '';
+  }
+
+  private removeMessageIfWriting(errorMessage: HTMLSpanElement) {
+    if (errorMessage.parentNode) {
+      errorMessage.style.opacity = '0';
+      errorMessage.parentNode.removeChild(errorMessage);
+    }
   }
 }

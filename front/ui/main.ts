@@ -1,5 +1,5 @@
 import { AppAdapter, InputResponse, AppResponse } from '../src/AppAdapter';
-import { FormFeedback } from './components/FormFeedback';
+import { FormFeedback } from './components/Forms/FormFeedback';
 
 const appAdapter = new AppAdapter();
 
@@ -65,7 +65,6 @@ function switchTemplates(event: MouseEvent, templateToShow: any) {
     handleSignUpSubmit();
   }
 }
-
 
 // Handle forms submit
 function handleSignInSubmit() {

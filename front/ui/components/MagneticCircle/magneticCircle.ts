@@ -3,17 +3,19 @@ const circleInfo = document.getElementById('circle-info') as HTMLElement;
 const svgCircle = document.getElementById('svg-circle') as HTMLElement;
 const infoCard = document.getElementById('info-card') as HTMLElement;
 
-export function magneticCircle() {
-  if (checkWindowSize()) {
-    circle.addEventListener('mousemove', (event) => moveCircle(event));
-    circle.addEventListener('mouseleave', stopCircle);
-  }
-  circleInfo.addEventListener('click', (event) => openInfoCard(event));
-  document.addEventListener('click', (event) => closeInfoCardOnMobile(event));
+function isWindowMobileSize() {
+  return window.innerWidth < 800;
 }
 
-function checkWindowSize() {
-  return window.innerWidth > 800;
+export function magneticCircle() {
+  if (!isWindowMobileSize()) {
+    circle.addEventListener('mousemove', (event) => moveCircle(event));
+    circle.addEventListener('mouseleave', stopCircle);
+  } else {
+    document.addEventListener('click', (event) => closeInfoCardOnMobile(event));
+  }
+  
+  circleInfo.addEventListener('click', (event) => openInfoCard(event));
 }
 
 function moveCircle(event: MouseEvent) {
@@ -73,7 +75,7 @@ function openInfoCard(event: MouseEvent) {
 }
 
 function closeInfoCardOnMobile(event: MouseEvent) {
-  if (checkWindowSize() || infoCard.contains(event.target as Node)) return;
+  if (infoCard.contains(event.target as Node)) return;
   infoCard.style.opacity = '0';
   infoCard.style.right = '0';
   infoCard.style.bottom = '0';

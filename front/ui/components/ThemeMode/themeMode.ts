@@ -14,6 +14,10 @@ document.addEventListener('switchClicked', () => {
 	moveArrow();
 });
 
+function isWindowMobileSize() {
+  return window.innerWidth < 800;
+}
+
 export function themeMode() {
 	if (switchButton && switchWrapper) {
 		switchRegularBounce(switchButton);
@@ -21,7 +25,7 @@ export function themeMode() {
 		window.onresize = updateView;
 
 		function updateView() {
-			if (checkWindowSize()) {
+			if (isWindowMobileSize()) {
 				switchCircle?.addEventListener('click', switchThemeOnTouch);
 			} else {
 				switchCircle?.removeEventListener('click', switchThemeOnTouch);
@@ -40,7 +44,7 @@ function switchControl() {
 	let dy = 0;
 
 	switchCircle?.addEventListener('mousedown', (e) => {
-    if (checkWindowSize()) return;
+    if (isWindowMobileSize()) return;
 
 		e.preventDefault();
 		startY = e.clientY;
@@ -91,10 +95,6 @@ function switchThemeOnTouch() {
 	const currentTheme = document.documentElement.getAttribute('data-theme');
 	switchTheme(currentTheme);
 	rotateCircle();
-}
-
-function checkWindowSize() {
-  return window.innerWidth < 800;
 }
 
 // ANIMATIONS //

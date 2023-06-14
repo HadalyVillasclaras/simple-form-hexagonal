@@ -532,7 +532,6 @@ button[type='submit']:hover {
   transform: translate(-50%, 0);
 }
 
-
 #circle {
   box-sizing: border-box;
   border-radius: 50%;

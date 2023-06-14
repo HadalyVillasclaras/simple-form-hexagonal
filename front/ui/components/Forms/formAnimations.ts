@@ -6,7 +6,6 @@ export function formAnimations() {
   //Show hide pass eye icon
   const passwordInput = document.querySelector('input[name="password"]');
   passwordInput?.addEventListener('input', showHidePassword);
-
 }
 
 function labelGoesTop() {
