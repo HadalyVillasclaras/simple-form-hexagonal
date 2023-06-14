@@ -21,7 +21,7 @@ export function themeMode() {
 		window.onresize = updateView;
 
 		function updateView() {
-			if (window.innerWidth < 800) {
+			if (checkWindowSize()) {
 				switchCircle?.addEventListener('click', switchThemeOnTouch);
 			} else {
 				switchCircle?.removeEventListener('click', switchThemeOnTouch);
@@ -40,6 +40,8 @@ function switchControl() {
 	let dy = 0;
 
 	switchCircle?.addEventListener('mousedown', (e) => {
+    if (checkWindowSize()) return;
+
 		e.preventDefault();
 		startY = e.clientY;
 		originalY = switchButton.offsetTop;
@@ -89,6 +91,10 @@ function switchThemeOnTouch() {
 	const currentTheme = document.documentElement.getAttribute('data-theme');
 	switchTheme(currentTheme);
 	rotateCircle();
+}
+
+function checkWindowSize() {
+  return window.innerWidth < 800;
 }
 
 // ANIMATIONS //
