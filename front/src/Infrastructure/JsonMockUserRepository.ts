@@ -1,8 +1,9 @@
 import * as data from './jsonDB.json'; 
+import { User } from '../Domain/User';
 
 export default class JsonMockUserRepository {
 
-  async signIn(user: any): Promise<Response> {
+  async signIn(user: User): Promise<Response> {
     try {
       const storedUser = data?.default[0];
     
@@ -23,6 +24,16 @@ export default class JsonMockUserRepository {
     }
   }
 
+  async addUser(user: User): Promise<Response> {
+    try {
+      if (user) {
+        return {
+          status: 'success',
+          message: '✫ Logged up successfully ✫'
+        };
+      }
+    } catch (error) {
+      throw { status: 'error', message: error.message};
+    }
+  }
 }
-
-

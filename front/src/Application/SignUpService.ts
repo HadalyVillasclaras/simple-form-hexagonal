@@ -41,7 +41,6 @@ export default class SignUpService {
       }
       try {
         const user: User = {
-          name: requestData['name'],
           surname: requestData['surname'],
           email: new Email(requestData['email']),
           password: new Password(requestData['password']),

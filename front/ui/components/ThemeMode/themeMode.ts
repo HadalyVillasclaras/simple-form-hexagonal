@@ -19,19 +19,20 @@ function isWindowMobileSize() {
 }
 
 export function themeMode() {
+	window.addEventListener('load', initThemeMode);
+	window.addEventListener('resize', initThemeMode);
+}
+
+function initThemeMode() {
 	if (switchButton && switchWrapper) {
 		switchRegularBounce(switchButton);
-		window.onload = updateView;
-		window.onresize = updateView;
-
-		function updateView() {
-			if (isWindowMobileSize()) {
-				switchCircle?.addEventListener('click', switchThemeOnTouch);
-			} else {
-				switchCircle?.removeEventListener('click', switchThemeOnTouch);
-				arrowArea?.addEventListener('mouseenter', moveArrow);
-				switchControl();
-			}
+	
+		if (isWindowMobileSize()) {
+			switchCircle?.addEventListener('click', switchThemeOnTouch);
+		} else {
+			switchCircle?.removeEventListener('click', switchThemeOnTouch);
+			arrowArea?.addEventListener('mouseenter', moveArrow);
+			switchControl();
 		}
 	}
 }

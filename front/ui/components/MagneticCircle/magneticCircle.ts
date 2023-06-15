@@ -8,6 +8,11 @@ function isWindowMobileSize() {
 }
 
 export function magneticCircle() {
+  window.addEventListener('load', initMagneticCircle);
+	window.addEventListener('resize', initMagneticCircle);
+}
+
+function initMagneticCircle() {
   if (!isWindowMobileSize()) {
     circle.addEventListener('mousemove', (event) => moveCircle(event));
     circle.addEventListener('mouseleave', stopCircle);
@@ -52,17 +57,11 @@ function stopCircle() {
   circleInfo.style.transform = `translate3d(0, 0, 0)`;
   svgCircle.classList.remove('infiniteRotate');
   svgCircle.classList.remove('svg-circle-inactive');
-  infoCard.style.opacity = '0';
   circleInfo.classList.replace('circle-info-enter', 'circle-info-out');
-  infoCard.classList.remove('cardMobileDisplay');
-
-  setTimeout(() => {
-    infoCard.style.display = 'none';
-  }, 800);
+  closeInfoCard();
 }
 
 function openInfoCard(event: MouseEvent) {
-  event.stopPropagation(); 
   infoCard.style.opacity = '0.9';
   infoCard.style.display = 'block';
   
@@ -72,6 +71,17 @@ function openInfoCard(event: MouseEvent) {
 
   svgCircle.classList.add('svg-circle-inactive');
   circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
+  event.stopPropagation(); 
+
+}
+
+function closeInfoCard() {
+  infoCard.classList.remove('cardMobileDisplay');
+  infoCard.style.opacity = '0';
+
+  setTimeout(() => {
+    infoCard.style.display = 'none';
+  }, 800);
 }
 
 function closeInfoCardOnMobile(event: MouseEvent) {
@@ -81,7 +91,6 @@ function closeInfoCardOnMobile(event: MouseEvent) {
   infoCard.style.bottom = '0';
   svgCircle.classList.remove('svg-circle-inactive');
   circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
-  infoCard.classList.remove('cardMobileDisplay');
 
   setTimeout(() => {
     infoCard.style.display = 'none';
