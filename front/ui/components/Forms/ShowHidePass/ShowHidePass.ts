@@ -2,6 +2,7 @@ import { eyeIconSVG, closeIconSVG, eyeNoneSvg } from './eye-icons';
 export function showHidePassword(event: any) {
   let passwordInput = event.target;
   let eyeIcon:Element | null =  document.querySelector('.eye-icon');
+  let passwordVisible = false;
 
   if (eyeIcon) {
     if (passwordInput.value.length > 0) {
@@ -12,18 +13,21 @@ export function showHidePassword(event: any) {
     }
     
     if (passwordInput) {
-      eyeIcon.addEventListener('mousedown', function () {
-        passwordInput.type = 'text';
-        eyeIcon.innerHTML = eyeNoneSvg;
-      });
-      eyeIcon.addEventListener('mouseup', function () {
-        passwordInput.type = 'password';
-        eyeIcon.innerHTML = eyeIconSVG;
-      });
-      eyeIcon.addEventListener('mouseout', function () {
-        passwordInput.type = 'password';
-        eyeIcon.innerHTML = eyeIconSVG;
+      eyeIcon.addEventListener('click', function () {
+        // If password is currently visible, hide it
+        if (passwordVisible) {
+          passwordInput.type = 'password';
+          eyeIcon.innerHTML = eyeIconSVG;
+        }
+        // If password is currently hidden, show it
+        else {
+          passwordInput.type = 'text';
+          eyeIcon.innerHTML = eyeNoneSvg;
+        }
+        // Update passwordVisible for next click
+        passwordVisible = !passwordVisible;
       });
     }
   }
 };
+

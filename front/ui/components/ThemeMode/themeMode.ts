@@ -28,7 +28,8 @@ function initThemeMode() {
 		switchRegularBounce(switchButton);
 	
 		if (isWindowMobileSize()) {
-			switchCircle?.addEventListener('click', switchThemeOnTouch);
+			switchControl();
+
 		} else {
 			switchCircle?.removeEventListener('click', switchThemeOnTouch);
 			arrowArea?.addEventListener('mouseenter', moveArrow);
@@ -38,50 +39,64 @@ function initThemeMode() {
 }
 
 function switchControl() {
-	let startY = 0;
-	let originalY = 0;
-	let mouseDown = false;
-	let dragging = false;
-	let dy = 0;
+  let startY = 0;
+  let originalY = 0;
+  let mouseDown = false;
+  let dragging = false;
+  let dy = 0;
 
-	switchCircle?.addEventListener('mousedown', (e) => {
-    if (isWindowMobileSize()) return;
-
+  function startDrag(e: MouseEvent | TouchEvent) {
 		e.preventDefault();
-		startY = e.clientY;
-		originalY = switchButton.offsetTop;
-		mouseDown = true;
-		document.dispatchEvent(switchClickedEvent);
-	});
+    if (e instanceof TouchEvent) {
+      startY = e.touches[0].clientY;
+    } else {
+      startY = e.clientY;
+    }
 
-	document.addEventListener('mousemove', (e) => {
-		if (mouseDown) {
-			dragging = true;
-		}
+    originalY = switchButton.offsetTop;
+    mouseDown = true;
+    document.dispatchEvent(switchClickedEvent);
+  }
 
-		if (mouseDown && dragging) {
-			dy = e.clientY - startY;
-			const maxBottomPosition = switchWrapper.offsetHeight - switchButton.offsetHeight; // Bottom limit based on switchWrapprer height
-			let newTopPosition = originalY + dy;
-			newTopPosition = Math.min(newTopPosition, maxBottomPosition);
-			switchButton.style.top = `${newTopPosition}px`;
-		}
-	});
+  function drag(e: MouseEvent | TouchEvent) {
+		e.preventDefault();
+    if (mouseDown) {
+      dragging = true;
+    }
 
-	document.addEventListener('mouseup', (e) => {
-		// if props true and mouse moved more than 20px vertically 
-		if (dragging && mouseDown && Math.abs(dy) > 20) {
-			switchButton.style.top = `${originalY}px`;
-			const currentTheme = document.documentElement.getAttribute('data-theme');
-			switchTheme(currentTheme);
-			rotateCircle();
-		} else if (dragging && mouseDown) {
-			switchButton.style.top = `${originalY}px`;
-		}
+    if (mouseDown && dragging) {
+      dy = ('clientY' in e ? e.clientY : e.touches[0].clientY) - startY;
+      const maxBottomPosition = switchWrapper.offsetHeight - switchButton.offsetHeight;
+      let newTopPosition = originalY + dy;
+      newTopPosition = Math.min(newTopPosition, maxBottomPosition);
+      switchButton.style.top = `${newTopPosition}px`;
+    }
+  }
 
-		dragging = false;
-		mouseDown = false;
-	});
+  function endDrag() {
+    if (dragging && mouseDown && Math.abs(dy) > 20) {
+      switchButton.style.top = `${originalY}px`;
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      switchTheme(currentTheme);
+      rotateCircle();
+    } else if (dragging && mouseDown) {
+      switchButton.style.top = `${originalY}px`;
+    }
+
+    dragging = false;
+    mouseDown = false;
+  }
+
+	if (isWindowMobileSize()) {
+		switchCircle?.addEventListener('touchstart', startDrag, { passive: false });
+		document.addEventListener('touchmove', drag, { passive: false });
+		document.addEventListener('touchend', endDrag);
+	} else {
+		switchCircle?.addEventListener('mousedown', startDrag);
+		document.addEventListener('mousemove', drag);
+		document.addEventListener('mouseup', endDrag);
+	}
+
 }
 
 function switchTheme(currentTheme: string | null) {
