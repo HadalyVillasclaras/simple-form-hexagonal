@@ -120,7 +120,7 @@ body {
   }
 
   main {
-    height: 75vh !important;
+    height: auto !important;
   }
 }
 
@@ -368,6 +368,7 @@ button[type='submit'] {
   transition-property: border, background, color;
   transition-duration: 0.5s;
   transition-timing-function: ease-out;
+  z-index: 1;
 }
 
 button[type='submit']:hover {
