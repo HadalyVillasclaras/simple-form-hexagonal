@@ -46,25 +46,28 @@ function switchControl() {
   let dy = 0;
 
   function startDrag(e: MouseEvent | TouchEvent) {
-		e.preventDefault();
     if (e instanceof TouchEvent) {
       startY = e.touches[0].clientY;
     } else {
       startY = e.clientY;
+			e.preventDefault();
     }
 
     originalY = switchButton.offsetTop;
     mouseDown = true;
     document.dispatchEvent(switchClickedEvent);
+		document.addEventListener('touchmove', drag, { passive: false });
   }
 
   function drag(e: MouseEvent | TouchEvent) {
-		e.preventDefault();
     if (mouseDown) {
       dragging = true;
     }
 
     if (mouseDown && dragging) {
+			if (e instanceof TouchEvent) {
+        e.preventDefault();
+      }
       dy = ('clientY' in e ? e.clientY : e.touches[0].clientY) - startY;
       const maxBottomPosition = switchWrapper.offsetHeight - switchButton.offsetHeight;
       let newTopPosition = originalY + dy;
@@ -85,17 +88,15 @@ function switchControl() {
 
     dragging = false;
     mouseDown = false;
+
+		document.removeEventListener('touchmove', drag);
   }
 
-	if (isWindowMobileSize()) {
-		switchCircle?.addEventListener('touchstart', startDrag, { passive: false });
-		document.addEventListener('touchmove', drag, { passive: false });
-		document.addEventListener('touchend', endDrag);
-	} else {
-		switchCircle?.addEventListener('mousedown', startDrag);
-		document.addEventListener('mousemove', drag);
-		document.addEventListener('mouseup', endDrag);
-	}
+	switchCircle?.addEventListener('mousedown', startDrag);
+	switchCircle?.addEventListener('touchstart', startDrag, { passive: false });
+	document.addEventListener('mousemove', drag);
+	document.addEventListener('mouseup', endDrag);
+	document.addEventListener('touchend', endDrag);
 
 }
 
