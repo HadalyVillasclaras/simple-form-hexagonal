@@ -432,6 +432,14 @@ button[type='submit']:hover {
   .theme-area {
     right: 5vw;
   }
+  .switch-wrapper {
+    height: 21rem !important;
+  }
+  
+  .switch-line {
+    height: 18rem !important;
+  }
+
 }
 
 .switch-wrapper {
@@ -689,5 +697,20 @@ button[type='submit']:hover {
 @keyframes moveDownUp {
   0% { transform: translateY(0); }
   50% { transform: translateY(30px); }
+  100% { transform: translateY(0); }
+}
+
+
+.down-up-center {
+  animation-name: downUpCenter;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes downUpCenter {
+  0% { transform: translateY(0); }
+  35% { transform: translateY(30px); }
+  75% { transform: translateY(-80px); }
   100% { transform: translateY(0); }
 }

@@ -28,7 +28,7 @@ function initThemeMode() {
 		switchRegularBounce(switchButton);
 	
 		if (isWindowMobileSize()) {
-			switchControl();
+			switchCircle?.addEventListener('click', switchThemeOnTouch);
 
 		} else {
 			switchCircle?.removeEventListener('click', switchThemeOnTouch);
@@ -45,22 +45,15 @@ function switchControl() {
   let dragging = false;
   let dy = 0;
 
-  function startDrag(e: MouseEvent | TouchEvent) {
+  function startDrag(e: MouseEvent) {
 		e.preventDefault();
-    if (e instanceof TouchEvent) {
-      startY = e.touches[0].clientY;
-    } else {
-      startY = e.clientY;
-    }
-
+    startY = e.clientY;
     originalY = switchButton.offsetTop;
     mouseDown = true;
     document.dispatchEvent(switchClickedEvent);
-
-		document.addEventListener('touchmove', drag, { passive: false });
   }
 
-  function drag(e: MouseEvent | TouchEvent) {
+  function drag(e: MouseEvent) {
     if (mouseDown) {
       dragging = true;
     }
@@ -86,16 +79,11 @@ function switchControl() {
 
     dragging = false;
     mouseDown = false;
-
-		document.removeEventListener('touchmove', drag);
   }
 
-	switchCircle?.addEventListener('mousedown', startDrag);
-	switchCircle?.addEventListener('touchstart', startDrag, { passive: false });
-	document.addEventListener('mousemove', drag);
-	document.addEventListener('mouseup', endDrag);
-	document.addEventListener('touchend', endDrag);
-
+  switchCircle?.addEventListener('mousedown', startDrag);
+  document.addEventListener('mousemove', drag);
+  document.addEventListener('mouseup', endDrag);
 }
 
 function switchTheme(currentTheme: string | null) {
@@ -108,8 +96,18 @@ function switchTheme(currentTheme: string | null) {
 
 function switchThemeOnTouch() {
 	const currentTheme = document.documentElement.getAttribute('data-theme');
-	switchTheme(currentTheme);
-	rotateCircle();
+	
+	switchButton?.classList.add('down-up-center');
+	setTimeout(() => {
+		switchTheme(currentTheme);
+		rotateCircle();
+	}, 1000);
+	switchButton.addEventListener('animationend', function () {
+		switchButton.classList.remove('down-up-center');
+	});
+
+
+
 }
 
 // ANIMATIONS //
