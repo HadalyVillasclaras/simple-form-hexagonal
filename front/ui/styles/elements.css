@@ -1,0 +1,78 @@
+::-moz-selection {
+  color: var(--selection-color);
+  background: var(--selection-bg);
+}
+
+::selection {
+  color: var(--selection-color);
+  background: var(--selection-bg);
+}
+
+* {
+  font-size: 1.1rem;
+}
+
+body {
+  position: relative;
+  background: var(--bg-color);
+  overflow: hidden;
+  padding: 0 8vw;
+  height: 100vh;
+  font-family: var(--global-ff);
+  color: var(--font-light);
+  margin: 0;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+@media (max-width: 800px) {
+  body {
+      padding: 4vh 8vw;
+      overflow-x: hidden;
+      overflow-y: scroll;
+  }
+
+  main {
+    height: auto !important;
+  }
+}
+
+main {
+  max-width: 600px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 3.7rem;
+  margin-bottom: 0.8rem;
+  color: var(--h2-color);
+  font-family: var(--h2-ff);
+}
+
+h2 + p{
+  color: var(--green300);
+}
+
+a {
+  background-color: transparent;
+  color: var(--green350);
+  font-family: var(--a-ff);
+  transition: color 0.6s ease-in-out, bottom 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+a:hover {
+  color: var(--green500);
+  background-color: var(--green300);
+}
+
+i {
+  color: var(--green600);
+  font-family: 'Alpina-Regular-Italic';
+  font-size: 1.2rem;
+}
+
+code {
+  color: var(--font-dark);
+}

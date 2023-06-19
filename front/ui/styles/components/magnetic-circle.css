@@ -1,0 +1,114 @@
+/* Magnetic circle */
+#circle-wrapper {
+  position: absolute;
+  bottom: 4vw;
+  right: 4vw;
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  #circle-wrapper {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    height: 7rem;
+  }
+}
+
+#info-card {
+  position: absolute;
+  display: none;
+  opacity: 0;
+  max-width: 350px;
+  height: auto;
+  bottom: 0px;
+  right: 0px;
+  padding: 2rem;
+  background-color: var(--green200);
+  color: var(--green600);
+  border-radius: 1rem;
+  box-shadow: 0px 0px 15px var(--green600);
+  box-sizing: border-box;
+  z-index: 9;
+  font-family: 'Alpina-Fine-Condensed-Bold';
+  font-size: 1.1rem;
+  font-feature-settings: 'ss01';
+  line-height: 1.5rem;
+  transition: opacity 2s ease;
+}
+
+.cardMobileDisplay, .cardMobileDisplay > * {
+  width: 90vw;
+  font-size: 1.7rem!important;
+  line-height: 1.8rem!important;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+#circle {
+  box-sizing: border-box;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+  transition: transform 0.8s ease-out;
+}
+
+#circle-info {
+  font-size: 0.8rem;
+  font-family: var(--a-ff);
+  position: absolute;
+  transition: all 1s ease ;
+  z-index: 4;
+  color: var(--green350);
+}
+
+.circle-info-out {
+  cursor: pointer;
+}
+
+.circle-info-out:hover {
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+.circle-info-enter {
+  display: block;
+  cursor: default;
+  color: var(--green600);
+}
+
+.circle-info-enter:hover {
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+#svg-circle {
+  fill: var(--green200);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 110px;
+  transform-origin: 50% 50%;
+  transition:all 1s ease;
+}
+
+.svg-circle-inactive {
+  fill:  var(--green600) !important;
+  font-weight: 600;
+  z-index: 3;
+}
+
+#svg-circle textPath {
+  font-size: 0.7rem;
+  font-family: var(--circle-ff);
+  letter-spacing: 0px;
+}  

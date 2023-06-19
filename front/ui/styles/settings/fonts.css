@@ -1,0 +1,43 @@
+@font-face {
+  font-family: Alpina-Regular;
+  src: url(./../assets/fonts/GT-Alpina-Condensed-Regular-Trial.woff2);
+}
+
+@font-face {
+  font-family: Alpina-Regular-Italic;
+  src: url(./../assets/fonts/GT-Alpina-Condensed-Regular-Italic-Trial.woff2);
+}
+
+@font-face {
+  font-family: Alpina-Condensed-Medium;
+  src: url(./../assets/fonts/GT-Alpina-Condensed-Medium-Trial.woff2);
+}
+
+@font-face {
+  font-family: Alpina-Fine-Condensed-Bold;
+  src: url(./../assets/fonts/GT-Alpina-Fine-Condensed-Bold-Trial.woff2);
+}
+
+@font-face {
+  font-family: Alpina-Condensed-Bold;
+  src: url(./../assets/fonts/GT-Alpina-Condensed-Bold-Trial.woff2);
+}
+
+@font-face {
+  font-family: Alpina-Tw-Regular;
+  src: url(./../assets/fonts/GT-Alpina-Typewriter-Regular-Trial.woff2);
+}
+
+@font-face {
+  font-family: Alpina-Tw-Regular-Italic;
+  src: url(./../assets/fonts/GT-Alpina-Typewriter-Regular-Italic-Trial.woff2);
+}
+
+:root {
+  --a-ff: 'Alpina-Tw-Regular-Italic';
+  --global-ff: 'Alpina-Tw-Regular';
+  --h2-ff: 'Alpina-Fine-Condensed-Bold';
+  --button-ff:'Alpina-Fine-Condensed-Bold';
+  --input-ff:'Alpina-Fine-Condensed-Bold';
+  --circle-ff: 'Alpina-Tw-Regular';
+}

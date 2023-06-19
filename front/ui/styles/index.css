@@ -1,0 +1,17 @@
+/* Settings */
+@import url("./settings/colors.css");
+@import url("./settings/fonts.css");
+
+/* Elements */
+@import url("elements.css");
+
+/* Components */
+@import url("./components/form.css");
+@import url("./components/theme-mode.css");
+@import url("./components/magnetic-circle.css");
+
+/* Utils */
+@import url("./utilities.css");
+
+/* Animations */
+@import url("./animations.css");
