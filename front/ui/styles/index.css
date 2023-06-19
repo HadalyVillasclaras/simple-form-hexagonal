@@ -1,6 +1,6 @@
 /* Settings */
-@import url("./settings/colors.css");
 @import url("./settings/fonts.css");
+@import url("./settings/colors.css");
 
 /* Elements */
 @import url("elements.css");
