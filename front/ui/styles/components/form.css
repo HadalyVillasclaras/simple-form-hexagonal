@@ -1,10 +1,16 @@
 form {
   transition: all 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem 2rem;
 }
 
-fieldset {
-  margin: 4rem 0 1rem 0;
-  border: none;
+.form-header p {
+  color: var(--green300);
+  margin-top: 1rem;
+}
+
+.fieldset-main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   justify-content: space-between;
@@ -16,42 +22,32 @@ fieldset p {
   position: relative;
 }
 
-fieldset label {
+.label-main {
   position: absolute;
   top: 0.4rem;
-  font-size: 1rem;
   transition-property: top, font-size, color;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
 }
 
-.fieldset-label-focus {
-  top: -1.2rem;
-  font-size: 0.9rem;
-}
-
-.fieldset-label-focus, 
-.fieldset-label-focus span {
+.label-main-focus {
+  top: -1.2rem !important;
+  font-size: 0.9rem !important;
   color: var(--green600);
 }
 
-input {
-  font-size: 1.1rem;
+.label-main-focus span {
+  color: inherit;
 }
 
 input[type='text'], 
 input[type='email'], 
 input[type='password'] {
   width: 100%;
-  display: inline-block;
-  border: none;
-  background: transparent;
   border-bottom: 2px solid var(--green600);
-  position: relative;
-  transition: border-bottom 0.3s ease-in-out;
   height: 2rem;
   box-sizing: border-box;
-  font-family: var(--input-ff);
+  transition: border-bottom 0.3s ease-in-out;
 }
 
 input[type='text']:focus,
@@ -65,40 +61,14 @@ input[name='password'] {
   padding-right: 1.8rem;
 }
 
-/* Auto complete issues */
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--font-light);
-  font-family: Times;
-  -webkit-box-shadow: 0 0 0px 40rem var(--bg-color) inset;
-  transition: -webkit-box-shadow 0.5s ease-in-out, color 0.5s ease-in-out,  background-color 600000s 0s;
-}
-
-input:-webkit-autofill::selection {
-  -webkit-text-fill-color: var(--font-dark);
-  -webkit-box-shadow: 0 0 0px 40rem var(--bg-color) inset;
-}
-
-input::-webkit-credentials-auto-fill-button {
-  width: 0; 
-  margin: 0;
-}
-
-input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
-  width: 0; 
-  margin: 0;
-}
-
 /* Terms & policy */
 .terms-policy-label {
   position: relative;
   padding-left: 1.2rem;
-  box-sizing: border-box;
   font-size: 0.8rem;
 }
 
-input[type='checkbox'] {
+.terms-policy-checkbox {
   position: absolute;
   opacity: 0;
   z-index: 2;
@@ -152,7 +122,6 @@ input[type='checkbox'] {
 /* Submit button */
 button[type='submit'] {
   width: 40%;
-  margin-top: 1.5rem;
   font-size: 1.1rem;
   padding: 0.5rem;
   color: var(--button-color);
@@ -240,3 +209,29 @@ button[type='submit']:hover {
   height: 1rem;
   margin: 1rem 0;
 }
+
+/* Auto complete issues */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--font-light);
+  font-family: Times;
+  -webkit-box-shadow: 0 0 0px 40rem var(--bg-color) inset;
+  transition: -webkit-box-shadow 0.5s ease-in-out, color 0.5s ease-in-out,  background-color 600000s 0s;
+}
+
+input:-webkit-autofill::selection {
+  -webkit-text-fill-color: var(--font-dark);
+  -webkit-box-shadow: 0 0 0px 40rem var(--bg-color) inset;
+}
+
+input::-webkit-credentials-auto-fill-button {
+  width: 0; 
+  margin: 0;
+}
+
+input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
+  width: 0; 
+  margin: 0;
+}
+

@@ -9,17 +9,18 @@
 }
 
 * {
-  font-size: 1.1rem;
+  color: var(--font-light);
+  margin: 0;
 }
 
 body {
   position: relative;
+  font-size: 1.1rem;
   background: var(--bg-color);
   overflow: hidden;
   padding: 0 8vw;
   height: 100vh;
   font-family: var(--global-ff);
-  color: var(--font-light);
   margin: 0;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
@@ -46,13 +47,8 @@ main {
 
 h2 {
   font-size: 3.7rem;
-  margin-bottom: 0.8rem;
   color: var(--h2-color);
   font-family: var(--h2-ff);
-}
-
-h2 + p{
-  color: var(--green300);
 }
 
 a {
@@ -75,4 +71,16 @@ i {
 
 code {
   color: var(--font-dark);
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+input {
+  border: none;
+  background: transparent;
+  font-family: var(--input-ff);
+  font-size: 1.1rem;
 }

@@ -23,49 +23,53 @@
   <main id="forms-sect" class=""></main>
   <template id="signup-template"> 
     <form id="signup-form" method="POST" action="" aria-labelledby="signup-form" >
-      <h2 class="form-title">We are glad you join us!</h2>
-      <p>Already a member? <a id="signin-link" href="#">Sign in</a></p>
-      <fieldset>
+      <section class="form-header">
+        <h2>We are glad you join us!</h2>
+        <p>Already a member? <a id="signin-link" href="#">Sign in</a></p>
+      </section>
+      <fieldset class="fieldset-main">
         <p>
-          <label for="name">Name<span aria-label="required">*</span></label>
+          <label class="label-main" for="name">Name<span aria-label="required">*</span></label>
           <input type="text" name="name" aria-required="true" >
         </p>
         <p>
-          <label for="surname">Surname<span aria-label="required">*</span></label>
+          <label class="label-main" for="surname">Surname<span aria-label="required">*</span></label>
           <input type="text" name="surname" aria-required="true" >
         </p>
         <p>
-          <label for="email">Email<span aria-label="required">*</span></label>
+          <label class="label-main" for="email">Email<span aria-label="required">*</span></label>
           <input type="text" name="email" aria-required="true" >
         </p>
         <p>
-          <label for="password">Password<span aria-label="required">*</span></label>
+          <label class="label-main" for="password">Password<span aria-label="required">*</span></label>
             <input type="password" name="password" autocomplete="new-password" aria-required="true">
             <span class="eye-icon"></span>
         </p>
       </fieldset>
-      <p>
+      <fieldset>
         <label for="terms-policy" class="terms-policy-label">
-          <input name="terms-policy" name="terms-policy" type="checkbox">
+          <input name="terms-policy" class="terms-policy-checkbox" type="checkbox">
           <span aria-label="Terms checkbox" role="checkbox"></span>
           I agree with the <a href="#">Terms</a> and <a href="#">Conditions</a>
         </label>
-      </p>
+      </fieldset>
       <p class="form-feedback"></p>
       <button type="submit" >Sign up</button>
     </form>
   </template>
   <template id="signin-template">
     <form id="signin-form" method="POST" action="" aria-labelledby="form-title">
-      <h2 >Welcome back!</h2> 
-      <p>Not a member? <a id="signup-link" href="#">Sign up</a></p>
-      <fieldset>
+      <section class="form-header">
+        <h2 >Welcome back!</h2> 
+        <p>Not a member? <a id="signup-link" href="#">Sign up</a></p>
+      </section>
+      <fieldset class="fieldset-main">
         <p>
-          <label for="email">Email<span aria-hidden="true">*</span></label>
+          <label class="label-main" for="email">Email<span aria-hidden="true">*</span></label>
           <input type="text" class="input-field" name="email"  aria-required="true">
         </p>
         <p>
-          <label for="password">Password<span aria-hidden="true">*</span></label>
+          <label class="label-main" for="password">Password<span aria-hidden="true">*</span></label>
           <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
           <span class="eye-icon"></span>
         </p>

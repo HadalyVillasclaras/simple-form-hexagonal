@@ -11,16 +11,16 @@ export function formAnimations() {
 function labelGoesTop() {
   const fieldsetPs = document.querySelectorAll('fieldset p');
   fieldsetPs.forEach(p => {
-    const label = p.querySelector('label');
+    const label = p.querySelector('.label-main');
     const input = p.querySelector('input');
 
     input?.addEventListener('focus', function () {
-      label?.classList.add('fieldset-label-focus');
+      label?.classList.add('label-main-focus');
     });
 
     input?.addEventListener('blur', function () {
       if (input.value === '') {
-        label?.classList.remove('fieldset-label-focus');
+        label?.classList.remove('label-main-focus');
       }
     });
   })
