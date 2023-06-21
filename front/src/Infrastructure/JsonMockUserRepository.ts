@@ -11,7 +11,7 @@ export default class JsonMockUserRepository {
         
         return {
           status: 'success',
-          message: '✫ Logged in successfully ✫'
+          message: 'Logged in successfully'
         };
       } else {
         return {
@@ -29,7 +29,7 @@ export default class JsonMockUserRepository {
       if (user) {
         return {
           status: 'success',
-          message: '✫ Logged up successfully ✫'
+          message: 'Logged up successfully'
         };
       }
     } catch (error) {

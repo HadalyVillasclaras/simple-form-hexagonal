@@ -2,7 +2,7 @@ form {
   transition: all 0.3s ease-out;
   display: flex;
   flex-direction: column;
-  gap: 4rem 2rem;
+  gap: 3rem 2rem;
 }
 
 .form-header p {
@@ -18,7 +18,6 @@ form {
 }
 
 fieldset p {
-  height: 3rem;
   position: relative;
 }
 
@@ -43,11 +42,13 @@ fieldset p {
 input[type='text'], 
 input[type='email'], 
 input[type='password'] {
+  position: relative;
   width: 100%;
   border-bottom: 2px solid var(--green600);
   height: 2rem;
   box-sizing: border-box;
   transition: border-bottom 0.3s ease-in-out;
+  z-index: 1;
 }
 
 input[type='text']:focus,
@@ -189,25 +190,31 @@ button[type='submit']:hover {
 }
 
 .form-feedback {
+  display: inline-block;
   visibility: hidden;
   opacity: 0;
-  margin: 0;
-  height: 0;
-  transition:  margin 0.2s ease-in, height 0.2s ease-in, opacity 0.5s ease-out, visibility 0.5s ease-out;
+  transition: all 0.2s ease-in;
 }
 
-.form-feedback.error {
+.error {
   opacity: 1;
   color: rgb(110, 59, 17);
-  height: 1rem;
-  margin: 1rem 0;
+  height: 0.8rem;
 }
 
-.form-feedback.success {
+.success {
   opacity: 1;
   color: var(--green400);
-  height: 1rem;
-  margin: 1rem 0;
+  height: 0.8rem;
+  display: inline;
+}
+
+.flower {
+  top: 5px;
+  position: relative;
+  font-size: 1.5rem;
+  color: var(--green400);
+  display: inline-block;
 }
 
 /* Auto complete issues */
@@ -234,4 +241,3 @@ input:not(input:-webkit-autofill)::-webkit-contacts-auto-fill-button {
   width: 0; 
   margin: 0;
 }
-

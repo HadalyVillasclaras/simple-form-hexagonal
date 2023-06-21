@@ -28,23 +28,34 @@ export class FormFeedback {
   private renderAppFeedback() {
     this.formFeedback.style.opacity = 1;
     this.formFeedback.style.visibility = 'visible';
-
+  
     if(this.formFeedback) {
       this.removeFeedBackMessage();
       const formResponse = this.formResponse as AppResponse;
       this.formFeedback.classList.remove('error', 'success');
       if(formResponse.status === 'error') {
         this.formFeedback.classList.add('error');
+        this.formFeedback.textContent = formResponse.message;
       } else if(formResponse.status === 'success') {
-        this.formFeedback.classList.add('success');
+        const template = document.getElementById('feedback-success');
+        if (template) {
+          const clone = document.importNode(template.content, true);
+          const successMessageElement = clone.querySelector('#feedback-success-msg');
+        if (successMessageElement) {
+          successMessageElement.classList.add('success');
+          successMessageElement.textContent = formResponse.message;
+        }
+        this.formFeedback.appendChild(clone);
+        }
+
+     
       }
-      this.formFeedback.textContent = formResponse.message;
     }
   }
-
+  
   private renderInputFeedback() {
     this.removeOldErrorMessages();
-    this.removeFeedBackMessage() 
+    this.removeFeedBackMessage()
     const errorFields: any = [];
 
     const inputResponse = this.formResponse as InputResponse;
@@ -58,7 +69,7 @@ export class FormFeedback {
         if (!inputField) {
           throw new Error(`Input field ${error.field} does not exist.`);
         }
-        
+
         const inputErrorMessage = document.createElement('span');
         inputErrorMessage.textContent = error.message;
         inputErrorMessage.className = 'input-error';
