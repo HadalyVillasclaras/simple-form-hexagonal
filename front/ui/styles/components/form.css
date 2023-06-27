@@ -217,6 +217,53 @@ button[type='submit']:hover {
   display: inline-block;
 }
 
+.logged-wrapper{
+  top: 0;
+  right: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
+.logged-bg  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80vw;
+  background-color: var(--green700);
+  box-shadow: 2px 0px 12px var(--green800);
+  border-radius: 3px;
+  gap: .5rem;
+  padding: 2rem 0;
+  z-index: 1;
+}
+
+.success-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.success-msg p {
+  font-size: 2rem;
+  color: var(--green350);
+}
+
+.success-msg > .flower {
+  margin-bottom: 0.5rem;
+  font-size: 5rem;
+}
+
+.success-msg > i {
+  color: var(--font-light);
+  font-size: 1.5rem;
+}
+
 /* Auto complete issues */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
