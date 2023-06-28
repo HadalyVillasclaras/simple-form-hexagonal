@@ -117,6 +117,8 @@ function moveArrow() {
 		arrow.style.opacity = '1';
 		arrow.classList.add('down-up');
 		switchButton?.classList.add('simple-down-up');
+
+		
 		setTimeout(() => {
 			arrow.style.opacity = '0';
 			arrow.classList.remove('down-up');
