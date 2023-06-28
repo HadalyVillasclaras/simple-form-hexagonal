@@ -4,10 +4,12 @@ export class FormFeedback {
   formElement: HTMLFormElement;
   formResponse: InputResponse | AppResponse;
   formFeedback: any;
+  formSuccessLogged: any;
 
   constructor(formElementId: string, formResponse: InputResponse | AppResponse) {
     const formElement = document.getElementById(formElementId) as HTMLFormElement;
     this.formFeedback = formElement.querySelector('.form-feedback');
+    this.formSuccessLogged = document.getElementById('success-log');
 
     if (!formElement) {
       throw new Error(`Form with id ${formElementId} does not exist.`);
@@ -21,6 +23,7 @@ export class FormFeedback {
     if ('inputErrors' in this.formResponse) {
       this.renderInputFeedback();
     } else {
+      console.log('renderAppFeedback');
       this.renderAppFeedback();
     }
   }
@@ -28,11 +31,11 @@ export class FormFeedback {
   private renderAppFeedback() {
     this.formFeedback.style.opacity = 1;
     this.formFeedback.style.visibility = 'visible';
-  
-    if(this.formFeedback) {
+  console.log(this.formSuccessLogged);
+    if(this.formSuccessLogged) {
+      console.log('enter form success feedback');
       this.removeFeedBackMessage();
       const formResponse = this.formResponse as AppResponse;
-      this.formFeedback.classList.remove('error', 'success');
       if(formResponse.status === 'error') {
         this.formFeedback.classList.add('error');
         this.formFeedback.textContent = formResponse.message;
@@ -45,10 +48,8 @@ export class FormFeedback {
           successMessageElement.classList.add('success');
           successMessageElement.textContent = formResponse.message;
         }
-        this.formFeedback.appendChild(clone);
+        this.formSuccessLogged.appendChild(clone);
         }
-
-     
       }
     }
   }
@@ -91,6 +92,7 @@ export class FormFeedback {
   private removeFeedBackMessage() {
     this.formFeedback.textContent = '';
     this.formFeedback.innerHTML = '';
+    this.formFeedback.classList.remove('error', 'success');
   }
 
   private removeMessageIfWriting(errorMessage: HTMLSpanElement) {

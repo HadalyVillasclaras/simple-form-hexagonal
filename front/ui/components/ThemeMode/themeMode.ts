@@ -96,18 +96,14 @@ function switchTheme(currentTheme: string | null) {
 
 function switchThemeOnTouch() {
 	const currentTheme = document.documentElement.getAttribute('data-theme');
-	
 	switchButton?.classList.add('down-up-center');
 	setTimeout(() => {
 		switchTheme(currentTheme);
 		rotateCircle();
 	}, 1000);
-	switchButton.addEventListener('animationend', function () {
+		switchButton.addEventListener('animationend', function () {
 		switchButton.classList.remove('down-up-center');
 	});
-
-
-
 }
 
 // ANIMATIONS //
@@ -118,7 +114,7 @@ function moveArrow() {
 		arrow.classList.add('down-up');
 		switchButton?.classList.add('simple-down-up');
 
-		
+
 		setTimeout(() => {
 			arrow.style.opacity = '0';
 			arrow.classList.remove('down-up');
