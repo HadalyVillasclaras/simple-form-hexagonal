@@ -223,8 +223,8 @@ button[type='submit']:hover {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  /* display: none; */
-  display: flex;
+  display: none;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
 }
@@ -233,13 +233,16 @@ button[type='submit']:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 80vw;
-  background-color: var(--green700);
+  width: 60vw;
+  height: 60vh;
+  background-color: var(--green100);
   box-shadow: 2px 0px 12px var(--green800);
-  border-radius: 3px;
+  border-radius: 70px;
   gap: .5rem;
-  padding: 2rem 0;
-  z-index: 1;
+  padding: 2rem;
+  z-index: 3;
+  opacity: 0.9;
+  text-align: center;
 }
 
 .success-msg {
@@ -250,18 +253,19 @@ button[type='submit']:hover {
 }
 
 .success-msg p {
-  font-size: 2rem;
-  color: var(--green350);
+  font-size: 2.3rem;
+  color: var(--green600);
 }
 
 .success-msg > .flower {
-  margin-bottom: 0.5rem;
+  color: rgb(194, 205, 54);
+  margin-top: 1rem;
   font-size: 5rem;
 }
 
 .success-msg > i {
-  color: var(--font-light);
-  font-size: 1.5rem;
+  color: var(--green450);
+  font-size: 2rem;
 }
 
 /* Auto complete issues */

@@ -23,7 +23,6 @@ export class FormFeedback {
     if ('inputErrors' in this.formResponse) {
       this.renderInputFeedback();
     } else {
-      console.log('renderAppFeedback');
       this.renderAppFeedback();
     }
   }
@@ -31,9 +30,7 @@ export class FormFeedback {
   private renderAppFeedback() {
     this.formFeedback.style.opacity = 1;
     this.formFeedback.style.visibility = 'visible';
-  console.log(this.formSuccessLogged);
     if(this.formSuccessLogged) {
-      console.log('enter form success feedback');
       this.removeFeedBackMessage();
       const formResponse = this.formResponse as AppResponse;
       if(formResponse.status === 'error') {
@@ -45,15 +42,34 @@ export class FormFeedback {
           const clone = document.importNode(template.content, true);
           const successMessageElement = clone.querySelector('#feedback-success-msg');
         if (successMessageElement) {
-          successMessageElement.classList.add('success');
           successMessageElement.textContent = formResponse.message;
         }
         this.formSuccessLogged.appendChild(clone);
+        this.formSuccessLogged.style.opacity = 1;
+        this.formSuccessLogged.style.visibility = 'visible';
+        this.formSuccessLogged.style.display = 'flex';
+
+        this.closeSuccessPopup()
         }
       }
     }
   }
   
+  private closeSuccessPopup() {
+    document.addEventListener('click', (event) => {  
+      const successPopup = document.getElementById('success-popup');
+      if (!successPopup.contains(event.target)) {
+        this.formSuccessLogged.style.opacity = 0;
+        this.formSuccessLogged.style.visibility = 'hidden';
+        this.formSuccessLogged.style.display = 'none';
+
+        while (this.formSuccessLogged.firstChild) {
+          this.formSuccessLogged.removeChild(this.formSuccessLogged.firstChild);
+        }
+      }
+    });
+  }
+
   private renderInputFeedback() {
     this.removeOldErrorMessages();
     this.removeFeedBackMessage()
