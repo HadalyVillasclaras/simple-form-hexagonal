@@ -21,7 +21,6 @@ export class FormFeedback {
 
   render() {
     this.removeOldErrorMessages();
-    this.removeFeedBackMessage();
 
     if ('inputErrors' in this.formResponse) {
       this.renderInputFeedback(this.formResponse);
@@ -37,7 +36,11 @@ export class FormFeedback {
     if(formResponse.status === 'error') {
       this.formFeedback.classList.add('error-color');
       this.formFeedback.textContent = formResponse.message;
+      const inputs = Array.from(this.formElement.querySelectorAll('input'));
 
+      inputs.forEach(input => {
+        input.addEventListener('input', () => this.removeFeedBackMessage());
+      });
     } else if (formResponse.status === 'success') {
       // Show success popup
       const successTemplate = document.getElementById('feedback-success');
@@ -58,18 +61,7 @@ export class FormFeedback {
     }
   }
   
-  private closePopup(event, targetElement) {
-    const successPopup = document.getElementById('success-popup');
-    if (!successPopup?.contains(event.target)) {
-      targetElement.classList.replace('visible', 'hidden');
-      setTimeout(function() {
-        targetElement.style.display = 'none';
-        while (targetElement.firstChild) {
-          targetElement.removeChild(targetElement.firstChild);
-        }
-      }, 400);
-    }
-  }
+
 
   private renderInputFeedback(inputResponse: InputResponse) {
     const errorFields: any = [];
@@ -90,7 +82,7 @@ export class FormFeedback {
         inputField?.parentElement?.appendChild(inputErrorMessage);
 
         // delete on input
-        inputField.addEventListener('input', () => this.removeMessageIfWriting(inputErrorMessage));
+        inputField.addEventListener('input', () => this.removeErrorsIfWriting(inputErrorMessage));
       }
     });
   }
@@ -106,16 +98,29 @@ export class FormFeedback {
     this.formFeedback.textContent = '';
     this.formFeedback.innerHTML = '';
     this.formFeedback.classList.replace('visible', 'hidden');
-    this.formFeedback.classList.remove('error', 'success');
+    this.formFeedback.classList.remove('error-color', 'success-color');
   }
 
-  private removeMessageIfWriting(errorMessage: HTMLSpanElement) {
+  private removeErrorsIfWriting(errorMessage: HTMLSpanElement) {
     errorMessage.classList.replace('visible', 'hidden');
-    this.formFeedback.replace('visible', 'hidden');
     if (errorMessage.parentNode) {
       setTimeout(function() {
-        errorMessage.parentNode.removeChild(errorMessage);
+        errorMessage?.parentNode?.removeChild(errorMessage);
     }, 400);
+    }
+  }
+
+  private closePopup(event, targetElement) {
+    const successPopup = document.getElementById('success-popup');
+    if (!successPopup?.contains(event.target)) {
+      targetElement.classList.replace('visible', 'hidden');
+      setTimeout(function() {
+        targetElement.style.display = 'none';
+        while (targetElement.firstChild) {
+          targetElement.removeChild(targetElement.firstChild);
+        }
+        location.reload();
+      }, 400);
     }
   }
 }

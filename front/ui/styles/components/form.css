@@ -14,7 +14,7 @@ form {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   justify-content: space-between;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 fieldset p {
@@ -30,8 +30,8 @@ fieldset p {
 }
 
 .label-main-focus {
-  top: -1.2rem !important;
-  font-size: 0.9rem !important;
+  top: -1rem !important;
+  font-size: 1rem !important;
   color: var(--green600);
 }
 
@@ -181,6 +181,7 @@ button[type='submit']:hover {
   display: none;
   justify-content: center;
   align-items: center;
+  z-index: 4;
 }
 
 .success-popup-bg  {
@@ -194,7 +195,6 @@ button[type='submit']:hover {
   border-radius: 70px;
   gap: .5rem;
   padding: 2rem;
-  z-index: 3;
   opacity: 0.9;
   text-align: center;
 }
