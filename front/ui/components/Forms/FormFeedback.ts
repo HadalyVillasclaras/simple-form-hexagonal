@@ -4,12 +4,12 @@ export class FormFeedback {
   formElement: HTMLFormElement;
   formResponse: InputResponse | AppResponse;
   formFeedback: any;
-  formSuccessLogged: any;
+  popUpArea: any;
 
   constructor(formElementId: string, formResponse: InputResponse | AppResponse) {
     const formElement = document.getElementById(formElementId) as HTMLFormElement;
     this.formFeedback = formElement.querySelector('.form-feedback');
-    this.formSuccessLogged = document.getElementById('success-log');
+    this.popUpArea = document.getElementById('popup-area');
 
     if (!formElement) {
       throw new Error(`Form with id ${formElementId} does not exist.`);
@@ -20,76 +20,73 @@ export class FormFeedback {
   }
 
   render() {
+    this.removeOldErrorMessages();
+    this.removeFeedBackMessage();
+
     if ('inputErrors' in this.formResponse) {
-      this.renderInputFeedback();
+      this.renderInputFeedback(this.formResponse);
     } else {
       this.renderAppFeedback();
     }
   }
 
   private renderAppFeedback() {
-    this.formFeedback.style.opacity = 1;
-    this.formFeedback.style.visibility = 'visible';
-    if(this.formSuccessLogged) {
-      this.removeFeedBackMessage();
-      const formResponse = this.formResponse as AppResponse;
-      if(formResponse.status === 'error') {
-        this.formFeedback.classList.add('error');
-        this.formFeedback.textContent = formResponse.message;
-      } else if(formResponse.status === 'success') {
-        const template = document.getElementById('feedback-success');
-        if (template) {
-          const clone = document.importNode(template.content, true);
-          const successMessageElement = clone.querySelector('#feedback-success-msg');
+    const formResponse = this.formResponse as AppResponse;
+    this.formFeedback.classList.replace('hidden', 'visible');
+
+    if(formResponse.status === 'error') {
+      this.formFeedback.classList.add('error-color');
+      this.formFeedback.textContent = formResponse.message;
+
+    } else if (formResponse.status === 'success') {
+      // Show success popup
+      const successTemplate = document.getElementById('feedback-success');
+      if (successTemplate) {
+        const clonedSuccessTemp = document.importNode(successTemplate.content, true);
+        const successMessageElement = clonedSuccessTemp.querySelector('#feedback-success-msg');
         if (successMessageElement) {
           successMessageElement.textContent = formResponse.message;
         }
-        this.formSuccessLogged.appendChild(clone);
-        this.formSuccessLogged.style.opacity = 1;
-        this.formSuccessLogged.style.visibility = 'visible';
-        this.formSuccessLogged.style.display = 'flex';
 
-        this.closeSuccessPopup()
-        }
+        this.popUpArea.appendChild(clonedSuccessTemp);
+        this.popUpArea.classList.replace('hidden', 'visible');
+        this.popUpArea.style.display = 'flex';
+
+        // Close on click anywhere else
+        document.addEventListener('click', (event) => this.closePopup(event, this.popUpArea));
       }
     }
   }
   
-  private closeSuccessPopup() {
-    document.addEventListener('click', (event) => {  
-      const successPopup = document.getElementById('success-popup');
-      if (!successPopup.contains(event.target)) {
-        this.formSuccessLogged.style.opacity = 0;
-        this.formSuccessLogged.style.visibility = 'hidden';
-        this.formSuccessLogged.style.display = 'none';
-
-        while (this.formSuccessLogged.firstChild) {
-          this.formSuccessLogged.removeChild(this.formSuccessLogged.firstChild);
+  private closePopup(event, targetElement) {
+    const successPopup = document.getElementById('success-popup');
+    if (!successPopup?.contains(event.target)) {
+      targetElement.classList.replace('visible', 'hidden');
+      setTimeout(function() {
+        targetElement.style.display = 'none';
+        while (targetElement.firstChild) {
+          targetElement.removeChild(targetElement.firstChild);
         }
-      }
-    });
+      }, 400);
+    }
   }
 
-  private renderInputFeedback() {
-    this.removeOldErrorMessages();
-    this.removeFeedBackMessage()
+  private renderInputFeedback(inputResponse: InputResponse) {
     const errorFields: any = [];
-
-    const inputResponse = this.formResponse as InputResponse;
 
     inputResponse.inputErrors.forEach(error => {
       if (!errorFields.includes(error.field)) {
         errorFields.push(error.field);
-
         const inputField = this.formElement.elements.namedItem(error.field) as HTMLInputElement;
 
         if (!inputField) {
           throw new Error(`Input field ${error.field} does not exist.`);
         }
 
+        // create span message under error input
         const inputErrorMessage = document.createElement('span');
         inputErrorMessage.textContent = error.message;
-        inputErrorMessage.className = 'input-error';
+        inputErrorMessage.className = 'input-error visible';
         inputField?.parentElement?.appendChild(inputErrorMessage);
 
         // delete on input
@@ -108,13 +105,17 @@ export class FormFeedback {
   private removeFeedBackMessage() {
     this.formFeedback.textContent = '';
     this.formFeedback.innerHTML = '';
+    this.formFeedback.classList.replace('visible', 'hidden');
     this.formFeedback.classList.remove('error', 'success');
   }
 
   private removeMessageIfWriting(errorMessage: HTMLSpanElement) {
+    errorMessage.classList.replace('visible', 'hidden');
+    this.formFeedback.replace('visible', 'hidden');
     if (errorMessage.parentNode) {
-      errorMessage.style.opacity = '0';
-      errorMessage.parentNode.removeChild(errorMessage);
+      setTimeout(function() {
+        errorMessage.parentNode.removeChild(errorMessage);
+    }, 400);
     }
   }
 }

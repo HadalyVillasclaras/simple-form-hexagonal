@@ -42,18 +42,20 @@
         </p>
         <p>
           <label class="label-main" for="password">Password<span aria-label="required">*</span></label>
-            <input type="password" name="password" autocomplete="new-password" aria-required="true">
-            <span class="eye-icon"></span>
+          <input type="password" name="password" autocomplete="new-password" aria-required="true">
+          <span class="eye-icon hidden"></span>
         </p>
       </fieldset>
       <fieldset>
-        <label for="terms-policy" class="terms-policy-label">
-          <input name="terms-policy" class="terms-policy-checkbox" type="checkbox">
-          <span aria-label="Terms checkbox" role="checkbox"></span>
-          I agree with the <a href="#">Terms</a> and <a href="#">Conditions</a>
-        </label>
+        <p class="terms-wrapper">
+          <span class="checkbox-wrapper">
+            <input name="terms-policy" class="terms-input-checkbox" type="checkbox">
+            <span aria-label="Terms checkbox" class="terms-fake-checkbox " role="checkbox"></span>
+          </span>
+          <label for="terms-policy">I agree with the <a href="#">Terms</a> and <a href="#">Conditions</a></label>
+        </p>
       </fieldset>
-      <p class="form-feedback"></p>
+      <p class="form-feedback hidden"></p>
       <button type="submit" >Sign up</button>
     </form>
   </template>
@@ -71,11 +73,11 @@
         <p>
           <label class="label-main" for="password">Password<span aria-hidden="true">*</span></label>
           <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
-          <span class="eye-icon"></span>
+          <span class="eye-icon hidden"></span>
         </p>
       </fieldset>
-      <p class="form-feedback"></p>
-      <button type="submit" >Sign in</button>
+      <p class="form-feedback hidden"></p>
+      <button type="submit">Sign in</button>
     </form>
   </template>
   <section id="circle-wrapper">
@@ -94,7 +96,7 @@
     </p>
   </section>
   <template id="feedback-success">
-    <section id="success-popup" class="logged-bg">
+    <section id="success-popup" class="success-popup-bg">
       <article class="success-msg">
         <span class="flower mid-spin">❋</span>
         <p id="feedback-success-msg"></p>
@@ -105,7 +107,7 @@
       </article>
     </section>
   </template>
-  <section id="success-log" class="logged-wrapper">
+  <section id="popup-area" class="popup-wrapper hidden">
   </section>
   <script type="module" src="./ui/main.ts"></script>
 </body>

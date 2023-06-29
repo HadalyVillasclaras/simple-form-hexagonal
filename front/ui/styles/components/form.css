@@ -63,23 +63,22 @@ input[name='password'] {
 }
 
 /* Terms & policy */
-.terms-policy-label {
-  position: relative;
-  padding-left: 1.2rem;
+.terms-wrapper {
+  padding-left: 1.5rem;
   font-size: 0.8rem;
 }
 
-.terms-policy-checkbox {
+.terms-input-checkbox {
   position: absolute;
   opacity: 0;
   z-index: 2;
-  top: 1px;
+  top: -1px;
   left: 1px;
 }
 
-.terms-policy-label span {
+.terms-fake-checkbox {
   position: absolute;
-  top: 0;
+  top: -2px;
   left: 0;
   height: 12px;
   width: 12px;
@@ -87,21 +86,11 @@ input[name='password'] {
   transition: all 0.8s ease;
 }
 
-.terms-policy-label:focus-within span {
-  outline: solid 1px var(--green200);
+.terms-policy:focus-within .terms-fake-checkbox {
+  outline: solid 1px var(--green400);
 }
 
-.terms-policy-label a {
-  color: var(--green350);
-  font-size: inherit;
-}
-
-.terms-policy-label a:hover {
-  color: var(--green500);
-  background-color: var(--green300);
-}
-
-.terms-policy-label input + span::after {
+.terms-fake-checkbox::after {
   content: "";
   position: absolute;
   width: 9px;
@@ -111,13 +100,11 @@ input[name='password'] {
   top: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
+  transition: all 0.6s ease;
 }
 
-.terms-policy-label input:checked + span::after {
+.terms-input-checkbox:checked + .terms-fake-checkbox::after{
   opacity: 1;
-  visibility: visible;
 }
 
 /* Submit button */
@@ -130,9 +117,7 @@ button[type='submit'] {
   font-family: var(--button-ff);
   border: 1px solid var(--green700);
   background-color: var(--button-bg); 
-  transition-property: border, background-color, color;
-  transition-duration: 0.5s;
-  transition-timing-function: ease-out;
+  transition: all 0.5s ease-out;
   z-index: 1;
 }
 
@@ -140,6 +125,7 @@ button[type='submit']:hover {
   background: var(--button-bg-dm);
   color: var(--button-color-dm);
 }
+
 
 /* Eye-icon */
 .eye-icon svg path{
@@ -155,14 +141,6 @@ button[type='submit']:hover {
   width: 1.1rem;
   height: 1.1rem;
   z-index: 3;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0.5s linear, opacity 0.5s linear;
-}
-
-.eye-icon.visible {
-  visibility: visible;
-  opacity: 1;
 }
 
 .eye-icon svg {
@@ -171,65 +149,41 @@ button[type='submit']:hover {
 
 /* Feedbacks */
 .input-error {
-  opacity: 1;
   position: relative;
   text-align: right;
   display: block;
   font-size: 0.7rem;
-  margin-top: 0.2rem;
+  margin-top: 0.5rem;
   color: var(--font-dark);
   padding: 0 0.1rem;
-  animation: fadeIn 0.5s forwards;
-  transition: opacity 0.5s ease-out;
-}
-
-.input-error::before {
-  content: '';
-  font-size: 1rem;
-  margin-right: 5px;
 }
 
 .form-feedback {
   display: inline-block;
-  visibility: hidden;
-  opacity: 0;
   transition: all 0.2s ease-in;
 }
 
-.error {
-  opacity: 1;
+.error-color {
   color: rgb(110, 59, 17);
-  height: 0.8rem;
 }
 
-.success {
-  opacity: 1;
+.success-color {
   color: var(--green400);
-  height: 0.8rem;
-  display: inline;
 }
 
-.flower {
-  top: 5px;
-  position: relative;
-  font-size: 1.5rem;
-  color: var(--green400);
-  display: inline-block;
-}
 
-.logged-wrapper{
+.popup-wrapper{
   top: 0;
   right: 0;
   position: absolute;
   width: 100vw;
   height: 100vh;
   display: none;
-  /* display: flex; */
   justify-content: center;
   align-items: center;
 }
 
-.logged-bg  {
+.success-popup-bg  {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -267,6 +221,15 @@ button[type='submit']:hover {
   color: var(--green450);
   font-size: 2rem;
 }
+
+.flower {
+  top: 5px;
+  position: relative;
+  font-size: 1.5rem;
+  color: var(--green400);
+  display: inline-block;
+}
+
 
 /* Auto complete issues */
 input:-webkit-autofill,
