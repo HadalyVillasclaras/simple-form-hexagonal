@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Sign up / sign in form</title>
-  <script type="module" crossorigin src="/simple-form-hexagonal/assets/index-ab55425f.js"></script>
-  <link rel="stylesheet" href="/simple-form-hexagonal/assets/index-4699ece4.css">
+  <script type="module" crossorigin src="/simple-form-hexagonal/assets/index-5f2f8561.js"></script>
+  <link rel="stylesheet" href="/simple-form-hexagonal/assets/index-ce257c33.css">
 </head>
 <body>
   <span id="theme-mode" class="theme-area" >  
@@ -33,19 +33,23 @@
         <p>
           <label class="label-main" for="name">Name<span aria-label="required">*</span></label>
           <input type="text" name="name" aria-required="true" >
+          <span class="input-error hidden"></span>
         </p>
         <p>
           <label class="label-main" for="surname">Surname<span aria-label="required">*</span></label>
           <input type="text" name="surname" aria-required="true" >
+          <span class="input-error hidden"></span>
         </p>
         <p>
           <label class="label-main" for="email">Email<span aria-label="required">*</span></label>
           <input type="text" name="email" aria-required="true" >
+          <span class="input-error hidden"></span>
         </p>
         <p>
           <label class="label-main" for="password">Password<span aria-label="required">*</span></label>
           <input type="password" name="password" autocomplete="new-password" aria-required="true">
           <span class="eye-icon hidden"></span>
+          <span class="input-error hidden"></span>
         </p>
       </fieldset>
       <fieldset>
@@ -71,11 +75,13 @@
         <p>
           <label class="label-main" for="email">Email<span aria-hidden="true">*</span></label>
           <input type="text" class="input-field" name="email"  aria-required="true">
+          <span class="input-error hidden"></span>
         </p>
         <p>
           <label class="label-main" for="password">Password<span aria-hidden="true">*</span></label>
           <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
           <span class="eye-icon hidden"></span>
+          <span class="input-error hidden"></span>
         </p>
       </fieldset>
       <p class="form-feedback hidden"></p>
