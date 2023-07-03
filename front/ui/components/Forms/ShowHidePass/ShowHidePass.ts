@@ -1,4 +1,5 @@
 import { eyeIconSVG, closeIconSVG, eyeNoneSvg } from './eye-icons';
+
 export function showHidePassword(event: any) {
   let passwordInput = event.target;
   let eyeIcon:Element | null =  document.querySelector('.eye-icon');

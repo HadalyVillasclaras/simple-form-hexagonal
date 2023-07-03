@@ -1,9 +1,9 @@
+import { rotateCircle360 } from "../MagneticCircle/magneticCircle";
 const switchButton: HTMLElement | null = document.getElementById('theme-switch');
 const switchCircle: HTMLElement | null = document.getElementById('switch-circle');
 const switchWrapper: HTMLElement | null = document.getElementById('theme-mode');
 const arrowArea: HTMLElement | null = document.getElementById('arrow-area');
 const arrow: HTMLElement | null = document.getElementById('arrow');
-const svgCircle = document.getElementById('svg-circle') as HTMLElement;
 
 const switchClickedEvent = new Event('switchClicked');
 let clickedSwitch = false;
@@ -70,9 +70,8 @@ function switchControl() {
   function endDrag() {
     if (dragging && mouseDown && Math.abs(dy) > 20) {
       switchButton.style.top = `${originalY}px`;
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      switchTheme(currentTheme);
-      rotateCircle();
+      switchTheme();
+      rotateCircle360();
     } else if (dragging && mouseDown) {
       switchButton.style.top = `${originalY}px`;
     }
@@ -86,7 +85,8 @@ function switchControl() {
   document.addEventListener('mouseup', endDrag);
 }
 
-function switchTheme(currentTheme: string | null) {
+function switchTheme() {
+	const currentTheme = document.documentElement.getAttribute('data-theme');
 	if (currentTheme === 'dark') {
 		document.documentElement.setAttribute('data-theme', 'light');
 	} else {
@@ -95,11 +95,10 @@ function switchTheme(currentTheme: string | null) {
 }
 
 function switchThemeOnTouch() {
-	const currentTheme = document.documentElement.getAttribute('data-theme');
 	switchButton?.classList.add('down-up-center');
 	setTimeout(() => {
-		switchTheme(currentTheme);
-		rotateCircle();
+		switchTheme();
+		rotateCircle360();
 	}, 1000);
 		switchButton.addEventListener('animationend', function () {
 		switchButton.classList.remove('down-up-center');
@@ -138,10 +137,3 @@ function switchRegularBounce(switchButton: HTMLElement) {
 	setInterval(startAnimation, 2 * 60 * 1000);
 }
 
-// rotate circle when switch theme
-function rotateCircle() {
-	svgCircle.classList.add('rotate-once');
-	svgCircle.addEventListener('animationend', function () {
-		svgCircle.classList.remove('rotate-once');
-	});
-}

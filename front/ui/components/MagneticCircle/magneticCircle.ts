@@ -1,3 +1,4 @@
+import {openInfoCard, closeInfoCard, closeInfoCardOnMobile} from '../InfoCard/infoCard'; 
 const circle = document.getElementById('circle') as HTMLElement;
 const circleInfo = document.getElementById('circle-info') as HTMLElement;
 const svgCircle = document.getElementById('svg-circle') as HTMLElement;
@@ -17,10 +18,19 @@ function initMagneticCircle() {
     circle.addEventListener('mousemove', (event) => moveCircle(event));
     circle.addEventListener('mouseleave', stopCircle);
   } else {
-    document.addEventListener('click', (event) => closeInfoCardOnMobile(event));
+    document.addEventListener('click', (event) => {
+      closeInfoCardOnMobile(event);
+      svgCircle.classList.remove('svg-circle-inactive');
+      circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
+    });
   }
   
-  circleInfo.addEventListener('click', (event) => openInfoCard(event));
+  circleInfo.addEventListener('click', (event) => {
+    openInfoCard();
+    svgCircle.classList.add('svg-circle-inactive');
+    circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
+    event.stopPropagation(); 
+  });
 }
 
 function moveCircle(event: MouseEvent) {
@@ -61,39 +71,12 @@ function stopCircle() {
   closeInfoCard();
 }
 
-function openInfoCard(event: MouseEvent) {
-  infoCard.style.opacity = '0.9';
-  infoCard.style.display = 'block';
-  
-  if(window.innerWidth < 800){
-    infoCard.classList.add('cardMobileDisplay');
-  }
-
-  svgCircle.classList.add('svg-circle-inactive');
-  circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
-  event.stopPropagation(); 
-
+export function rotateCircle360() {
+	svgCircle.classList.add('rotate-once');
+	svgCircle.addEventListener('animationend', function () {
+		svgCircle.classList.remove('rotate-once');
+	});
 }
 
-function closeInfoCard() {
-  infoCard.classList.remove('cardMobileDisplay');
-  infoCard.style.opacity = '0';
 
-  setTimeout(() => {
-    infoCard.style.display = 'none';
-  }, 800);
-}
 
-function closeInfoCardOnMobile(event: MouseEvent) {
-  if (infoCard.contains(event.target as Node)) return;
-  infoCard.style.opacity = '0';
-  infoCard.style.right = '0';
-  infoCard.style.bottom = '0';
-  svgCircle.classList.remove('svg-circle-inactive');
-  circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
-
-  setTimeout(() => {
-    infoCard.style.display = 'none';
-    infoCard.classList.remove('cardMobileDisplay');
-  }, 200);
-}

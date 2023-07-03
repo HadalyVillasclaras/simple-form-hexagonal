@@ -1,5 +1,5 @@
 import { AppAdapter, InputResponse, AppResponse } from '../src/AppAdapter';
-import { FormFeedback } from './components/Forms/FormFeedback';
+import { FormFeedback } from './components/Forms/Feedback/FormFeedback';
 
 const appAdapter = new AppAdapter();
 

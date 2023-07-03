@@ -14,3 +14,13 @@
   opacity: 0;
   transition: visibility 0.4s linear, opacity 0.4s linear;
 }
+
+.height {
+  height: 1rem;
+  transition: height 0.4s linear;
+}
+
+.no-height {
+  height: 0;
+  transition: height 0.4s linear;
+}
