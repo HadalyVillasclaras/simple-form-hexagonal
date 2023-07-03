@@ -156,8 +156,9 @@ button[type='submit']:hover {
   margin-top: 0.5rem;
   color: var(--font-dark);
   padding: 0 0.1rem;
+  height: 0.8rem;
 }
-
+ 
 .form-feedback {
   display: inline-block;
   transition: all 0.2s ease-in;

@@ -4,24 +4,21 @@ export class FormFeedback {
   formElement: HTMLFormElement;
   formResponse: InputResponse | AppResponse;
   formFeedback: any;
-  popUpArea: any;
 
   constructor(formElementId: string, formResponse: InputResponse | AppResponse) {
     const formElement = document.getElementById(formElementId) as HTMLFormElement;
-    this.formFeedback = formElement.querySelector('.form-feedback');
-    this.popUpArea = document.getElementById('popup-area');
+    const formFeedback = formElement.querySelector('.form-feedback');
 
-    if (!formElement) {
-      throw new Error(`Form with id ${formElementId} does not exist.`);
+    if (!formElement || !formFeedback) {
+      throw new Error(`Element does not exist.`);
     }
 
     this.formElement = formElement;
     this.formResponse = formResponse;
+    this.formFeedback = formFeedback;
   }
 
   render() {
-    this.removeOldErrorMessages();
-
     if ('inputErrors' in this.formResponse) {
       this.renderInputFeedback(this.formResponse);
     } else {
@@ -33,7 +30,7 @@ export class FormFeedback {
     const formResponse = this.formResponse as AppResponse;
     this.formFeedback.classList.replace('hidden', 'visible');
 
-    if(formResponse.status === 'error') {
+    if (formResponse.status === 'error') {
       this.formFeedback.classList.add('error-color');
       this.formFeedback.textContent = formResponse.message;
       const inputs = Array.from(this.formElement.querySelectorAll('input'));
@@ -42,26 +39,9 @@ export class FormFeedback {
         input.addEventListener('input', () => this.removeFeedBackMessage());
       });
     } else if (formResponse.status === 'success') {
-      // Show success popup
-      const successTemplate = document.getElementById('feedback-success');
-      if (successTemplate) {
-        const clonedSuccessTemp = document.importNode(successTemplate.content, true);
-        const successMessageElement = clonedSuccessTemp.querySelector('#feedback-success-msg');
-        if (successMessageElement) {
-          successMessageElement.textContent = formResponse.message;
-        }
-
-        this.popUpArea.appendChild(clonedSuccessTemp);
-        this.popUpArea.classList.replace('hidden', 'visible');
-        this.popUpArea.style.display = 'flex';
-
-        // Close on click anywhere else
-        document.addEventListener('click', (event) => this.closePopup(event, this.popUpArea));
-      }
+      setTimeout(() => this.openPopup(), 500);
     }
   }
-  
-
 
   private renderInputFeedback(inputResponse: InputResponse) {
     const errorFields: any = [];
@@ -75,14 +55,13 @@ export class FormFeedback {
           throw new Error(`Input field ${error.field} does not exist.`);
         }
 
-        // create span message under error input
-        const inputErrorMessage = document.createElement('span');
-        inputErrorMessage.textContent = error.message;
-        inputErrorMessage.className = 'input-error visible';
-        inputField?.parentElement?.appendChild(inputErrorMessage);
+        const parentP = inputField.parentElement;
+        const errorSpan = parentP.querySelector('span.input-error');
+        errorSpan.textContent = error.message; 
+        errorSpan.classList.replace('hidden', 'visible');
 
-        // delete on input
-        inputField.addEventListener('input', () => this.removeErrorsIfWriting(inputErrorMessage));
+        //delete on input
+        inputField.addEventListener('input', () => this.removeErrorsIfWriting(errorSpan));
       }
     });
   }
@@ -101,20 +80,38 @@ export class FormFeedback {
     this.formFeedback.classList.remove('error-color', 'success-color');
   }
 
-  private removeErrorsIfWriting(errorMessage: HTMLSpanElement) {
-    errorMessage.classList.replace('visible', 'hidden');
-    if (errorMessage.parentNode) {
-      setTimeout(function() {
-        errorMessage?.parentNode?.removeChild(errorMessage);
+  private removeErrorsIfWriting(errorElement: HTMLSpanElement) {
+    errorElement.classList.replace('visible', 'hidden');
+    setTimeout(function () {
+      errorElement.textContent = ""; 
     }, 400);
+  }
+
+  private openPopup() {
+    const popUpArea = document.getElementById('popup-area');
+    const successTemplate = document.getElementById('feedback-success');
+
+    if (successTemplate && popUpArea) {
+      const clonedSuccessTemp = document.importNode(successTemplate.content, true);
+      const successMessageElement = clonedSuccessTemp.querySelector('#feedback-success-msg');
+      if (successMessageElement) {
+        successMessageElement.textContent = this.formResponse.message;
+      }
+
+      popUpArea.appendChild(clonedSuccessTemp);
+      popUpArea.style.display = 'flex';
+      // popUpArea.classList.replace('hidden', 'visible');
+
+      // Close on click anywhere else
+      document.addEventListener('click', (event) => this.closePopup(event, popUpArea));
     }
   }
 
-  private closePopup(event, targetElement) {
+  private closePopup(event: MouseEvent, targetElement: any) {
     const successPopup = document.getElementById('success-popup');
     if (!successPopup?.contains(event.target)) {
       targetElement.classList.replace('visible', 'hidden');
-      setTimeout(function() {
+      setTimeout(function () {
         targetElement.style.display = 'none';
         while (targetElement.firstChild) {
           targetElement.removeChild(targetElement.firstChild);
