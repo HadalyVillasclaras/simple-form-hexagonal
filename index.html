@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Sign up / sign in form</title>
-  <script type="module" crossorigin src="/simple-form-hexagonal/assets/index-5f2f8561.js"></script>
-  <link rel="stylesheet" href="/simple-form-hexagonal/assets/index-ce257c33.css">
+  <script type="module" crossorigin src="/simple-form-hexagonal/assets/index-49917261.js"></script>
+  <link rel="stylesheet" href="/simple-form-hexagonal/assets/index-8d2d14f0.css">
 </head>
 <body>
   <span id="theme-mode" class="theme-area" >  
@@ -23,6 +23,23 @@
   </span>
   <div id="arrow-area" class="theme-arrow-area"></div>
   <main id="forms-sect" class=""></main>
+  <section class="circle-wrapper">
+    <div id="circle">
+      <span id="circle-info" class="circle-info-text circle-info-out">info</span>
+      <svg id="svg-circle" viewBox="0 0 100 100">
+          <path id="circle-textpath" d="M50,10 a40,40 0 1,1 0,80 a40,40 0 1,1 0,-80" fill="none"/>
+          <text>
+            <textPath href="#circle-textpath">Just a little bit of info for you &#9733; </textPath>
+          </text>
+      </svg>
+    </div>
+    <p id="info-card" class="card card-text">
+      Hey!<span class="card-symbol">&#9728;</span> You can test the form by typing<span class="card-symbol">&#9998;</span>some text. 
+      <br>Data will not be sent <span class="card-symbol no-wrap">&#9992;&#9992;</span> or stored,<i>it's just for the fun</i>
+      <br><br>You can also switch the lights off and on. Or fiddle around with the mouse!<span class="card-symbol no-wrap">🖱&#9775;&#9829;</span> 
+    </p>
+  </section>
+  <section id="popup-area" class="popup-wrapper hidden"></section>
   <template id="signup-template"> 
     <form id="signup-form" method="POST" action="" aria-labelledby="signup-form" >
       <section class="form-header">
@@ -61,7 +78,7 @@
           <label for="terms-policy">I agree with the <a href="#">Terms</a> and <a href="#">Conditions</a></label>
         </p>
       </fieldset>
-      <p class="form-feedback hidden"></p>
+      <p class="form-feedback hidden no-height"></p>
       <button type="submit" >Sign up</button>
     </form>
   </template>
@@ -84,25 +101,10 @@
           <span class="input-error hidden"></span>
         </p>
       </fieldset>
-      <p class="form-feedback hidden"></p>
+      <p class="form-feedback hidden no-height"></p>
       <button type="submit">Sign in</button>
     </form>
   </template>
-  <section id="circle-wrapper">
-    <div id="circle">
-      <span id="circle-info" class="circle-info-out">info</span>
-      <svg id="svg-circle" viewBox="0 0 100 100">
-          <path id="circle-path" d="M50,10 a40,40 0 1,1 0,80 a40,40 0 1,1 0,-80" fill="none"/>
-          <text>
-            <textPath href="#circle-path">Just a little bit of info for you &#9733; </textPath>
-          </text>
-      </svg>
-    </div>
-    <p id="info-card">
-      Hey!&#9728; You can test the form typing&#9998; some text. Data won't be sent &#9992;&#9992; or stored.<i>It's just for the fun </i>&#9787;
-      <br><br>You can switch off/on lights too. And hang around with mouse!<span class="no-wrap">&#9775;&#9825;&#9969;</span> 
-    </p>
-  </section>
   <template id="feedback-success">
     <section id="success-popup" class="success-popup-bg">
       <article class="success-msg">
@@ -115,8 +117,6 @@
       </article>
     </section>
   </template>
-  <section id="popup-area" class="popup-wrapper hidden">
-  </section>
   
 </body>
 </html>
