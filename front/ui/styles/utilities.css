@@ -23,3 +23,10 @@
   height: 0;
   transition: height 0.4s linear;
 }
+
+.no-emoji::before {
+  -webkit-font-feature-settings: 'ornm' 0;
+  -moz-font-feature-settings: 'ornm' 0;
+  -ms-font-feature-settings: 'ornm' 0;
+  font-feature-settings: 'ornm' 0;
+}
