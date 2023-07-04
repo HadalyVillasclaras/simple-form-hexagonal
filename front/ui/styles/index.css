@@ -9,6 +9,7 @@
 @import url("./components/form.css");
 @import url("./components/theme-mode.css");
 @import url("./components/magnetic-circle.css");
+@import url("./components/info-card.css");
 
 /* Utils */
 @import url("./utilities.css");
