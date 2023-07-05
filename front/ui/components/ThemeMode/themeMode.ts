@@ -28,11 +28,9 @@ function initThemeMode() {
 		switchRegularBounce(switchButton);
 	
 		if (isWindowMobileSize()) {
-			console.log('on touch');
 			switchCircle?.addEventListener('click', switchThemeOnTouch);
 
 		} else {
-			console.log('grab');
 			switchCircle?.removeEventListener('click', switchThemeOnTouch);
 			arrowArea?.addEventListener('mouseenter', moveArrow);
 			switchControl();
@@ -57,18 +55,14 @@ function switchControl() {
 
   function drag(e: MouseEvent) {
     if (mouseDown) {
-			console.log(mouseDown);
       dragging = true;
     }
 
     if (mouseDown && dragging) {
 			dy = ('clientY' in e ? e.clientY : e.touches[0].clientY) - startY;
-			console.log(dy); // 2 4 8 11 21 
       const maxBottomPosition = switchWrapper.offsetHeight - switchButton.offsetHeight;
-			console.log(maxBottomPosition); // -96
       let newTopPosition = originalY + dy;
       newTopPosition = Math.min(newTopPosition, maxBottomPosition);
-			console.log(newTopPosition); //  -96
 
       switchButton.style.top = `${newTopPosition}px`;
     }
@@ -120,7 +114,6 @@ function moveArrow() {
 		arrow.classList.add('down-up');
 		switchButton?.classList.add('simple-down-up');
 
-
 		setTimeout(() => {
 			arrow.style.opacity = '0';
 			arrow.classList.remove('down-up');
@@ -143,4 +136,3 @@ function switchRegularBounce(switchButton: HTMLElement) {
 	setTimeout(startAnimation, 1500);
 	setInterval(startAnimation, 2 * 60 * 1000);
 }
-

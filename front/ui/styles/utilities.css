@@ -29,4 +29,5 @@
   -moz-font-feature-settings: 'ornm' 0;
   -ms-font-feature-settings: 'ornm' 0;
   font-feature-settings: 'ornm' 0;
+  font-feature-settings: "colr" 0, "calt" 0;
 }
