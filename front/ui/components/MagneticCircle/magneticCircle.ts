@@ -37,34 +37,38 @@ function moveCircle(event: MouseEvent) {
   const rect = circle.getBoundingClientRect();
   const x = event.clientX - rect.left;
   const y = event.clientY - rect.top;
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
   
   // elements ratio 
   const ratioCircle = 1.5;  
   const ratioText = 0.1; 
-  const ratioCard = 1; 
+  const ratioCard = 0.8; 
 
-  const moveXCircle = (x - rect.width / 2) * ratioCircle;
-  const moveYCircle = (y - rect.height / 2) * ratioCircle;
+  const moveXCircle = (event.clientX - centerX) * ratioCircle;
+  const moveYCircle = (event.clientY - centerY) * ratioCircle;
 
-  const moveXText = (x - rect.width / 2) * ratioText;
-  const moveYText = (y - rect.height / 2) * ratioText;
+  const moveXText = (event.clientX - centerX) * ratioText;
+  const moveYText = (event.clientY - centerY) * ratioText;
 
-  const moveXCard = (x - rect.width) * ratioCard - 50;
-  const moveYCard = (y - rect.height) * ratioCard + 110;
+  const moveXCard = (moveXCircle * ratioCard) - 120;
+  const moveYCard = (moveYCircle * ratioCard) - 120;
 
   // transform
-  circle.style.transform = `scale(1.4) translate3d(${moveXCircle}px, ${moveYCircle}px, 0)`;
-  circleInfo.style.transform = `translate3d(${moveXText}px, ${moveYText}px, 0)`;
-
-  infoCard.style.right = `${-moveXCard}px`;
-  infoCard.style.bottom = `${rect.height - moveYCard}px`;
+  requestAnimationFrame(() => {
+    circle.style.transform = `scale(1.4) translate(${moveXCircle}px, ${moveYCircle}px)`;
+    circleInfo.style.transform = `translate(${moveXText}px, ${moveYText}px, 0)`;
+    infoCard.style.transform = `translate(${moveXCard}px, ${moveYCard}px)`;
+  });
 
   svgCircle.classList.add('infiniteRotate');
 }
 
 function stopCircle() {
-  circle.style.transform = `translate3d(0, 0, 0)`;
-  circleInfo.style.transform = `translate3d(0, 0, 0)`;
+  requestAnimationFrame(() => {
+    circle.style.transform = '';
+    circleInfo.style.transform = '';
+  });
   svgCircle.classList.remove('infiniteRotate');
   svgCircle.classList.remove('svg-circle-inactive');
   circleInfo.classList.replace('circle-info-enter', 'circle-info-out');
@@ -77,6 +81,3 @@ export function rotateCircle360() {
 		svgCircle.classList.remove('rotate-once');
 	});
 }
-
-
-

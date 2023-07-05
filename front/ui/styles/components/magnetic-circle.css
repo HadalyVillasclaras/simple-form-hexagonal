@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.circle-wrapper > * {
+  cursor: default;
+}
+
 @media (max-width: 800px) {
   .circle-wrapper {
     position: relative;
@@ -41,7 +45,7 @@
 }
 
 .circle-info-out:hover {
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-decoration: underline;
 }
 
