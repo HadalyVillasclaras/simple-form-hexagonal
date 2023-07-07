@@ -47,7 +47,9 @@ class SignUpController
 
 			$signUpUser = new SignUpUser($userData, $this->userRepository);
 			$signUpUser->execute();
-			echo json_encode(["status" => "success", "message" => "✫ Sign up successfully completed! ✫"]);
+
+			http_response_code(200);
+			echo json_encode(["status" => "success", "message" => "Sign up successfully completed!"]);
 		} catch (EmptyFieldException $e) {
 			http_response_code(400);
 			echo json_encode(["status" => "error", "message" => $e->getMessage()]);
