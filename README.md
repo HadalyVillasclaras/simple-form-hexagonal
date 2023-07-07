@@ -109,15 +109,13 @@ npm install
 npm run dev
 ```
 
-The application should now be running at `http://localhost:3000`
-
 ---
 
 ### Front-end only version
 
 The front-end only version of this application uses a static JSON file to mock the behavior of the back-end server. This allows you to test and explore the front-end user interface without having to set up the back-end server and database.
 
-You can check out the front-end only version live here: [Simple form project](https://hadalyvillasclaras.github.io/simple-form-hexagonal/). Please note that since this version uses a static JSON file to mimic the back-end server, any data you input won't be stored or manipulated as it would be in the full version of the application.
+You can check out this version live here: [Simple form project](https://hadalyvillasclaras.github.io/simple-form-hexagonal/). Please note that since this version uses a static JSON file to mimic the back-end server, any data you input won't be stored or manipulated as it would be in the full version of the application.
 
 Requirements:
 
