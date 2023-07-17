@@ -12,10 +12,15 @@
   height: auto;
   padding: 2rem;
   background-color: var(--green200);
-  border-radius: 1rem;
+  border-radius: 0.6rem;
   box-shadow: 0px 0px 15px var(--green600);
   box-sizing: border-box;
   z-index: 9;
+}
+
+.card ::selection {
+  color: var(--selection-color);
+  background: var(--green350)
 }
 
 .card-text {
