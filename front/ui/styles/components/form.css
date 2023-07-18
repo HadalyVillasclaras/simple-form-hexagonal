@@ -5,6 +5,13 @@ form {
   gap: 3rem 2rem;
 }
 
+.form-header {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: flex-end;
+}
+
 .form-subheader{
   color: var(--green300);
   margin-top: 1rem;
@@ -128,120 +135,8 @@ button[type='submit']:hover {
 }
 
 
-/* Eye-icon */
-.eye-icon svg path{
-  fill: var(--green300);
-  stroke: var(--green300);
-}
-
-.eye-icon {
-  cursor: pointer;
-  position: absolute;
-  top: 5px;
-  right: 0;
-  width: 1.1rem;
-  height: 1.1rem;
-  z-index: 3;
-}
-
-.eye-icon svg {
-  height: 0.8rem;
-}
-
-/* Feedbacks */
-.input-error {
-  position: relative;
-  text-align: right;
-  display: block;
-  font-size: 0.7rem;
-  margin-top: 0.5rem;
-  color: var(--font-dark);
-  padding: 0 0.1rem;
-  height: 0.8rem;
-}
- 
-.form-feedback {
-  display: inline-block;
-  transition: all 0.2s ease-in;
-}
-
-.error-color {
-  color: rgb(110, 59, 17);
-}
-
-.success-color {
-  color: var(--green400);
-}
-
-
-.popup-wrapper{
-  top: 0;
-  right: 0;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 4;
-}
-
-.success-popup-bg  {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 60vw;
-  height: 60vh;
-  background-color: var(--green100);
-  box-shadow: 2px 0px 12px var(--green800);
-  border-radius: 70px;
-  gap: .5rem;
-  padding: 2rem;
-  opacity: 0.9;
-  text-align: center;
-}
-
-.success-msg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.success-msg p {
-  font-size: 2.3rem;
-  color: var(--green600);
-}
-
-.success-msg > .flower {
-  color: rgb(194, 205, 54);
-  margin-top: 1rem;
-  font-size: 5rem;
-}
-
-.success-msg > i {
-  color: var(--green450);
-  font-size: 2rem;
-}
-
-.flower {
-  top: 5px;
-  position: relative;
-  font-size: 1.5rem;
-  color: var(--green400);
-  display: inline-block;
-}
-
-.signin-help {
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
-  align-items: flex-end;
-}
-
  .help-button > * {
   font-size: 1rem;
-  cursor: pointer;
   color: var(--green350);
 }
 
@@ -250,40 +145,6 @@ button[type='submit']:hover {
   width: 100px;
   display: flex;
   top: -10px;
-}
-
-
-.signin-help-card {
-  position: absolute;
-  display: none;
-  flex-direction: column;
-  gap: 0.8rem;
-  top: 1rem;
-  right: -11rem;
-  min-width: 200px;
-  padding: 0.8rem 1.5rem !important;
-  max-width: unset !important;
-  opacity: 0.8;
-}
-
-.signin-help-card * {
-  color: var(--green700) !important;
-  font-size: 0.9rem;
-}
-
-.key-icon {
-  font-size: 1rem;
-  margin-left: 2rem;
-}
-
-.signin-help-card p {
-  font-family: "Alpina-Condensed-Medium";
-  
-}
-
-.signin-help-credentials {
-  margin-left: 0.6rem;
-  font-family: "Alpina-Tw-Regular";
 }
 
 /* Auto complete issues */

@@ -1,4 +1,4 @@
-import {openInfoCard, closeInfoCard, closeInfoCardOnMobile} from '../InfoCard/infoCard'; 
+import {openInfoCard, closeInfoCard, closeInfoCardOnMobile} from '../Cards/infoCard'; 
 const circle = document.getElementById('circle') as HTMLElement;
 const circleInfo = document.getElementById('circle-info') as HTMLElement;
 const svgCircle = document.getElementById('svg-circle') as HTMLElement;
