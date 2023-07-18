@@ -19,11 +19,14 @@ export function signInHelpCard() {
 
 export function hideSignInHelpCard() {
   const helpCard = document.getElementById("signin-help-card") as HTMLElement;
-  helpCard.classList.remove('visible');
-  helpCard.classList.add('hidden');
 
-  setTimeout(() => {
-    helpCard.classList.remove('display');
-    helpCard.classList.add('display-none');
-  }, 500);  
+  if (helpCard && helpCard.classList.contains('visible')) {
+    helpCard.classList.remove('visible');
+    helpCard.classList.add('hidden');
+
+    setTimeout(() => {
+      helpCard.classList.remove('display');
+      helpCard.classList.add('display-none');
+    }, 500);
+  }
 }

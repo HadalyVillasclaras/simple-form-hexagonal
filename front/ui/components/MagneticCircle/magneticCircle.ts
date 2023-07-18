@@ -1,4 +1,6 @@
 import {openInfoCard, closeInfoCard, closeInfoCardOnMobile} from '../Cards/infoCard'; 
+import {hideSignInHelpCard} from '../Cards/helpCard';
+
 const circle = document.getElementById('circle') as HTMLElement;
 const circleInfo = document.getElementById('circle-info') as HTMLElement;
 const svgCircle = document.getElementById('svg-circle') as HTMLElement;
@@ -26,6 +28,7 @@ function initMagneticCircle() {
   }
   
   circleInfo.addEventListener('click', (event) => {
+    hideSignInHelpCard();
     openInfoCard();
     svgCircle.classList.add('svg-circle-inactive');
     circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
@@ -65,14 +68,16 @@ function moveCircle(event: MouseEvent) {
 }
 
 function stopCircle() {
+
   requestAnimationFrame(() => {
+  closeInfoCard();
+
     circle.style.transform = '';
     circleInfo.style.transform = '';
   });
   svgCircle.classList.remove('infiniteRotate');
   svgCircle.classList.remove('svg-circle-inactive');
   circleInfo.classList.replace('circle-info-enter', 'circle-info-out');
-  closeInfoCard();
 }
 
 export function rotateCircle360() {
