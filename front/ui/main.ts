@@ -6,6 +6,7 @@ const appAdapter = new AppAdapter();
 // On load: Theme mode, Magnetic circle, Form animations
 import {formAnimations} from './components/Forms/formAnimations';
 import {themeMode} from './components/ThemeMode/themeMode';
+import {signInHelpCard, hideSignInHelpCard} from './components/Cards/helpCard';
 import {magneticCircle} from './components/MagneticCircle/magneticCircle';
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -61,8 +62,9 @@ function switchTemplates(event: MouseEvent, templateToShow: any) {
 
   if (templateToShow === signinTemplate) {
     handleSignInSubmit();
+    signInHelpCard();
   } else if (templateToShow === signupTemplate) {
-    handleSignUpSubmit();
+  handleSignUpSubmit();
   }
 }
 
@@ -73,6 +75,7 @@ function handleSignInSubmit() {
 
   async function handleSignInResponse(event: Event) {
     event.preventDefault();
+    hideSignInHelpCard();
     try {
       const formData = new FormData(event.target as HTMLFormElement);
       const signInResponse: InputResponse | AppResponse = await appAdapter.handleSignIn(formData);

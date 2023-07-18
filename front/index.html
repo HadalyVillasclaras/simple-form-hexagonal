@@ -14,7 +14,7 @@
       <span id="switch-circle" class="switch-circle"></span>
     </div>
     <svg id="arrow" class="theme-arrow" viewBox="0 0 38 91" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M15.6806 1C12.3163 16.643 8.96635 55.8177 22.4805 87.3721"  stroke-width="2" stroke-linecap="round"/>
+      <path d="M15.6806 1C12.3163 16.643 8.96635 55.8177 22.4805 87.3721" stroke-width="2" stroke-linecap="round"/>
       <line x1="23.0273" y1="89.4547" x2="25.3668" y2="80.3912"  stroke-width="2" stroke-linecap="round"/>
       <line x1="22.9523" y1="89.3454" x2="15.9436" y2="84.0731"  stroke-width="2" stroke-linecap="round"/>
     </svg>
@@ -32,8 +32,8 @@
       </svg>
     </div>
     <div id="info-card" class="card">
-      <p class="card-text">Hey!<span class="icon no-emoji">&#9728;&#xFE0E;</span> You can test the form by typing<span class="icon no-emoji">&#9998;&#xFE0E;</span>some text.</p>
-      <p class="card-text">Data will not be sent <span class="icon no-wrap no-emoji">&#9992;&#xFE0E;&#9992;&#xFE0E;</span> or stored,<i class="card-text-italic">it's just for the fun</i></p>
+      <p class="card-text">Hey! <span class="icon no-emoji">&#9728;&#xFE0E;</span> You can test the form by typing <span class="icon no-emoji">&#9998;&#xFE0E;</span> some text.</p>
+      <p class="card-text">Data will not be sent <span class="icon no-wrap no-emoji">&#9992;&#xFE0E; &#9992;&#xFE0E;</span> or stored, <i class="card-text-italic card-text">it's just for the fun</i>.</p>
       <br><p class="card-text">You can also switch the lights off and on. Or fiddle around with the mouse!<span class="icon no-wrap no-emoji">&#9775;&#xFE0E;&#9829;&#xFE0E;&#9829;&#xFE0E;</span></p>
     </div>
   </section>
@@ -87,29 +87,6 @@
       <section>
         <section class="form-header">
           <h2 >Welcome back!</h2> 
-          <span class="signin-help-wrapper">
-            <div id="signin-help" class="help-button pointer">
-              <svg class="icon lock-icon" viewBox="0 0 88 116" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M69.4769 40.931C70.7269 4.36123 17.2712 4.35158 18.5228 40.9305L18.5266 41.0416V92H5.52657V41.2605C3.78018 -13.0821 84.2182 -13.0917 82.4731 41.2607V92H69.4731V41.042L69.4769 40.931Z"/>
-                <path d="M0 59H88V114C88 115.105 87.1046 116 86 116H2C0.895429 116 0 115.105 0 114V59Z"/>
-              </svg>
-              <i>Help</i>
-            </div>
-            <div class="card signin-help-card">
-              <p class="no-wrap">Email: 
-                <span class="card-text">user@hello.com</span>
-              </p>
-              <p class="no-wrap flex-row">Password: 
-                <span class="card-text">Welc0me!</span>
-                <svg class="icon key-icon" viewBox="0 0 99 199" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M49.5 99C76.8381 99 99 76.8381 99 49.5C99 22.1619 76.8381 0 49.5 0C22.1619 0 0 22.1619 0 49.5C0 76.8381 22.1619 99 49.5 99ZM50 75C64.3594 75 76 63.3594 76 49C76 34.6406 64.3594 23 50 23C35.6406 23 24 34.6406 24 49C24 63.3594 35.6406 75 50 75Z" fill="#1F2006"/>
-                  <path d="M37 91C37 83.8203 42.8203 78 50 78C57.1797 78 63 83.8203 63 91V186C63 193.18 57.1797 199 50 199C42.8203 199 37 193.18 37 186V91Z" fill="#1F2006"/>
-                  <path d="M57 130H88V152H57V130Z" fill="#1F2006"/>
-                  <path d="M57 161H88V183H57V161Z" fill="#1F2006"/>
-                </svg>
-              </p>
-            </div>
-          </span>
         </section>
         <p class="form-subheader">Not a member? <a id="signup-link" href="#">Sign up</a></p>
       </section>
@@ -125,9 +102,35 @@
           <span class="icon eye-icon pointer hidden"></span>
           <span class="input-error hidden"></span>
         </p>
+
       </fieldset>
       <p class="form-feedback hidden no-height"></p>
-      <button type="submit">Sign in</button>
+      <section class="flex-row">
+        <button type="submit">Sign in</button>
+        <span id="signin-help-wrapper" class="signin-help-wrapper">
+          <div id="lock" class="help-button pointer">
+            <svg class="icon lock-icon" viewBox="0 0 88 116" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M69.4769 40.931C70.7269 4.36123 17.2712 4.35158 18.5228 40.9305L18.5266 41.0416V92H5.52657V41.2605C3.78018 -13.0821 84.2182 -13.0917 82.4731 41.2607V92H69.4731V41.042L69.4769 40.931Z"/>
+              <path d="M0 59H88V114C88 115.105 87.1046 116 86 116H2C0.895429 116 0 115.105 0 114V59Z"/>
+            </svg>
+            <!-- <i>Help</i> -->
+          </div>
+          <div id="signin-help-card" class="card signin-help-card display-none hidden">
+            <p class="no-wrap card-text card-text-condensed">Email: 
+              <span class="card-text">user@hello.com</span>
+            </p>
+            <p class="no-wrap flex-row card-text card-text-condensed">Password:  
+              <span class="card-text">Welc0me!</span>
+              <svg class="icon key-icon" viewBox="0 0 99 199"  xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M49.5 99C76.8381 99 99 76.8381 99 49.5C99 22.1619 76.8381 0 49.5 0C22.1619 0 0 22.1619 0 49.5C0 76.8381 22.1619 99 49.5 99ZM50 75C64.3594 75 76 63.3594 76 49C76 34.6406 64.3594 23 50 23C35.6406 23 24 34.6406 24 49C24 63.3594 35.6406 75 50 75Z"/>
+                <path d="M37 91C37 83.8203 42.8203 78 50 78C57.1797 78 63 83.8203 63 91V186C63 193.18 57.1797 199 50 199C42.8203 199 37 193.18 37 186V91Z"/>
+                <path d="M57 130H88V152H57V130Z"/>
+                <path d="M57 161H88V183H57V161Z"/>
+              </svg>
+            </p>
+          </div>
+        </span>
+      </section>
     </form>
   </template>
   <template id="feedback-success">

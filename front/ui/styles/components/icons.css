@@ -1,8 +1,10 @@
 .icon {
   color: var(--green600);
+  fill: var(--green600);
+  stroke: var(--green600);
   font-size: 1.3rem;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 /* Eye-icon */
@@ -26,21 +28,22 @@
 .key-icon {
   position: absolute;
   transform: rotate(35deg);
-  top: -7px;
-  right: 2px;
+  right: 35px;
+  bottom: 13px;
+  height: 1.5rem !important;
 }
 
 /* Lock icon */
 .lock-icon {
-  fill: var(--green400) !important;
+  fill: var(--green700) !important;
 }
 
 /* Success flower icon */
 .success-flower {
-  color: var(--green400);
-  top: 5px;
+  color: var(--green500);
+  top: -0.8rem;
   position: relative;
   display: inline-block;
   margin-top: 1rem;
-  font-size: 5rem;
+  font-size: 6rem;
 }

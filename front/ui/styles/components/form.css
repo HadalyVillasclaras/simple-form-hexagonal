@@ -140,12 +140,7 @@ button[type='submit']:hover {
   color: var(--green350);
 }
 
-.signin-help-wrapper {
-  position: relative;
-  width: 100px;
-  display: flex;
-  top: -10px;
-}
+
 
 /* Auto complete issues */
 input:-webkit-autofill,

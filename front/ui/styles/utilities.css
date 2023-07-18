@@ -2,6 +2,14 @@
   white-space: nowrap;
 }
 
+.display {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
 .visible {
   visibility: visible;
   opacity: 1;
