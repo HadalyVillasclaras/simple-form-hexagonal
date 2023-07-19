@@ -119,7 +119,7 @@ You can check out this version live here: [Simple form project](https://hadalyvi
 
 Requirements:
 
-- Node.js & npm
+- node.js & npm
 - Vite
 
 Steps:
