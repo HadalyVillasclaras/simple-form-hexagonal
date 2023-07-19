@@ -58,8 +58,8 @@ front/
 				|--JsonMockUserRepository.ts
 	|--ui/
 	|-- assets/
-			|--fonts/
-			|--imgs/
+		|--fonts/
+		|--imgs/
 	|-- components/
 	|-- styles/
 	|-- main.ts
