@@ -44,7 +44,7 @@ back/
 front/
   |--src/
 		|-- AppAdapters.ts
-		|-- User/
+		|-- User/ 
 			|-- Domain/
 				|--User.ts
 				|--UserRepositoryInterface.ts
