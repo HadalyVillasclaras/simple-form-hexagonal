@@ -1,7 +1,6 @@
 #info-card {
   bottom: 0px;
   right: 0px;
-  transition: opacity 1s ease, transform 0.4s ease;
 }
 
 .card {

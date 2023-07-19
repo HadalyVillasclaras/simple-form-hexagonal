@@ -73,20 +73,25 @@ input[name='password'] {
 /* Terms & policy */
 .terms-wrapper {
   padding-left: 1.5rem;
-  font-size: 0.8rem;
+  display: flex;
+}
+
+.terms-text,
+.terms-text a  {
+  font-size: 0.9rem;
+  line-height: 1.2rem;
 }
 
 .terms-input-checkbox {
   position: absolute;
   opacity: 0;
   z-index: 2;
-  top: -1px;
+  top: 1px;
   left: 1px;
 }
 
 .terms-fake-checkbox {
   position: absolute;
-  top: -2px;
   left: 0;
   height: 12px;
   width: 12px;

@@ -3,11 +3,13 @@ import { FormFeedback } from './components/Forms/Feedback/FormFeedback';
 
 const appAdapter = new AppAdapter();
 
-// On load: Theme mode, Magnetic circle, Form animations
+// On load: Theme mode, Magnetic circle, Form animations, cards
 import {formAnimations} from './components/Forms/formAnimations';
 import {themeMode} from './components/ThemeMode/themeMode';
-import {signInHelpCard, hideSignInHelpCard} from './components/Cards/helpCard';
 import {magneticCircle} from './components/MagneticCircle/magneticCircle';
+import {signInHelpCard, hideSignInHelpCard} from './components/Cards/helpCard';
+import {openCloseLock} from './components/Forms/OpenCloseLock/OpenCloseLock';
+
 
 window.addEventListener('DOMContentLoaded', function () {
   setDefaultTemplate()
@@ -63,6 +65,7 @@ function switchTemplates(event: MouseEvent, templateToShow: any) {
   if (templateToShow === signinTemplate) {
     handleSignInSubmit();
     signInHelpCard();
+    openCloseLock()
   } else if (templateToShow === signupTemplate) {
   handleSignUpSubmit();
   }

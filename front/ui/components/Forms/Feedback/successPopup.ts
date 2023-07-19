@@ -13,7 +13,6 @@ export function openPopup(successMessage: string) {
     popUpArea.style.display = 'flex';
     setTimeout(() => {
       popUpArea.classList.replace('hidden', 'visible');
-      
     }, 400);
 
     // Close on click anywhere else

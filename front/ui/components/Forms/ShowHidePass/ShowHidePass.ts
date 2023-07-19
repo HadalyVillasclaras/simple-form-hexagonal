@@ -2,34 +2,32 @@ import { eyeIconSVG, closeIconSVG, eyeNoneSvg } from './eye-icons';
 
 export function showHidePassword(event: any) {
   let passwordInput = event.target;
-  let eyeIcon:Element | null =  document.querySelector('.eye-icon');
+  let eyeIconSpan: Element | null = document.querySelector('.eye-icon');
   let passwordVisible = false;
 
-  if (eyeIcon) {
+  if (eyeIconSpan) {
     if (passwordInput.value.length > 0) {
-      eyeIcon.classList.replace('hidden', 'visible');
-      eyeIcon.innerHTML = eyeIconSVG;
+      eyeIconSpan.classList.replace('hidden', 'visible');
+      eyeIconSpan.innerHTML = eyeIconSVG;
     } else {
-      eyeIcon.classList.replace('visible', 'hidden');
-      setTimeout(function() {
-        eyeIcon.innerHTML = "";
-    }, 400);
+      eyeIconSpan.classList.replace('visible', 'hidden');
+      setTimeout(function () {
+        eyeIconSpan.innerHTML = "";
+      }, 400);
     }
-    
+
     if (passwordInput) {
-      eyeIcon.addEventListener('click', function () {
+      eyeIconSpan.addEventListener('click', function () {
         if (passwordVisible) {
           passwordInput.type = 'password';
-          eyeIcon.innerHTML = eyeIconSVG;
+          eyeIconSpan.innerHTML = eyeIconSVG;
         }
         else {
           passwordInput.type = 'text';
-          eyeIcon.innerHTML = eyeNoneSvg;
+          eyeIconSpan.innerHTML = eyeNoneSvg;
         }
-
         passwordVisible = !passwordVisible;
       });
     }
   }
 };
-
