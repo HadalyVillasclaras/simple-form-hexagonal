@@ -17,32 +17,32 @@ The purpose of this project was to create a reusable application structure follo
 ```
 back/
   |--config/
-		|-- dbConfig.php
-		|-- db.sql
+	|-- dbConfig.php
+	|-- db.sql
   |--controller/
-		|-- SignInController.php
-		|-- SignUpController.php
+	|-- SignInController.php
+	|-- SignUpController.php
   |--src/
-		|-- User/
-			|-- Domain/
-				|--User.php
-				|--UserRepositoryInterface.php
-				|--ValueObjects/
-						|--Email.php
-						|--Password.php
-			|-- Application/
-				|--SignInService.php
-				|--SignUpService.php
-			|-- Infrastructure/
-				|--Connection.php
-				|--UserRepository.php
+	|-- User/
+		|-- Domain/
+			|--User.php
+			|--UserRepositoryInterface.php
+			|--ValueObjects/
+					|--Email.php
+					|--Password.php
+		|-- Application/
+			|--SignInService.php
+			|--SignUpService.php
+		|-- Infrastructure/
+			|--Connection.php
+			|--UserRepository.php
 ```
 
 ## Front-end Architecture
 
 ```
 front/
-  |--src/
+	|--src/
 		|-- AppAdapters.ts
 		|-- User/ 
 			|-- Domain/
@@ -56,13 +56,13 @@ front/
 			|-- Infrastructure/
 				|--MysqlUserRepository.ts
 				|--JsonMockUserRepository.ts
-  |--ui/
-    |-- assets/
-			|--fonts/
-			|--imgs/
-    |-- components/
-    |-- styles/
-    |-- main.ts
+	|--ui/
+	|-- assets/
+		|--fonts/
+		|--imgs/
+	|-- components/
+	|-- styles/
+	|-- main.ts
 ```
 
 ## Installation & usage
