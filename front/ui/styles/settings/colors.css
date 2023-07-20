@@ -28,6 +28,8 @@
   --button-bg: var(--green300);
   --button-color-dm: var(--green300);
   --button-bg-dm: var(--font-dark);
+
+  --lock-icon: var(--green700);
 }
 
 [data-theme="dark"] {
@@ -39,4 +41,5 @@
   --button-bg: var(--green600);
   --button-bg-dm: var(--green300);
   --button-color-dm: var(--green600);
+  --lock-icon: var(--green450);
 }

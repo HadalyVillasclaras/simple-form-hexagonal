@@ -35,7 +35,7 @@
 
 /* Lock icon */
 .lock-icon {
-  fill: var(--green700) !important;
+  fill: var(--lock-icon) !important;
 }
 
 /* Success flower icon */

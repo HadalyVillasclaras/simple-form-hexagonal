@@ -13,6 +13,7 @@
   box-sizing: border-box;
   opacity: 0.8;
   z-index: 9;
+  height: auto;
 }
 
 .card ::selection {
@@ -62,13 +63,11 @@
 
 
 /* &#9787; &#1421; */
-
 @media (max-width: 800px) {
   .card {
     width: 90vw;
     left: 50%;
     transform: translate(-50%, 0);
-    bottom: 20rem !important;
   }
 
   .card-text {
@@ -77,12 +76,8 @@
   }
 
   .signin-help-card {
-    top: 1rem;
     right: 0;
-    bottom: unset !important;
-    width: unset;
-    left: unset;
-    transform: unset;
+    top: -6rem;
   }
 
   .signin-help-card p,
