@@ -1,4 +1,20 @@
 /* Magnetic circle */
+#circle {
+  right: 0;
+  bottom: 0;
+  transition: transform 0.8s ease-out;
+  /* backdrop-filter: blur(5px); */
+}
+
+.circle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 110px;
+}
+
 .circle-wrapper {
   position: absolute;
   bottom: 4vw;
@@ -10,34 +26,6 @@
   cursor: default;
 }
 
-@media (max-width: 800px) {
-  .circle-wrapper {
-    position: relative;
-    bottom: 0;
-    right: 0;
-  }
-}
-
-#circle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 110px;
-  height: 110px;
-  right: 0;
-  bottom: 0;
-  transition: transform 0.8s ease-out;
-  /* backdrop-filter: blur(5px); */
-}
-
-
-
-.circle-info-enter:hover {
-  text-decoration: none;
-  font-size: 0.8rem;
-}
-
 #svg-circle {
   position: absolute;
   top: 0;
@@ -46,6 +34,11 @@
   height: 110px;
   transform-origin: 50% 50%;
   transition:all 1s ease;
+}
+
+.circle-info-enter:hover {
+  text-decoration: none;
+  font-size: 0.8rem;
 }
 
 .circle-textpath {
@@ -82,4 +75,34 @@
   display: block;
   cursor: default;
   color: var(--green700);
+}
+
+@media (max-width: 800px) {
+  .circle-wrapper {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
+  }
+
+  .circle {
+    position: relative;
+    width: 65vw;
+    height: 65vw;
+  }
+
+  #svg-circle{
+    width: 65vw;
+    height: 65vw;
+  }
+
+  .circle-info-text {
+    font-size: 1.8rem !important;
+  }
+
+  .circle-info-out:hover {
+    text-decoration: none;
+  }
 }

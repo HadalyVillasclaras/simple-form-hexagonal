@@ -31,6 +31,7 @@
 }
 
 .signin-help-card {
+  height: 4.7rem;
   top: 2rem;
   right: -17rem;
   padding: 0.5rem 1.5rem !important;
@@ -68,6 +69,8 @@
     width: 90vw;
     left: 50%;
     transform: translate(-50%, 0);
+    bottom: 100% !important;
+
   }
 
   .card-text {

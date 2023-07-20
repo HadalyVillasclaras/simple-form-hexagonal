@@ -4,6 +4,7 @@ import {hideSignInHelpCard} from '../Cards/helpCard';
 const circle = document.getElementById('circle') as HTMLElement;
 const circleInfo = document.getElementById('circle-info') as HTMLElement;
 const circleTextPath = document.getElementById('circle-textpath') as HTMLElement;
+const helpCard = document.getElementById("signin-help-card") as HTMLElement;
 
 const svgCircle = document.getElementById('svg-circle') as HTMLElement;
 const infoCard = document.getElementById('info-card') as HTMLElement;
@@ -30,17 +31,22 @@ function initMagneticCircle() {
     });
 
   } else {
-    document.addEventListener('click', (event) => {
-      closeInfoCard()
-      circleActiveStyles();
-    });
+    svgCircle.classList.add('infiniteRotate');
+
+   document.addEventListener('click', (event) => {
+    circleActiveStyles();
+      closeInfoCard();
+    if (!helpCard.contains(event.target as Node) && event.target !== infoCard) {
+      hideSignInHelpCard();
+    }
+  });
   }
   
   circleInfo.addEventListener('click', (event) => {
     event.stopPropagation(); 
     hideSignInHelpCard();
     openInfoCard();
-    circleInactiveStyles()
+    circleInactiveStyles();
   });
 }
 
