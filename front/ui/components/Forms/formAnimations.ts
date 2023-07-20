@@ -1,4 +1,4 @@
-import {showHidePassword} from './ShowHidePass/ShowHidePass'
+import {showHidePassword} from './ShowHidePass/showHidePass'
 
 export function formAnimations() {
   labelGoesTop();

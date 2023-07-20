@@ -1,8 +1,10 @@
-import {openInfoCard, closeInfoCard, closeInfoCardOnMobile} from '../Cards/infoCard'; 
+import {openInfoCard, closeInfoCard} from '../Cards/infoCard'; 
 import {hideSignInHelpCard} from '../Cards/helpCard';
 
 const circle = document.getElementById('circle') as HTMLElement;
 const circleInfo = document.getElementById('circle-info') as HTMLElement;
+const circleTextPath = document.getElementById('circle-textpath') as HTMLElement;
+
 const svgCircle = document.getElementById('svg-circle') as HTMLElement;
 const infoCard = document.getElementById('info-card') as HTMLElement;
 
@@ -17,22 +19,28 @@ export function magneticCircle() {
 
 function initMagneticCircle() {
   if (!isWindowMobileSize()) {
-    circle.addEventListener('mousemove', (event) => moveCircle(event));
-    circle.addEventListener('mouseleave', stopCircle);
+    circle.addEventListener('mousemove', (event) => {
+      moveCircle(event)
+      svgCircle.classList.add('infiniteRotate');
+    });
+
+    circle.addEventListener('mouseleave', () => {
+      stopCircle()
+      svgCircle.classList.remove('infiniteRotate');
+    });
+
   } else {
     document.addEventListener('click', (event) => {
-      closeInfoCardOnMobile(event);
-      svgCircle.classList.remove('svg-circle-inactive');
-      circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
+      closeInfoCard()
+      circleActiveStyles();
     });
   }
   
   circleInfo.addEventListener('click', (event) => {
+    event.stopPropagation(); 
     hideSignInHelpCard();
     openInfoCard();
-    svgCircle.classList.add('svg-circle-inactive');
-    circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
-    event.stopPropagation(); 
+    circleInactiveStyles()
   });
 }
 
@@ -63,21 +71,15 @@ function moveCircle(event: MouseEvent) {
     circleInfo.style.transform = `translate(${moveXText}px, ${moveYText}px, 0)`;
     infoCard.style.transform = `translate(${moveXCard}px, ${moveYCard}px)`;
   });
-
-  svgCircle.classList.add('infiniteRotate');
 }
 
 function stopCircle() {
-
   requestAnimationFrame(() => {
-  closeInfoCard();
-
+    closeInfoCard();
     circle.style.transform = '';
     circleInfo.style.transform = '';
   });
-  svgCircle.classList.remove('infiniteRotate');
-  svgCircle.classList.remove('svg-circle-inactive');
-  circleInfo.classList.replace('circle-info-enter', 'circle-info-out');
+  circleActiveStyles();
 }
 
 export function rotateCircle360() {
@@ -85,4 +87,14 @@ export function rotateCircle360() {
 	svgCircle.addEventListener('animationend', function () {
 		svgCircle.classList.remove('rotate-once');
 	});
+}
+
+function circleInactiveStyles() {
+  circleTextPath.classList.add('circle-textpath-inactive');
+  circleInfo.classList.replace('circle-info-out', 'circle-info-enter');
+}
+
+function circleActiveStyles() {
+  circleTextPath.classList.remove('circle-textpath-inactive');
+  circleInfo.classList.replace('circle-info-enter', 'circle-info-out');
 }

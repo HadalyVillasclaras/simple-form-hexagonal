@@ -1,7 +1,7 @@
-import { showSignInHelpCard } from '../../Cards/helpCard';
+import { showSignInHelpCard } from '../Cards/helpCard';
 import {lock, unlock} from './lock-icons';
 
-export function openCloseLock() {
+export function initLock() {
   let lockIconSpan = document.getElementById("lock");
 
   if(lockIconSpan) {

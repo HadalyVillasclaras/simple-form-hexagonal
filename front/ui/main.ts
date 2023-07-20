@@ -8,11 +8,10 @@ import {formAnimations} from './components/Forms/formAnimations';
 import {themeMode} from './components/ThemeMode/themeMode';
 import {magneticCircle} from './components/MagneticCircle/magneticCircle';
 import {signInHelpCard, hideSignInHelpCard} from './components/Cards/helpCard';
-import {openCloseLock} from './components/Forms/OpenCloseLock/OpenCloseLock';
-
+import {initLock} from './components/Lock/openCloseLock';
 
 window.addEventListener('DOMContentLoaded', function () {
-  setDefaultTemplate()
+  setDefaultTemplate();
   themeMode();
   magneticCircle();
   formAnimations();
@@ -65,14 +64,15 @@ function switchTemplates(event: MouseEvent, templateToShow: any) {
   if (templateToShow === signinTemplate) {
     handleSignInSubmit();
     signInHelpCard();
-    openCloseLock()
+    initLock
+  ()
   } else if (templateToShow === signupTemplate) {
   handleSignUpSubmit();
   }
 }
 
 // Handle forms submit
-function handleSignInSubmit() {
+export function handleSignInSubmit() {
   const signinForm = document.getElementById('signin-form') as HTMLFormElement;
   signinForm?.addEventListener("submit", event => handleSignInResponse(event));
 
@@ -93,7 +93,7 @@ function handleSignInSubmit() {
   }
 }
 
-function handleSignUpSubmit() {
+export function handleSignUpSubmit() {
   const signupForm = document.getElementById('signup-form') as HTMLFormElement;
   signupForm?.addEventListener('submit', event => handleSignUpResponse(event));
   

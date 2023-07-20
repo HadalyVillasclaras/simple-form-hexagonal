@@ -10,14 +10,3 @@ export function openInfoCard() {
 export function closeInfoCard() {
   hideElement(infoCard)
 }
-
-export function closeInfoCardOnMobile(event: MouseEvent) {
-  if (infoCard.contains(event.target as Node)) return;
-  infoCard.style.opacity = '0';
-  infoCard.style.right = '0';
-  infoCard.style.bottom = '0';
-
-  setTimeout(() => {
-    infoCard.style.display = 'none';
-  }, 200);
-}

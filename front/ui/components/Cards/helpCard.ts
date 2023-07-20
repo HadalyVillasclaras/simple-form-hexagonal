@@ -1,6 +1,6 @@
 import {hideElement} from '../../utils/hideElement';
 import {showElement} from '../../utils/showElement';
-import { closeLock } from '../Forms/OpenCloseLock/OpenCloseLock';
+import { closeLock } from '../Lock/openCloseLock';
 
 export function signInHelpCard() {
   const helpCard = document.getElementById("signin-help-card") as HTMLElement;
@@ -15,7 +15,6 @@ export function hideSignInHelpCard() {
   const helpCard = document.getElementById("signin-help-card") as HTMLElement;
   hideElement(helpCard);
   closeLock();
-
 }
 
 export function showSignInHelpCard() {

@@ -32,6 +32,36 @@
   /* backdrop-filter: blur(5px); */
 }
 
+
+
+.circle-info-enter:hover {
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+#svg-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 110px;
+  transform-origin: 50% 50%;
+  transition:all 1s ease;
+}
+
+.circle-textpath {
+  font-family: var(--circle-ff);
+  font-size: 0.7rem;
+  letter-spacing: 0px;
+  z-index: 3;
+  fill: var(--green200);
+  transition:all 1s ease;
+}
+
+.circle-textpath-inactive {
+  fill:  var(--green700) !important;
+}
+
 .circle-info-text {
   font-size: 0.8rem;
   font-family: var(--a-ff);
@@ -52,33 +82,5 @@
 .circle-info-enter {
   display: block;
   cursor: default;
-  color: var(--green600);
+  color: var(--green700);
 }
-
-.circle-info-enter:hover {
-  text-decoration: none;
-  font-size: 0.8rem;
-}
-
-#svg-circle {
-  fill: var(--green200);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 110px;
-  height: 110px;
-  transform-origin: 50% 50%;
-  transition:all 1s ease;
-  font-size: 0.7rem;
-}
-
-.svg-circle-inactive {
-  fill:  var(--green600) !important;
-  font-weight: 600;
-  z-index: 3;
-}
-
-#svg-circle textPath {
-  font-family: var(--circle-ff);
-  letter-spacing: 0px;
-}  
