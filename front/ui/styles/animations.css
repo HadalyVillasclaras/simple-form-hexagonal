@@ -79,6 +79,19 @@
   }
 }
 
+@keyframes circle-blink {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+   transform: scale(1.2);
+  }
+}
+
+.circle-blink {
+  animation: circle-blink 1.3s ease-in-out 2;  
+}
+
 .bounce {
   -webkit-animation: bounce 2s ease;
   animation: bounce 2s ease;

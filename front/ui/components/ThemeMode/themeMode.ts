@@ -16,7 +16,7 @@ document.addEventListener('switchClicked', () => {
 });
 
 function isWindowMobileSize() {
-  return window.innerWidth < 800;
+	return window.innerWidth < 800;
 }
 
 export function themeMode() {
@@ -25,66 +25,63 @@ export function themeMode() {
 }
 
 function initThemeMode() {
-	if (switchButton && switchWrapper) {
-		switchRegularBounce(switchButton);
-	
-		if (isWindowMobileSize()) {
-			switchCircle?.addEventListener('click', switchThemeOnTouch);
-
-		} else {
-			switchCircle?.removeEventListener('click', switchThemeOnTouch);
-			arrowArea?.addEventListener('mouseenter', moveArrow);
-			switchControl();
-		}
+	if (isWindowMobileSize()) {
+		switchCircle?.addEventListener('click', switchThemeOnTouch);
+		switchCircle && scaleSwitchCircle(switchCircle);
+	} else {
+		switchButton && bounceSwitch(switchButton);
+		switchCircle?.removeEventListener('click', switchThemeOnTouch);
+		arrowArea?.addEventListener('mouseenter', moveArrow);
+		switchControl();
 	}
 }
 
 function switchControl() {
-  let startY = 0;
-  let originalY = 0;
-  let mouseDown = false;
-  let dragging = false;
-  let dy = 0;
+	let startY = 0;
+	let originalY = 0;
+	let mouseDown = false;
+	let dragging = false;
+	let dy = 0;
 
-  function startDrag(e: MouseEvent) {
+	function startDrag(e: MouseEvent) {
 		e.preventDefault();
-    startY = e.clientY;
-    originalY = switchButton.offsetTop;
-    mouseDown = true;
-    document.dispatchEvent(switchClickedEvent);
-  }
+		startY = e.clientY;
+		originalY = switchButton.offsetTop;
+		mouseDown = true;
+		document.dispatchEvent(switchClickedEvent);
+	}
 
-  function drag(e: MouseEvent) {
-    if (mouseDown) {
-      dragging = true;
-    }
+	function drag(e: MouseEvent) {
+		if (mouseDown) {
+			dragging = true;
+		}
 
-    if (mouseDown && dragging) {
+		if (mouseDown && dragging) {
 			dy = ('clientY' in e ? e.clientY : e.touches[0].clientY) - startY;
-      const maxBottomPosition = switchWrapper.offsetHeight - switchButton.offsetHeight;
-      let newTopPosition = originalY + dy;
-      newTopPosition = Math.min(newTopPosition, maxBottomPosition);
+			const maxBottomPosition = switchWrapper.offsetHeight - switchButton.offsetHeight;
+			let newTopPosition = originalY + dy;
+			newTopPosition = Math.min(newTopPosition, maxBottomPosition);
 
-      switchButton.style.top = `${newTopPosition}px`;
-    }
-  }
+			switchButton.style.top = `${newTopPosition}px`;
+		}
+	}
 
-  function endDrag() {
-    if (dragging && mouseDown && Math.abs(dy) > 20) {
-      switchButton.style.top = `${originalY}px`;
-      switchTheme();
-      rotateCircle360();
-    } else if (dragging && mouseDown) {
-      switchButton.style.top = `${originalY}px`;
-    }
+	function endDrag() {
+		if (dragging && mouseDown && Math.abs(dy) > 20) {
+			switchButton.style.top = `${originalY}px`;
+			switchTheme();
+			rotateCircle360();
+		} else if (dragging && mouseDown) {
+			switchButton.style.top = `${originalY}px`;
+		}
 
-    dragging = false;
-    mouseDown = false;
-  }
+		dragging = false;
+		mouseDown = false;
+	}
 
-  switchCircle?.addEventListener('mousedown', startDrag);
-  document.addEventListener('mousemove', drag);
-  document.addEventListener('mouseup', endDrag);
+	switchCircle?.addEventListener('mousedown', startDrag);
+	document.addEventListener('mousemove', drag);
+	document.addEventListener('mouseup', endDrag);
 }
 
 function switchTheme() {
@@ -103,7 +100,7 @@ function switchThemeOnTouch() {
 		switchTheme();
 		rotateCircle360();
 	}, 1000);
-		switchButton.addEventListener('animationend', function () {
+	switchButton.addEventListener('animationend', function () {
 		switchButton.classList.remove('down-up-center');
 	});
 }
@@ -125,8 +122,8 @@ function moveArrow() {
 }
 
 // switch bouncing (on load and every 2 mins)
-function switchRegularBounce(switchButton: HTMLElement) {
-	const startAnimation = function () {
+function bounceSwitch(switchButton: HTMLElement) {
+	const animation = function () {
 		initialAnimationActive = true;
 		switchButton.classList.add('bounce');
 		switchButton.addEventListener('animationend', function () {
@@ -135,6 +132,19 @@ function switchRegularBounce(switchButton: HTMLElement) {
 		});
 	}
 
-	setTimeout(startAnimation, 1500);
-	setInterval(startAnimation, 2 * 60 * 1000);
+	setTimeout(animation, 1500);
+	setInterval(animation, 2 * 60 * 1000);
+}
+
+function scaleSwitchCircle(switchCircle: HTMLElement) {
+	const animation = function () {
+		switchCircle.classList.add('circle-blink');
+	
+		switchCircle.addEventListener('animationend', () => {
+			switchCircle.classList.remove('circle-blink');
+		});
+	}
+
+	setTimeout(animation, 1500);
+	setInterval(animation, 1 * 60 * 1000);
 }

@@ -44,6 +44,7 @@
   height: 0.6rem;
   border: 3px solid var(--green350);
   border-radius: 50px;
+  transform-origin: center;
 }
 
 @media (min-width: 800px) {
