@@ -4,7 +4,6 @@ import { hideSignInHelpCard } from '../Cards/helpCard';
 const circle = document.getElementById('circle') as HTMLElement;
 const circleInfo = document.getElementById('circle-info') as HTMLElement;
 const circleTextPath = document.getElementById('circle-textpath') as HTMLElement;
-const helpCard = document.getElementById("signin-help-card") as HTMLElement;
 
 const svgCircle = document.getElementById('svg-circle') as HTMLElement;
 const infoCard = document.getElementById('info-card') as HTMLElement;
