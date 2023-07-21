@@ -13,8 +13,8 @@ export function signInHelpCard() {
 
 export function hideSignInHelpCard() {
   const helpCard = document.getElementById("signin-help-card") as HTMLElement;
-  hideElement(helpCard);
   closeLock();
+  helpCard && hideElement(helpCard);
 }
 
 export function showSignInHelpCard() {

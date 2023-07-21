@@ -7,7 +7,7 @@ const appAdapter = new AppAdapter();
 import {formAnimations} from './components/Forms/formAnimations';
 import {themeMode} from './components/ThemeMode/themeMode';
 import {magneticCircle} from './components/MagneticCircle/magneticCircle';
-import {signInHelpCard, hideSignInHelpCard} from './components/Cards/helpCard';
+import {signInHelpCard} from './components/Cards/helpCard';
 import {initLock} from './components/Lock/openCloseLock';
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -78,7 +78,6 @@ export function handleSignInSubmit() {
 
   async function handleSignInResponse(event: Event) {
     event.preventDefault();
-    hideSignInHelpCard();
     try {
       const formData = new FormData(event.target as HTMLFormElement);
       const signInResponse: InputResponse | AppResponse = await appAdapter.handleSignIn(formData);

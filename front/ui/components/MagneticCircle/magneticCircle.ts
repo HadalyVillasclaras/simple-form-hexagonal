@@ -1,5 +1,5 @@
-import {openInfoCard, closeInfoCard} from '../Cards/infoCard'; 
-import {hideSignInHelpCard} from '../Cards/helpCard';
+import { openInfoCard, closeInfoCard } from '../Cards/infoCard';
+import { hideSignInHelpCard } from '../Cards/helpCard';
 
 const circle = document.getElementById('circle') as HTMLElement;
 const circleInfo = document.getElementById('circle-info') as HTMLElement;
@@ -15,7 +15,7 @@ function isWindowMobileSize() {
 
 export function magneticCircle() {
   window.addEventListener('load', initMagneticCircle);
-	window.addEventListener('resize', initMagneticCircle);
+  window.addEventListener('resize', initMagneticCircle);
 }
 
 function initMagneticCircle() {
@@ -33,34 +33,45 @@ function initMagneticCircle() {
   } else {
     svgCircle.classList.add('infiniteRotate');
 
-   document.addEventListener('click', (event) => {
-    circleActiveStyles();
+    document.addEventListener('click', (event) => {
+      circleActiveStyles();
       closeInfoCard();
-    if (!helpCard.contains(event.target as Node) && event.target !== infoCard) {
-      hideSignInHelpCard();
-    }
-  });
+    });
   }
-  
+
+  // Handle info card
   circleInfo.addEventListener('click', (event) => {
-    event.stopPropagation(); 
+    event.stopPropagation();
+    if (!isWindowMobileSize()) {
+      initInfoCard(event);
+    }
     hideSignInHelpCard();
     openInfoCard();
     circleInactiveStyles();
   });
 }
 
-function moveCircle(event: MouseEvent) {
+function initInfoCard(event) {
   const rect = circle.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
   const centerX = rect.left + rect.width / 2;
   const centerY = rect.top + rect.height / 2;
-  
-  // elements ratio 
-  const ratioCircle = 1.5;  
-  const ratioText = 0.1; 
-  const ratioCard = 0.8; 
+
+  const ratioCard = 0.7;
+
+  const moveXCard = (event.clientX - centerX) * ratioCard - 120;
+  const moveYCard = (event.clientY - centerY) * ratioCard - 120;
+
+  infoCard.style.transform = `translate(${moveXCard}px, ${moveYCard}px)`;
+}
+
+function moveCircle(event) {
+  const rect = circle.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const ratioCircle = 1;
+  const ratioText = 0.1;
+  const ratioCard = 0.7;
 
   const moveXCircle = (event.clientX - centerX) * ratioCircle;
   const moveYCircle = (event.clientY - centerY) * ratioCircle;
@@ -75,7 +86,10 @@ function moveCircle(event: MouseEvent) {
   requestAnimationFrame(() => {
     circle.style.transform = `scale(1.4) translate(${moveXCircle}px, ${moveYCircle}px)`;
     circleInfo.style.transform = `translate(${moveXText}px, ${moveYText}px, 0)`;
-    infoCard.style.transform = `translate(${moveXCard}px, ${moveYCard}px)`;
+
+    if (infoCard.style.opacity === "1") {
+      infoCard.style.transform = `translate(${moveXCard}px, ${moveYCard}px)`;
+    }
   });
 }
 
@@ -89,10 +103,10 @@ function stopCircle() {
 }
 
 export function rotateCircle360() {
-	svgCircle.classList.add('rotate-once');
-	svgCircle.addEventListener('animationend', function () {
-		svgCircle.classList.remove('rotate-once');
-	});
+  svgCircle.classList.add('rotate-once');
+  svgCircle.addEventListener('animationend', function () {
+    svgCircle.classList.remove('rotate-once');
+  });
 }
 
 function circleInactiveStyles() {

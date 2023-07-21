@@ -4,10 +4,12 @@
 
 .display {
   display: block;
+  transition: all 0.5s linear;
 }
 
 .display-none {
   display: none;
+  transition: all 0.5s linear;
 }
 
 .visible {

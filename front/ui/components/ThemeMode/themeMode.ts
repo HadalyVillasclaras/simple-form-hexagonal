@@ -1,5 +1,4 @@
 import { rotateCircle360 } from "../MagneticCircle/magneticCircle";
-import {hideSignInHelpCard} from '../Cards/helpCard';
 
 const switchButton: HTMLElement | null = document.getElementById('theme-switch');
 const switchCircle: HTMLElement | null = document.getElementById('switch-circle');
@@ -41,8 +40,6 @@ function initThemeMode() {
 }
 
 function switchControl() {
-	hideSignInHelpCard();
-
   let startY = 0;
   let originalY = 0;
   let mouseDown = false;
@@ -91,7 +88,6 @@ function switchControl() {
 }
 
 function switchTheme() {
-	hideSignInHelpCard();
 	const currentTheme = document.documentElement.getAttribute('data-theme');
 	if (currentTheme === 'dark') {
 		document.documentElement.setAttribute('data-theme', 'light');
