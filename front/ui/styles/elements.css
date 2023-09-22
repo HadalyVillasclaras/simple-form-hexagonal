@@ -38,7 +38,6 @@ body {
 }
 
 main {
-  max-width: 600px;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -53,9 +52,10 @@ main {
 }
 
 h2 {
-  font-size: 3.7rem;
+  font-size: 4rem;
   color: var(--h2-color);
   font-family: var(--h2-ff);
+  font-weight: 100;
 }
 
 a {

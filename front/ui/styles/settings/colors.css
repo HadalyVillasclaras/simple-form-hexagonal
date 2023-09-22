@@ -4,11 +4,22 @@
   --green300: #D5E096;
   --green350: #d8e783;
   --green400: #d6ea66;
-  --green450: #BFAE54;
+  --green450: #a49758;
+  --green500: #B6AE84;
+  --green600: #60572A;
+  --green700: #3d3718;
+  --green800: #262317;
+
+  /* --green100: #e3e4c5;
+  --green200: #F0FABA;
+  --green300: #D5E096;
+  --green350: #d8e783;
+  --green400: #d6ea66;
+  --green450: #a49758;
   --green500: #8F833F;
   --green600: #60572A;
   --green700: #3d3718;
-  --green800: #282511;
+  --green800: #282511; */
 
   --bg-color: var(--green500);
 
@@ -36,9 +47,9 @@
   --bg-color: var(--green800);
   --font-light: var(--font-lightDarkMode);
   --font-dark: var(--green600);
-  --h2-color: var(--green500);
-  --button-color: var(--green300);
-  --button-bg: var(--green600);
+  --h2-color: var(--green450);
+  --button-color: var(--green700);
+  --button-bg: var(--green300);
   --button-bg-dm: var(--green300);
   --button-color-dm: var(--green600);
   --lock-icon: var(--green450);
