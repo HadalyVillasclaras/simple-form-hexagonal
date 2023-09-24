@@ -8,8 +8,7 @@
   position: absolute;
   max-width: 400px;
   padding: 2rem;
-  background-color: var(--green200);
-  box-shadow: 0px 0px 15px var(--green600);
+  background-color: var(--popup-bg);
   border-radius: 0.6rem;
   box-sizing: border-box;
   opacity: 0.8;
@@ -20,23 +19,33 @@
 
 .card ::selection {
   color: var(--selection-color);
-  background: var(--green350)
+  background: var(--fluor-light)
 }
 
 /* Sign in help card */
 .signin-help-wrapper {
-  position: relative;
   display: flex;
   align-content: center;
   flex-wrap: wrap;
   margin-left: 1rem;
+  width: 100%;
 }
 
 .signin-help-card {
   height: 4.7rem;
   top: 2rem;
-  right: -17rem;
+  left: 0rem;
   padding: 0.5rem 1.5rem !important;
+}
+
+@media (min-width: 800px) {
+  .signin-help-card {
+    left: 2rem;
+  }
+
+  .signin-help-wrapper {
+    position: relative;
+  }
 }
 
 .signin-help-card p,
@@ -68,11 +77,9 @@
 /* &#9787; &#1421; */
 @media (max-width: 800px) {
   .card {
-    width: 90vw;
-    left: 50%;
-    transform: translate(-50%, 0);
-    bottom: 100% !important;
-
+    width: 100%;
+    top: 0;
+    right: 0;
   }
 
   .card-text {
@@ -81,8 +88,7 @@
   }
 
   .signin-help-card {
-    right: 0;
-    top: -6rem;
+    top: 3rem;
   }
 
   .signin-help-card p,

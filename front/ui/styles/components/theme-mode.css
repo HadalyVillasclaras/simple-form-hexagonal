@@ -36,13 +36,13 @@
 .switch-line {
   width: 2px;
   height: 15rem;
-  background: var(--green350);
+  background: var(--fluor);
 }
 
 .switch-circle {
   width: 0.6rem;
   height: 0.6rem;
-  border: 3px solid var(--green350);
+  border: 3px solid var(--fluor);
   border-radius: 50px;
   transform-origin: center;
 }
@@ -75,9 +75,9 @@
   position: absolute;
   z-index: 3;
   left:0;
-  top: 35%;
+  top: 35%; 
   opacity: 0;
   height: 3rem;
-  stroke: var(--green700);
+  stroke: var(--green800);
   transition: visibility 1s linear, opacity 0.3s linear;
 }

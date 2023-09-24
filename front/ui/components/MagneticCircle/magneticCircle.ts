@@ -20,7 +20,7 @@ export function magneticCircle() {
 function initMagneticCircle() {
   if (!isWindowMobileSize()) {
     circle.addEventListener('mousemove', (event) => {
-      moveCircle(event)
+      moveCircleAndCard(event)
       svgCircle.classList.add('infiniteRotate');
     });
 
@@ -41,29 +41,13 @@ function initMagneticCircle() {
   // Handle info card
   circleInfo.addEventListener('click', (event) => {
     event.stopPropagation();
-    if (!isWindowMobileSize()) {
-      initInfoCard(event);
-    }
     hideSignInHelpCard();
     openInfoCard();
     circleInactiveStyles();
   });
 }
 
-function initInfoCard(event) {
-  const rect = circle.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2;
-  const centerY = rect.top + rect.height / 2;
-
-  const ratioCard = 0.7;
-
-  const moveXCard = (event.clientX - centerX) * ratioCard - 120;
-  const moveYCard = (event.clientY - centerY) * ratioCard - 120;
-
-  infoCard.style.transform = `translate(${moveXCard}px, ${moveYCard}px)`;
-}
-
-function moveCircle(event) {
+function moveCircleAndCard(event) {
   const rect = circle.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
   const centerY = rect.top + rect.height / 2;
@@ -85,10 +69,7 @@ function moveCircle(event) {
   requestAnimationFrame(() => {
     circle.style.transform = `scale(1.4) translate(${moveXCircle}px, ${moveYCircle}px)`;
     circleInfo.style.transform = `translate(${moveXText}px, ${moveYText}px, 0)`;
-
-    if (infoCard.style.opacity === "1") {
-      infoCard.style.transform = `translate(${moveXCard}px, ${moveYCard}px)`;
-    }
+    infoCard.style.transform = `translate(${moveXCard}px, ${moveYCard}px)`;
   });
 }
 

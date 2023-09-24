@@ -59,7 +59,7 @@
 .circle-info-text {
   font-size: 0.8rem;
   font-family: var(--a-ff);
-  color: var(--green350);
+  color: var(--fluor);
   transition: all 1s ease ;
   z-index: 4;
 }

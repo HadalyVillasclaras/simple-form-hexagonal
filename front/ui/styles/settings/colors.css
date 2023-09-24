@@ -1,56 +1,65 @@
 :root {
-  --green100: #e3e4c5;
+  --fluor: #d6ea66;
+  --fluor-light: #e1eba7;
+  --fluor-dark: #d2d049;
+
+  --popup-bg: #e3e4c5;
+
   --green200: #F0FABA;
-  --green300: #D5E096;
-  --green350: #d8e783;
-  --green400: #d6ea66;
-  --green450: #a49758;
-  --green500: #B6AE84;
+  --green500: #908654;
   --green600: #60572A;
   --green700: #3d3718;
-  --green800: #262317;
+  --green800: #2c291a;
 
-  /* --green100: #e3e4c5;
-  --green200: #F0FABA;
-  --green300: #D5E096;
-  --green350: #d8e783;
-  --green400: #d6ea66;
-  --green450: #a49758;
-  --green500: #8F833F;
-  --green600: #60572A;
-  --green700: #3d3718;
-  --green800: #282511; */
+  --violet300: #F6ECF0;
+  --violet400: #D3CCCE;
+  --violet500: #a4969b;
+  --violet600: #726267;
+  --violet700: #493E42;
 
-  --bg-color: var(--green500);
+  --bg-color-sign-up: var(--green500);
+  --bg-color-sign-in: var(--violet500);
+
 
   --font-light: var(--green200);
   --font-dark: var(--green700);
-
-  --font-lightDarkMode: #E5DFBB;
 
   --hover-dark: var(--font-dark);
 
   --selection-color: var(--green600);
   --selection-bg: var(--green200);
 
-  --h2-color: var(--font-dark);
+  --h2-color-green: var(--font-dark);
+  --h2-color-violet: var(--violet700);
 
-  --button-color: var(--font-dark);
-  --button-bg: var(--green300);
-  --button-color-dm: var(--green300);
-  --button-bg-dm: var(--font-dark);
 
-  --lock-icon: var(--green700);
+  --error-msg-violet: var(--violet600);
+
+  --button-bg-green: var(--green700);
+  --button-bg-violet: var(--violet400);
+  --button-color-green: var(--green700);
+  --button-color-violet: var(--violet700);
+  --button-bg-green-hover: var(--green600);
+  --button-bg-violet-hover: var(--violet700);
+
+
+
+  --lock-icon: var(--fluor-light);
 }
 
 [data-theme="dark"] {
-  --bg-color: var(--green800);
-  --font-light: var(--font-lightDarkMode);
+  --bg-color-sign-up: var(--green800);
+  --bg-color-sign-in: var(--violet700);
+  --font-light: var(--green200);
   --font-dark: var(--green600);
-  --h2-color: var(--green450);
-  --button-color: var(--green700);
-  --button-bg: var(--green300);
-  --button-bg-dm: var(--green300);
-  --button-color-dm: var(--green600);
-  --lock-icon: var(--green450);
+  --h2-color-green: var(--green500);
+  --h2-color-violet: var(--violet400);
+  --button-color: var(--green400);
+  --button-bg-green: var(--green500);
+  --button-bg-violet: var(--violet600);
+  --button-color-green: var(--green700);
+  --button-color-violet: var(--violet300);
+  --button-bg-green-hover: var(--green700);
+  --button-bg-violet-hover: var(--violet500);
+  --error-msg-violet: var(--violet400);
 }

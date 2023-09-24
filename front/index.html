@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +8,17 @@
   <link rel="stylesheet" type="text/css" href="./ui/styles/index.css">
   <title>Sign up / sign in form</title>
 </head>
+
 <body>
-  <span id="theme-mode" class="theme-area" >  
+  <span id="theme-mode" class="theme-area">
     <div id="theme-switch" class="switch-wrapper" aria-label="Theme mode draggable toggle">
       <span class="switch-line"></span>
       <span id="switch-circle" class="switch-circle"></span>
     </div>
     <svg id="arrow" class="theme-arrow" viewBox="0 0 38 91" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M15.6806 1C12.3163 16.643 8.96635 55.8177 22.4805 87.3721" stroke-width="2" stroke-linecap="round"/>
-      <line x1="23.0273" y1="89.4547" x2="25.3668" y2="80.3912"  stroke-width="2" stroke-linecap="round"/>
-      <line x1="22.9523" y1="89.3454" x2="15.9436" y2="84.0731"  stroke-width="2" stroke-linecap="round"/>
+      <path d="M15.6806 1C12.3163 16.643 8.96635 55.8177 22.4805 87.3721" stroke-width="2" stroke-linecap="round" />
+      <line x1="23.0273" y1="89.4547" x2="25.3668" y2="80.3912" stroke-width="2" stroke-linecap="round" />
+      <line x1="22.9523" y1="89.3454" x2="15.9436" y2="84.0731" stroke-width="2" stroke-linecap="round" />
     </svg>
   </span>
   <div id="arrow-area" class="theme-arrow-area"></div>
@@ -25,110 +27,122 @@
     <div id="circle" class="circle">
       <span id="circle-info" class="circle-info-text circle-info-out">info</span>
       <svg id="svg-circle" viewBox="0 0 100 100">
-        <path id="circle-path" d="M50,10 a40,40 0 1,1 0,80 a40,40 0 1,1 0,-80" fill="none"/>
+        <path id="circle-path" d="M50,10 a40,40 0 1,1 0,80 a40,40 0 1,1 0,-80" fill="none" />
         <text>
-          <textPath id="circle-textpath" class="circle-textpath" href="#circle-path">Just a bit of information for you </textPath>
+          <textPath id="circle-textpath" class="circle-textpath" href="#circle-path">Just a bit of information for you
+          </textPath>
         </text>
       </svg>
     </div>
     <div id="info-card" class="card display-none hidden">
-      <p class="card-text">Hey! <span class="icon no-emoji">&#9728;&#xFE0E;</span> You can test the form by typing <span class="icon no-emoji">&#9998;&#xFE0E;</span> some text.</p>
-      <p class="card-text">Data will not be sent <span class="icon no-wrap no-emoji">&#9992;&#xFE0E; &#9992;&#xFE0E;</span> or stored, <i class="card-text-italic card-text">it's just for the fun</i>.</p>
-      <br><p class="card-text">You can also switch the lights off and on. Or fiddle around with the mouse!<span class="icon no-wrap no-emoji">&#9775;&#xFE0E;&#9829;&#xFE0E;&#9829;&#xFE0E;</span></p>
+      <p class="card-text">Hey! <span class="icon no-emoji">&#9728;&#xFE0E;</span> You can test the form by typing <span
+          class="icon no-emoji">&#9998;&#xFE0E;</span> some text.</p>
+      <p class="card-text">Data will not be sent <span class="icon no-wrap no-emoji">&#9992;&#xFE0E;
+          &#9992;&#xFE0E;</span> or stored, <i class="card-text-italic card-text">it's just for the fun</i>.</p>
+      <br>
+      <p class="card-text">You can also switch the lights off and on. Or fiddle around with the mouse!<span
+          class="icon no-wrap no-emoji">&#9775;&#xFE0E;&#9829;&#xFE0E;&#9829;&#xFE0E;</span></p>
     </div>
   </section>
   <section id="popup-area" class="popup-wrapper hidden"></section>
-  <template id="signup-template"> 
-    <form id="signup-form" method="POST" action="" aria-labelledby="signup-form" >
-      <section>
-        <section class="form-header">
-          <h2>We are glad you join us!</h2>
+  <template id="signup-template">
+    <section id="signup-form-wrapper" class="form-wrapper">
+      <form id="signup-form" method="POST" action="" aria-labelledby="signup-form">
+        <section>
+          <section class="form-header">
+            <h2>We are glad you join us!</h2>
+          </section>
+          <p class="form-subheader">Already a member? <a id="signin-link" href="#">Sign in</a></p>
         </section>
-        <p class="form-subheader">Already a member? <a id="signin-link" href="#">Sign in</a></p>
-      </section>
-      <fieldset class="fieldset-main">
-        <p>
-          <label class="label-main" for="name">Name<span aria-label="required">*</span></label>
-          <input type="text" name="name" aria-required="true" >
-          <span class="input-error hidden"></span>
-        </p>
-        <p>
-          <label class="label-main" for="surname">Surname<span aria-label="required">*</span></label>
-          <input type="text" name="surname" aria-required="true" >
-          <span class="input-error hidden"></span>
-        </p>
-        <p>
-          <label class="label-main" for="email">Email<span aria-label="required">*</span></label>
-          <input type="text" name="email" aria-required="true" >
-          <span class="input-error hidden"></span>
-        </p>
-        <p>
-          <label class="label-main" for="password">Password<span aria-label="required">*</span></label>
-          <input type="password" name="password" autocomplete="new-password" aria-required="true">
-          <span class="icon eye-icon pointer hidden"></span>
-          <span class="input-error hidden"></span>
-        </p>
-      </fieldset>
-      <fieldset>
-        <p class="terms-wrapper">
-          <span class="checkbox-wrapper">
-            <input name="terms-policy" class="terms-input-checkbox" type="checkbox">
-            <span  aria-label="Terms checkbox" class="terms-fake-checkbox " role="checkbox"></span>
-          </span>
-          <label class="terms-text" for="terms-policy">I agree with the <a href="#">Terms</a> and <a href="#">Conditions</a></label>
-        </p>
-      </fieldset>
-      <p class="form-feedback hidden no-height"></p>
-      <button type="submit">Sign up</button>
-    </form>
+        <fieldset class="fieldset-main">
+          <p>
+            <label class="label-main" for="name">Name<span aria-label="required">*</span></label>
+            <input type="text" name="name" aria-required="true">
+            <span class="input-error hidden"></span>
+          </p>
+          <p>
+            <label class="label-main" for="surname">Surname<span aria-label="required">*</span></label>
+            <input type="text" name="surname" aria-required="true">
+            <span class="input-error hidden"></span>
+          </p>
+          <p>
+            <label class="label-main" for="email">Email<span aria-label="required">*</span></label>
+            <input type="text" name="email" aria-required="true">
+            <span class="input-error hidden"></span>
+          </p>
+          <p>
+            <label class="label-main" for="password">Password<span aria-label="required">*</span></label>
+            <input type="password" name="password" autocomplete="new-password" aria-required="true">
+            <span class="icon eye-icon pointer hidden"></span>
+            <span class="input-error hidden"></span>
+          </p>
+        </fieldset>
+        <fieldset>
+          <p class="terms-wrapper">
+            <span class="checkbox-wrapper">
+              <input name="terms-policy" class="terms-input-checkbox" type="checkbox">
+              <span aria-label="Terms checkbox" class="terms-fake-checkbox " role="checkbox"></span>
+            </span>
+            <label class="terms-text" for="terms-policy">I agree with the <a href="#">Terms</a> and <a
+                href="#">Conditions</a></label>
+          </p>
+        </fieldset>
+        <p class="form-feedback hidden no-height"></p>
+        <button type="submit">Sign up</button>
+      </form>
+    </section>
   </template>
-  <template id="signin-template">
-    <form id="signin-form" method="POST" action="" aria-labelledby="form-title">
-      <section>
-        <section class="form-header">
-          <h2 >Welcome back!</h2> 
+  <template id="signin-template" >
+    <section id="signin-form-wrapper" class="form-wrapper">
+      <form id="signin-form" method="POST" action="" aria-labelledby="form-title">
+        <section>
+          <section class="form-header">
+            <h2>Welcome back!</h2>
+          </section>
+          <p class="form-subheader">Not a member? <a id="signup-link" href="#">Sign up</a></p>
         </section>
-        <p class="form-subheader">Not a member? <a id="signup-link" href="#">Sign up</a></p>
-      </section>
-      <fieldset class="fieldset-main">
-        <p>
-          <label class="label-main" for="email">Email<span aria-hidden="true">*</span></label>
-          <input type="text" class="input-field" name="email"  -required="true">
-          <span class="input-error hidden"></span>
-        </p>
-        <p>
-          <label class="label-main" for="password">Password<span aria-hidden="true">*</span></label>
-          <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
-          <span class="icon eye-icon pointer hidden"></span>
-          <span class="input-error hidden"></span>
-        </p>
-
-      </fieldset>
-      <p class="form-feedback hidden no-height"></p>
-      <section class="flex-row">
-        <button type="submit">Sign in</button>
-        <span id="signin-help-wrapper" class="signin-help-wrapper">
-          <div id="lock" class="help-button pointer">
-           
-            <!-- <i>Help</i> -->
-          </div>
-          <div id="signin-help-card" class="card signin-help-card display-none hidden">
-            <p class="no-wrap card-text card-text-condensed">Email: 
-              <span class="card-text">user@hello.com</span>
-            </p>
-            <p class="no-wrap flex-row card-text card-text-condensed">Password:  
-              <span class="card-text">Welc0me!</span>
-              <svg class="icon key-icon" viewBox="0 0 99 199"  xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M49.5 99C76.8381 99 99 76.8381 99 49.5C99 22.1619 76.8381 0 49.5 0C22.1619 0 0 22.1619 0 49.5C0 76.8381 22.1619 99 49.5 99ZM50 75C64.3594 75 76 63.3594 76 49C76 34.6406 64.3594 23 50 23C35.6406 23 24 34.6406 24 49C24 63.3594 35.6406 75 50 75Z"/>
-                <path d="M37 91C37 83.8203 42.8203 78 50 78C57.1797 78 63 83.8203 63 91V186C63 193.18 57.1797 199 50 199C42.8203 199 37 193.18 37 186V91Z"/>
-                <path d="M57 130H88V152H57V130Z"/>
-                <path d="M57 161H88V183H57V161Z"/>
-              </svg>
-            </p>
-          </div>
-        </span>
-      </section>
-    </form>
+        <fieldset class="fieldset-main">
+          <p>
+            <label class="label-main" for="email">Email<span aria-hidden="true">*</span></label>
+            <input type="text" class="input-field" name="email" -required="true">
+            <span class="input-error hidden"></span>
+          </p>
+          <p>
+            <label class="label-main" for="password">Password<span aria-hidden="true">*</span></label>
+            <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
+            <span class="icon eye-icon pointer hidden"></span>
+            <span class="input-error hidden"></span>
+          </p>
+  
+        </fieldset>
+        <p class="form-feedback hidden no-height"></p>
+        <section class="flex-row">
+          <button type="submit">Sign in</button>
+          <span id="signin-help-wrapper" class="signin-help-wrapper">
+            <div id="lock" class="help-button pointer">
+  
+              <!-- <i>Help</i> -->
+            </div>
+            <div id="signin-help-card" class="card signin-help-card display-none hidden">
+              <p class="no-wrap card-text card-text-condensed">Email:
+                <span class="card-text">user@hello.com</span>
+              </p>
+              <p class="no-wrap flex-row card-text card-text-condensed">Password:
+                <span class="card-text">Welc0me!</span>
+                <svg class="icon key-icon" viewBox="0 0 99 199" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M49.5 99C76.8381 99 99 76.8381 99 49.5C99 22.1619 76.8381 0 49.5 0C22.1619 0 0 22.1619 0 49.5C0 76.8381 22.1619 99 49.5 99ZM50 75C64.3594 75 76 63.3594 76 49C76 34.6406 64.3594 23 50 23C35.6406 23 24 34.6406 24 49C24 63.3594 35.6406 75 50 75Z" />
+                  <path
+                    d="M37 91C37 83.8203 42.8203 78 50 78C57.1797 78 63 83.8203 63 91V186C63 193.18 57.1797 199 50 199C42.8203 199 37 193.18 37 186V91Z" />
+                  <path d="M57 130H88V152H57V130Z" />
+                  <path d="M57 161H88V183H57V161Z" />
+                </svg>
+              </p>
+            </div>
+          </span>
+        </section>
+      </form>
+    </section>
   </template>
   <template id="feedback-success">
     <section id="success-popup" class="success-popup-bg">
@@ -144,4 +158,5 @@
   </template>
   <script type="module" src="./ui/main.ts"></script>
 </body>
+
 </html>

@@ -9,8 +9,8 @@
 
 /* Eye-icon */
 .eye-icon svg path{
-  fill: var(--green300);
-  stroke: var(--green300);
+  fill: var(--fluor);
+  stroke: var(--fluor);
 }
 
 .eye-icon {
@@ -40,7 +40,7 @@
 
 /* Success flower icon */
 .success-flower {
-  color: var(--green500);
+  color: var(--fluor-dark);
   top: -0.8rem;
   position: relative;
   display: inline-block;

@@ -62,11 +62,13 @@ function switchTemplates(event: MouseEvent, templateToShow: any) {
   formAnimations();
 
   if (templateToShow === signinTemplate) {
+    document.body.style.backgroundColor = 'var(--bg-color-sign-in)';
     handleSignInSubmit();
     signInHelpCard();
     initLock
   ()
   } else if (templateToShow === signupTemplate) {
+    document.body.style.backgroundColor = 'var(--bg-color-sign-up)';
   handleSignUpSubmit();
   }
 }
@@ -78,6 +80,12 @@ export function handleSignInSubmit() {
 
   async function handleSignInResponse(event: Event) {
     event.preventDefault();
+
+    const submitButton = (event.target as HTMLFormElement).querySelector('input[type="submit"], button[type="submit"]') as HTMLInputElement | HTMLButtonElement;
+    submitButton.disabled = true;
+console.log(submitButton);
+console.log(submitButton.disabled);
+
     try {
       const formData = new FormData(event.target as HTMLFormElement);
       const signInResponse: InputResponse | AppResponse = await appAdapter.handleSignIn(formData);
@@ -88,7 +96,11 @@ export function handleSignInSubmit() {
         const formFeedback = new FormFeedback('signin-form', { status: 'error', message: error.message });
         formFeedback.render();
       }
-    }
+    } 
+    setTimeout(() => {
+      submitButton.disabled = false;
+      
+    }, 5000);
   }
 }
 

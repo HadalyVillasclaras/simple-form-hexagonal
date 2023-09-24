@@ -16,9 +16,8 @@
 body {
   position: relative;
   font-size: 1.1rem;
-  background: var(--bg-color);
+  background: var(--bg-color-sign-up);
   overflow: hidden;
-  padding: 0 8vw;
   height: 100vh;
   font-family: var(--global-ff);
   margin: 0;
@@ -27,7 +26,6 @@ body {
 
 @media (max-width: 800px) {
   body {
-    padding: 4vh 8vw;
     overflow-x: hidden;
     overflow-y: scroll;
   }
@@ -39,35 +37,25 @@ body {
 
 main {
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+ 
 }
 
 h2 {
   font-size: 4rem;
-  color: var(--h2-color);
   font-family: var(--h2-ff);
   font-weight: 100;
 }
 
 a {
   background-color: transparent;
-  color: var(--green350);
+  color: var(--fluor);
   font-family: var(--a-ff);
   transition: color 0.6s ease-in-out, bottom 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
 
 a:hover {
   color: var(--green500);
-  background-color: var(--green300);
+  background-color: var(--fluor-light);
 }
 
 i {
