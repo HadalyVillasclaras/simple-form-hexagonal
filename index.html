@@ -58,23 +58,23 @@
         </section>
         <fieldset class="fieldset-main">
           <p>
-            <label class="label-main" for="name">Name<span aria-label="required">*</span></label>
-            <input type="text" name="name" aria-required="true">
+            <label class="label-main" for="input-name">Name<span aria-label="required">*</span></label>
+            <input type="text" id="input-name" name="name" aria-required="true">
             <span class="input-error hidden"></span>
           </p>
           <p>
-            <label class="label-main" for="surname">Surname<span aria-label="required">*</span></label>
-            <input type="text" name="surname" aria-required="true">
+            <label class="label-main" for="input-surname">Surname<span aria-label="required">*</span></label>
+            <input type="text" id="input-surname" name="surname" aria-required="true">
             <span class="input-error hidden"></span>
           </p>
           <p>
-            <label class="label-main" for="email">Email<span aria-label="required">*</span></label>
-            <input type="text" name="email" aria-required="true">
+            <label class="label-main" for="input-email">Email<span aria-label="required">*</span></label>
+            <input type="text" id="input-email" name="email" aria-required="true">
             <span class="input-error hidden"></span>
           </p>
           <p>
-            <label class="label-main" for="password">Password<span aria-label="required">*</span></label>
-            <input type="password" name="password" autocomplete="new-password" aria-required="true">
+            <label class="label-main" for="input-password">Password<span aria-label="required">*</span></label>
+            <input type="password" id="input-password" name="password" autocomplete="new-password" aria-required="true">
             <span class="icon eye-icon pointer hidden"></span>
             <span class="input-error hidden"></span>
           </p>
@@ -82,7 +82,7 @@
         <fieldset>
           <p class="terms-wrapper">
             <span class="checkbox-wrapper">
-              <input name="terms-policy" class="terms-input-checkbox" type="checkbox">
+              <input id="terms-policy" name="terms-policy" class="terms-input-checkbox" type="checkbox">
               <span aria-label="Terms checkbox" class="terms-fake-checkbox " role="checkbox"></span>
             </span>
             <label class="terms-text" for="terms-policy">I agree with the <a href="#">Terms</a> and <a
@@ -94,7 +94,7 @@
       </form>
     </section>
   </template>
-  <template id="signin-template" >
+  <template id="signin-template">
     <section id="signin-form-wrapper" class="form-wrapper">
       <form id="signin-form" method="POST" action="" aria-labelledby="form-title">
         <section>
@@ -105,24 +105,25 @@
         </section>
         <fieldset class="fieldset-main">
           <p>
-            <label class="label-main" for="email">Email<span aria-hidden="true">*</span></label>
-            <input type="text" class="input-field" name="email" -required="true">
+            <label class="label-main" for="input-email">Email<span aria-hidden="true">*</span></label>
+            <input type="text" id="input-email" class="input-field" name="email" -required="true">
             <span class="input-error hidden"></span>
           </p>
           <p>
-            <label class="label-main" for="password">Password<span aria-hidden="true">*</span></label>
-            <input type="password" class="input-field" name="password" autocomplete="new-password" aria-required="true">
+            <label class="label-main" for="input-password">Password<span aria-hidden="true">*</span></label>
+            <input type="password" id="input-password" class="input-field" name="password" autocomplete="new-password"
+              aria-required="true">
             <span class="icon eye-icon pointer hidden"></span>
             <span class="input-error hidden"></span>
           </p>
-  
+
         </fieldset>
         <p class="form-feedback hidden no-height"></p>
         <section class="flex-row">
           <button type="submit">Sign in</button>
           <span id="signin-help-wrapper" class="signin-help-wrapper">
             <div id="lock" class="help-button pointer">
-  
+
               <!-- <i>Help</i> -->
             </div>
             <div id="signin-help-card" class="card signin-help-card display-none hidden">
