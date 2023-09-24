@@ -33,14 +33,18 @@
 
 .signin-help-card {
   height: 4.7rem;
-  top: 2rem;
-  left: 0rem;
+  top: 3rem!important;
+  left: 0rem!important;
   padding: 0.5rem 1.5rem !important;
+  width: 100%;
+  transform: none!important;
+  bottom: unset;
 }
 
 @media (min-width: 800px) {
   .signin-help-card {
     left: 2rem;
+  
   }
 
   .signin-help-wrapper {
@@ -77,18 +81,15 @@
 /* &#9787; &#1421; */
 @media (max-width: 800px) {
   .card {
-    width: 100%;
-    top: 0;
-    right: 0;
+    width: 90vw;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 100% !important;
   }
 
   .card-text {
     font-size: 1.5rem;
     line-height: 1.8rem;
-  }
-
-  .signin-help-card {
-    top: 3rem;
   }
 
   .signin-help-card p,

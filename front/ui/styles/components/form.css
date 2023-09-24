@@ -184,7 +184,8 @@ input[name='password'] {
 
 /* Submit button */
 button[type='submit'] {
-  width: 40%;
+  min-width: 200px;
+  max-width: 300px;
   font-size: 1.1rem;
   padding: 0.5rem;
   text-transform: uppercase;
