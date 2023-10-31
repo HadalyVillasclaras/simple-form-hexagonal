@@ -48,7 +48,7 @@
   font-size: 0.7rem;
   letter-spacing: 0px;
   z-index: 3;
-  fill: var(--green200);
+  fill: var(--fluor-light);
   transition:all 1s ease;
 }
 
