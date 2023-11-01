@@ -63,7 +63,7 @@
 
 .success-msg p {
   font-size: 2.3rem;
-  color: var(--green600);
+  color: var(--bg-color-sign-up);
 }
 
 .success-msg > i {

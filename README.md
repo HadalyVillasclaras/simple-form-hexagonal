@@ -1,8 +1,8 @@
 # Simple sign in / sign up form
 
-![An image of signup form](./front/ui/assets/imgs/signup.png)
+<!-- ![An image of signup form](./front/ui/assets/imgs/signup.png) -->
 
-![An image of signin form](./front/ui/assets/imgs/signin.png)
+<!-- ![An image of signin form](./front/ui/assets/imgs/signin.png) -->
 
 I've crafted a simple web application running on an Apache server which follows a mirror folder structure applying hexagonal architecure and DDD principles in both Front-end and Back-end.
 
