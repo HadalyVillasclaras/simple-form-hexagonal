@@ -1,7 +1,7 @@
 .icon {
-  color: var(--green600);
-  fill: var(--green600);
-  stroke: var(--green600);
+  color: var(--popup-icons); /*text icon*/
+  fill: var(--highlight);
+  stroke: var(--highlight);
   font-size: 1.3rem;
   width: 1.3rem;
   height: 1.3rem;
@@ -9,8 +9,8 @@
 
 /* Eye-icon */
 .eye-icon svg path{
-  fill: var(--fluor);
-  stroke: var(--fluor);
+  fill: var(--highlight);
+  stroke: var(--highlight);
 }
 
 .eye-icon {
@@ -28,19 +28,21 @@
 .key-icon {
   position: absolute;
   transform: rotate(35deg);
-  right: 35px;
+  fill: var(--pink500);
+  stroke: var(--pink500);
+  right: 5px;
   bottom: 13px;
-  height: 1.5rem !important;
+  height: 1.8rem !important;
 }
 
 /* Lock icon */
 .lock-icon {
-  fill: var(--lock-icon) !important;
+  fill: var(--highlight) !important;
 }
 
 /* Success flower icon */
 .success-flower {
-  color: var(--fluor-dark);
+  color: var(--pink500);
   top: -0.8rem;
   position: relative;
   display: inline-block;

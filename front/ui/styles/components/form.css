@@ -36,7 +36,7 @@
 
 form {
   position: relative;
-  width: 90%;
+  width: 100%;
   box-sizing: border-box;
 
   max-width: 800px;
@@ -59,7 +59,7 @@ form {
 }
 
 .form-subheader {
-  color: var(--fluor-light);
+  color: var(--green600);
   margin-top: 1rem;
 }
 
@@ -83,10 +83,6 @@ fieldset p {
   transition-timing-function: ease-in-out;
 }
 
-#signin-form-wrapper .label-main {
-  color: var(--violet300);
-}
-
 
 .label-main-focus {
   top: -1rem !important;
@@ -95,7 +91,7 @@ fieldset p {
 }
 
 #signin-form-wrapper .label-main-focus {
-  color: var(--violet600);
+  color: var(--green600);
 }
 
 .label-main-focus span {
@@ -107,25 +103,18 @@ input[type='email'],
 input[type='password'] {
   position: relative;
   width: 100%;
-  border-bottom: 2px solid var(--green600);
+  border-bottom: 2px solid var(--input-green);
   height: 2rem;
   box-sizing: border-box;
   transition: border-bottom 0.3s ease-in-out;
   z-index: 1;
 }
 
-#signin-form-wrapper input[type='text'],
-#signin-form-wrapper input[type='email'],
-#signin-form-wrapper input[type='password'] {
-  border-bottom: 2px solid var(--violet600);
-  color: var(--violet300);
-}
-
 input[type='text']:focus,
 input[type='email']:focus,
 input[type='password']:focus {
   outline: none;
-  border-bottom: 2px solid var(--green700);
+  border-bottom: 2px solid var(--green600);
 }
 
 input[name='password'] {
@@ -157,12 +146,12 @@ input[name='password'] {
   left: 0;
   height: 12px;
   width: 12px;
-  border: 2px solid var(--fluor);
+  border: 2px solid var(--highlight);
   transition: all 0.8s ease;
 }
 
 .terms-policy:focus-within .terms-fake-checkbox {
-  outline: solid 1px var(--fluor);
+  outline: solid 1px var(--highlight);
 }
 
 .terms-fake-checkbox::after {
@@ -170,7 +159,7 @@ input[name='password'] {
   position: absolute;
   width: 9px;
   height: 9px;
-  background-color: var(--fluor);
+  background-color: var(--highlight);
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -185,7 +174,7 @@ input[name='password'] {
 /* Submit button */
 button[type='submit'] {
   min-width: 200px;
-  max-width: 300px;
+  max-width: 100%;
   font-size: 1.1rem;
   padding: 0.5rem;
   text-transform: uppercase;
@@ -195,30 +184,29 @@ button[type='submit'] {
   z-index: 1;
 }
 
-#signin-form-wrapper.form-wrapper button[type='submit'] {
-  background-color: var(--button-bg-violet);
-  color: var(--button-color-violet);
+@media (min-width: 800px) {
+  button[type='submit'] {
+    max-width: 300px;
+  }
 }
 
-#signup-form-wrapper.form-wrapper button[type='submit'] {
+.form-wrapper button[type='submit'] {
   background-color: var(--button-bg-green);
-  color: var(--button-color);
+  color: var(--button-color-green);
 }
 
-#signin-form-wrapper.form-wrapper button[type='submit']:hover {
-  background-color: var(--button-bg-violet-hover);
-  color: var(--violet300);
 
-}
 
-#signup-form-wrapper.form-wrapper button[type='submit']:hover {
+.form-wrapper button[type='submit']:hover {
   background-color: var(--button-bg-green-hover);
+  color: var(--button-bg-gree);
+
 }
 
 
 .help-button>* {
   font-size: 1rem;
-  color: var(--fluor);
+  color: var(--highlight);
 }
 
 
@@ -227,20 +215,14 @@ button[type='submit'] {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--font-light);
+  -webkit-text-fill-color: var(--font-color);
   font-family: Times;
   -webkit-box-shadow: 0 0 0px 40rem transparent inset;
   transition: -webkit-box-shadow 0.5s ease-in-out, color 0.5s ease-in-out, background-color 600000s 0s;
 }
 
-#signin-form-wrapper input:-webkit-autofill,
-#signin-form-wrapper input:-webkit-autofill:hover,
-#signin-form-wrapper input:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--violet300);
-}
-
 input:-webkit-autofill::selection {
-  -webkit-text-fill-color: var(--font-dark);
+  -webkit-text-fill-color: var(--font-color);
   -webkit-box-shadow: 0 0 0px 40rem transparent inset;
 }
 

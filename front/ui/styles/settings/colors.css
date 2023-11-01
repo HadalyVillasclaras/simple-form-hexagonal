@@ -1,15 +1,20 @@
 :root {
-  --fluor: #d6ea66;
-  --fluor-light: #e1eba7;
-  --fluor-dark: #d2d049;
+  /* Pinks */
+  --pink300: #F6C6D9;
+  --pink500: #c47996;
+  --pink-inactive: #744F5D;
 
-  --popup-bg: #e3e4c5;
 
-  --green200: #F0FABA;
-  --green500: #908654;
-  --green600: #60572A;
-  --green700: #3d3718;
-  --green800: #2c291a;
+  --green100: #F5FEEF;  
+  --green300: #DBE4D5; /* light bg*/
+
+  --green600: #6E726B;
+
+  --green800: #223530;  
+  --green900: #121816;  
+
+  /*Highlights*/
+  --highlight: var(--pink500);
 
   /* --violet300: #ded4c7;
   --violet400: #d1b693;
@@ -17,55 +22,70 @@
   --violet600: #8c7043;
   --violet700: #4a3b28; */
 
-  --violet300: #F6ECF0;
-  --violet400: #D3CCCE;
-  --violet500: #a4969b;
-  --violet600: #726267;
-  --violet700: #493E42;
+  --violet300: var(--green100);
+  --violet400: var(--green300);
+  --violet500: var(--green600);
+  --violet600: var(--green800);
+  --violet700: var(--green900);
 
-  --bg-color-sign-up: var(--green500);
-  --bg-color-sign-in: var(--violet500);
+  --bg-color-sign-up: var(--green300);
+  --bg-color-sign-in: var(--green300);
 
+  --font-color: var(--green800);
+  --h2-color-green: var(--font-color);
+  --h2-color-violet: var(--font-color);
 
-  --font-light: var(--green200);
-  --font-dark: var(--green700);
+  --selection-color: var(--green300);
+  --selection-bg: var(--pink500);
 
-  --hover-dark: var(--font-dark);
+  --error-msg-green: var(--green600);
+  --error-msg-violet: var(--green600);
+  --input-green: var(--green600);
+  --input-violet: var(--green600);
 
-  --selection-color: var(--green600);
-  --selection-bg: var(--green200);
+  --card-text : var(--green100);
+  --popup-bg: var(--green800);
+  --popup-icons: var(--pink300);
 
-  --h2-color-green: var(--font-dark);
-  --h2-color-violet: var(--violet700);
-
-
-  --error-msg-violet: var(--violet600);
-
-  --button-bg-green: var(--green700);
-  --button-bg-violet: var(--violet400);
-  --button-color-green: var(--green700);
-  --button-color-violet: var(--violet700);
-  --button-bg-green-hover: var(--green600);
-  --button-bg-violet-hover: var(--violet700);
-
-
-
-  --lock-icon: var(--fluor-light);
+  --button-bg-green: var(--green800);
+  --button-bg-violet: var(--green800);
+  --button-color-green: var(--green100);
+  --button-color-violet: var(--green100);
+  --button-bg-green-hover: var(--pink300);
+  --button-bg-violet-hover: var(--green600);
 }
 
 [data-theme="dark"] {
-  --bg-color-sign-up: var(--green800);
-  --bg-color-sign-in: var(--violet700);
-  --font-light: var(--green200);
-  --font-dark: var(--green600);
-  --h2-color-green: var(--green500);
-  --h2-color-violet: var(--violet400);
-  --button-color: var(--green400);
-  --button-bg-green: var(--green500);
-  --button-bg-violet: var(--violet600);
-  --button-color-green: var(--green700);
-  --button-color-violet: var(--violet300);
-  --button-bg-green-hover: var(--green700);
-  --button-bg-violet-hover: var(--violet500);
-  --error-msg-violet: var(--violet400);
+  --bg-color-sign-up: var(--green900);
+  --bg-color-sign-in: var(--green900);
+  
+  --font-color: var(--green100);
+  --h2-color-green: var(--pink300);
+  --h2-color-violet: var(--pink300);
+
+  --button-bg-green: var(--pink300);
+  --button-bg-violet: var(--pink300);
+  --button-color-green: var(--green800);
+  --button-color-violet: var(--green800);
+  --button-bg-green-hover: var(--pink-inactive);
+  --button-bg-violet-hover: var(--pink-inactive);
+
+  --error-msg-green: var(--green600);
+  --error-msg-violet: var(--green600);
+  --input-green: var(--green600);
+  --input-violet: var(--green600);
+
+  --selection-color: var(--pink500);
+  --selection-bg: var(--green300);
+
+  --highlight: #dbe4d5;
+
+
+  --card-text : var(--green800);
+  --popup-bg: var(--green300);
+  --popup-icons: var(--pink-inactive);
+
+
 }
+
+ 

@@ -9,7 +9,7 @@
 }
 
 * {
-  color: var(--font-light);
+  color: var(--font-color);
   margin: 0;
 }
 
@@ -48,14 +48,14 @@ h2 {
 
 a {
   background-color: transparent;
-  color: var(--fluor);
+  color: var(--highlight);
   font-family: var(--a-ff);
   transition: color 0.6s ease-in-out, bottom 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
 
 a:hover {
-  color: var(--green500);
-  background-color: var(--fluor-light);
+  color: var(--green800);
+  background-color: var(--pink500);
 }
 
 i {
@@ -65,7 +65,7 @@ i {
 }
 
 code {
-  color: var(--font-dark);
+  color: var(--font-color);
 }
 
 fieldset {
