@@ -15,29 +15,6 @@ The purpose of this project was to create a reusable application structure follo
 ## Back-end Architecture
 ```
 back/
-	|--config/
-		|--dbConfig.php
-		|--db.sql
-		|--controller/
-			|--SignInController.php
-			|--SignUpController.php
-		|--src/
-			|--User/
-				|--Domain/
-					|--User/
-					|--UserRepositoryInterface.php
-					|--ValueObjects/
-						|--Email.php
-						|--Password.php
-				|--Application/
-
-
-
-```
-
-
-```
-back/
   |--config/
 	|-- dbConfig.php
 	|-- db.sql
