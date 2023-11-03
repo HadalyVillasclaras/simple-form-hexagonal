@@ -13,6 +13,28 @@ The front-end source code is isolated from the user interface folder, with main.
 The purpose of this project was to create a reusable application structure following good practices of software architecture, code quality and accessibility. And that would let me focus on design and UX without concerning about business logic.
 
 ## Back-end Architecture
+```
+back/
+	|--config/
+		|--dbConfig.php
+		|--db.sql
+		|--controller/
+			|--SignInController.php
+			|--SignUpController.php
+		|--src/
+			|--User/
+				|--Domain/
+					|--User/
+					|--UserRepositoryInterface.php
+					|--ValueObjects/
+						|--Email.php
+						|--Password.php
+				|--Application/
+
+
+
+```
+
 
 ```
 back/
