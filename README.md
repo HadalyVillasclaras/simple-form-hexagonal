@@ -15,26 +15,26 @@ The purpose of this project was to create a reusable application structure follo
 ## Back-end Architecture
 ```
 back/
-  |--config/
-	|-- dbConfig.php
-	|-- db.sql
-  |--controller/
-	|-- SignInController.php
-	|-- SignUpController.php
-  |--src/
-	|-- User/
-		|-- Domain/
-			|--User.php
-			|--UserRepositoryInterface.php
-			|--ValueObjects/
-					|--Email.php
-					|--Password.php
-		|-- Application/
-			|--SignInService.php
-			|--SignUpService.php
-		|-- Infrastructure/
-			|--Connection.php
-			|--UserRepository.php
+ |--config/
+  |-- dbConfig.php
+  |-- db.sql
+ |--controller/
+  |-- SignInController.php
+  |-- SignUpController.php
+ |--src/
+  |-- User/
+   |-- Domain/
+    |--User.php
+    |--UserRepositoryInterface.php
+    |--ValueObjects/
+     |--Email.php
+     |--Password.php
+   |-- Application/
+    |--SignInService.php
+    |--SignUpService.php
+   |-- Infrastructure/
+    |--Connection.php
+    |--UserRepository.php
 ```
 
 ## Front-end Architecture
