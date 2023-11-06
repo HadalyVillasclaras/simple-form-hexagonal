@@ -4,65 +4,64 @@
 
 <!-- ![An image of signin form](./front/ui/assets/imgs/signin.png) -->
 
-I've crafted a simple web application running on an Apache server which follows a mirror folder structure applying hexagonal architecure and DDD principles in both Front-end and Back-end.
+Simple web application which follows a mirror folder structure applying Hexagonal Architecure and DDD principles in both Front-end and Back-end.
 
 The Front-end services fetch data via input/output stream providers from the Back-end controllers with php://input (no routing). The Back-end is implemented with pure PHP(no Composer install) since I didn't want to use libraries or routers that could increase complexity.
 
 The front-end source code is isolated from the user interface folder, with main.ts acting as a UI adapter, which connects browser events with application services. No front-end libraries have been used, but Node is required for TypeScript and Vite. All animations and interactions have been crafted from scratch.
 
-The purpose of this project was to create a reusable application structure following good practices of software architecture, code quality and accessibility. And that would let me focus on design and UX without concerning about business logic.
+The purpose of this project was to create a reusable application structure following good practices of software architecture, clean code and accessibility. 
 
 ## Back-end Architecture
-
 ```
 back/
   |--config/
-	|-- dbConfig.php
-	|-- db.sql
+    |-- dbConfig.php
+    |-- db.sql
   |--controller/
-	|-- SignInController.php
-	|-- SignUpController.php
+    |-- SignInController.php
+    |-- SignUpController.php
   |--src/
-	|-- User/
-		|-- Domain/
-			|--User.php
-			|--UserRepositoryInterface.php
-			|--ValueObjects/
-					|--Email.php
-					|--Password.php
-		|-- Application/
-			|--SignInService.php
-			|--SignUpService.php
-		|-- Infrastructure/
-			|--Connection.php
-			|--UserRepository.php
+    |-- User/
+      |-- Domain/
+        |--User.php
+        |--UserRepositoryInterface.php
+        |--ValueObjects/
+          |--Email.php
+          |--Password.php
+    |-- Application/
+      |--SignInService.php
+      |--SignUpService.php
+    |-- Infrastructure/
+      |--Connection.php
+      |--UserRepository.php
 ```
 
 ## Front-end Architecture
 
 ```
 front/
-	|--src/
-		|-- AppAdapters.ts
-		|-- User/ 
-			|-- Domain/
-				|--User.ts
-				|--UserRepositoryInterface.ts
-				|--ValueObjects/
-				|--Exceptions/
-			|-- Application/
-				|--SignInService.ts
-				|--SignUpService.ts
-			|-- Infrastructure/
-				|--MysqlUserRepository.ts
-				|--JsonMockUserRepository.ts
-	|--ui/
-	|-- assets/
-		|--fonts/
-		|--imgs/
-	|-- components/
-	|-- styles/
-	|-- main.ts
+|--src/
+  |-- AppAdapters.ts
+  |-- User/ 
+    |-- Domain/
+      |--User.ts
+      |--UserRepositoryInterface.ts
+      |--ValueObjects/
+      |--Exceptions/
+    |-- Application/
+      |--SignInService.ts
+      |--SignUpService.ts
+    |-- Infrastructure/
+      |--MysqlUserRepository.ts
+      |--JsonMockUserRepository.ts
+|--ui/
+  |-- assets/
+    |--fonts/
+    |--imgs/
+  |-- components/
+  |-- styles/
+  |-- main.ts
 ```
 
 ## Installation & usage
