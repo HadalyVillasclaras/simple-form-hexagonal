@@ -45,6 +45,7 @@
   border: 3px solid var(--highlight);
   border-radius: 50px;
   transform-origin: center;
+  z-index: 9;
 }
 
 @media (min-width: 800px) {
@@ -78,6 +79,6 @@
   top: 35%; 
   opacity: 0;
   height: 3rem;
-  stroke: var(--highlight);
+  stroke: var(--font-color);
   transition: visibility 1s linear, opacity 0.3s linear;
 }
