@@ -1,5 +1,6 @@
 :root {
   /* Pinks */
+  --pink100: #fbf3f6;
   --pink300: #F6C6D9;
   --pink500: #c47996;
   --pink-inactive: #744F5D;
@@ -28,8 +29,8 @@
   --violet600: var(--green800);
   --violet700: var(--green900);
 
-  --bg-color-sign-up: var(--green300);
-  --bg-color-sign-in: var(--green300);
+  --bg-color-sign-up: var(--pink100);
+  --bg-color-sign-in: var(--pink100);
 
   --font-color: var(--green800);
   --h2-color-green: var(--font-color);
@@ -82,7 +83,7 @@
 
 
   --card-text : var(--green800);
-  --popup-bg: var(--green300);
+  --popup-bg: var(--pink100);
   --popup-icons: var(--pink-inactive);
 
 

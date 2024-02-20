@@ -52,32 +52,34 @@ function switchControl() {
 	}
 
 	function drag(e: MouseEvent) {
-		if (mouseDown) {
-			dragging = true;
-		}
+    if (mouseDown) {
+        dragging = true;
+        document.body.style.cursor = 'grabbing'; // Set cursor style to grabbing
+    }
 
-		if (mouseDown && dragging) {
-			dy = ('clientY' in e ? e.clientY : e.touches[0].clientY) - startY;
-			const maxBottomPosition = switchWrapper.offsetHeight - switchButton.offsetHeight;
-			let newTopPosition = originalY + dy;
-			newTopPosition = Math.min(newTopPosition, maxBottomPosition);
+    if (mouseDown && dragging) {
+        dy = ('clientY' in e ? e.clientY : e.touches[0].clientY) - startY;
+        const maxBottomPosition = switchWrapper.offsetHeight - switchButton.offsetHeight;
+        let newTopPosition = originalY + dy;
+        newTopPosition = Math.min(newTopPosition, maxBottomPosition);
 
-			switchButton.style.top = `${newTopPosition}px`;
-		}
-	}
+        switchButton.style.top = `${newTopPosition}px`;
+    }
+}
 
-	function endDrag() {
-		if (dragging && mouseDown && Math.abs(dy) > 20) {
+function endDrag() {
+	if (dragging && mouseDown && Math.abs(dy) > 20) {
 			switchButton.style.top = `${originalY}px`;
 			switchTheme();
 			rotateCircle360();
-		} else if (dragging && mouseDown) {
+	} else if (dragging && mouseDown) {
 			switchButton.style.top = `${originalY}px`;
-		}
-
-		dragging = false;
-		mouseDown = false;
 	}
+
+	dragging = false;
+	mouseDown = false;
+	document.body.style.cursor = 'auto'; // Reset cursor style to auto
+}
 
 	switchCircle?.addEventListener('mousedown', startDrag);
 	document.addEventListener('mousemove', drag);
