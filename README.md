@@ -4,7 +4,7 @@
 
 <!-- ![An image of signin form](./front/ui/assets/imgs/signin.png) -->
 
-Simple web application which follows a mirror folder structure applying Hexagonal Architecure and DDD principles in both Front-end and Back-end.
+A simple web application that follows a mirrored folder structure, applying Hexagonal Architecture and DDD principles to both the front-end and back-end.
 
 The Front-end services fetch data via input/output stream providers from the Back-end controllers with php://input (no routing). The Back-end is implemented with pure PHP(no Composer install) since I didn't want to use libraries or routers that could increase complexity.
 
